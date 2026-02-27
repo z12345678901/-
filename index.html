@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -149,10 +149,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: #ffffff;
             min-height: 100vh;
             height: auto;
             overflow-x: hidden;
@@ -205,15 +202,15 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(240, 240, 240, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(200, 200, 200, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
@@ -258,10 +255,9 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: white;
+            color: #333;
             font-size: 18px;
             font-weight: 300;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             margin-left: -10px;
             white-space: nowrap;
             overflow: hidden;
@@ -304,16 +300,16 @@
             max-width: 80px;
             height: 30px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(240, 240, 240, 0.8);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(200, 200, 200, 0.5);
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             padding: 0 12px;
             font-size: 14px;
             font-weight: 300;
-            color: white;
+            color: #333;
             outline: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-backface-visibility: visible;
@@ -323,19 +319,19 @@
         }
 
         .input-widget::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(100, 100, 100, 0.6);
         }
 
         .input-widget:focus {
-            background: rgba(255, 255, 255, 0.4);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(200, 200, 200, 0.8);
         }
 
         /* iOS备忘录风格便签 */
         .note-widget {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(240, 240, 240, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(200, 200, 200, 0.5);
             border-radius: 16px;
             padding: 12px;
             width: 180px;
@@ -348,7 +344,7 @@
             z-index: 100;
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
@@ -381,7 +377,7 @@
         .heart-icon svg {
             width: 100%;
             height: 100%;
-            fill: rgba(255, 255, 255, 0.7);
+            fill: rgba(200, 200, 200, 0.7);
             pointer-events: none;
         }
 
@@ -395,10 +391,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(100, 100, 100, 0.9);
             font-size: 14px;
             font-weight: 500;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             white-space: nowrap;
             pointer-events: none;
         }
@@ -690,11 +685,10 @@
         }
 
         .app-name {
-            color: white;
+            color: #333;
             font-size: 13px;
             font-weight: 500;
             text-align: center;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             letter-spacing: -0.2px;
         }
 
@@ -705,17 +699,17 @@
             transform: translateX(-50%);
             width: 340px;
             height: 85px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(240, 240, 240, 0.8);
             backdrop-filter: blur(20px);
             border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(200, 200, 200, 0.5);
             display: flex;
             justify-content: space-around;
             align-items: center;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.08), 
                 0 4px 16px rgba(0, 0, 0, 0.05), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.8), 
                 inset 0 -1px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -1055,7 +1049,6 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
             position: relative;
-            transform: translate(3vw, 5vh);
         }
         
         .modal-content::-webkit-scrollbar {
@@ -13138,6 +13131,8 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                     messages[currentChatRole.id] = [];
                 }
                 
+                const messageIndex = messages[currentChatRole.id].length;
+                
                 messages[currentChatRole.id].push({
                     type: 'received',
                     content: content,
@@ -13153,7 +13148,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                     <div class="chat-avatar">${roleAvatar 
                         ? `<img src="${roleAvatar}" alt="头像" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span style="display:none">${roleName ? roleName.charAt(0) : 'TA'}</span>`
                         : `<span>${roleName ? roleName.charAt(0) : 'TA'}</span>`}</div>
-                    <div class="message-bubble">
+                    <div class="message-bubble" data-message-index="${messageIndex}">
                         <div class="message-content">${content}</div>
                         <div class="message-time">${new Date(timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</div>
                     </div>
@@ -13165,6 +13160,8 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 } else {
                     chatMessages.appendChild(message);
                 }
+                
+                attachMessageClickHandlers();
                 
                 requestAnimationFrame(() => {
                     chatMessages.scrollTo({
@@ -13228,6 +13225,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 try {
                     console.log('AnniversaryModule init starting...');
                     initDatePicker();
+                    initColorPicker();
                     initEventListeners();
                     loadSavedData();
                     
@@ -14230,7 +14228,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
         document.getElementById('text-widget').addEventListener('click', function() {
             const currentText = this.textContent;
             document.getElementById('text-input').value = currentText;
-            document.getElementById('text-modal').style.display = 'block';
+            document.getElementById('text-modal').style.display = 'flex';
         });
 
         function saveTextWidget() {
@@ -15042,7 +15040,7 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
         // 设置应用功能
         function openSettings() {
             const modal = document.getElementById('settings-modal');
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             loadSettings();
             renderIconGrid();
         }
@@ -16511,7 +16509,7 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
             if (app) {
                 const savedName = localStorage.getItem('appName_' + selectedApp) || app.name;
                 document.getElementById('app-name-input').value = savedName;
-                document.getElementById('rename-modal').style.display = 'block';
+                document.getElementById('rename-modal').style.display = 'flex';
             }
         }
 
@@ -16822,7 +16820,7 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
                         }
                     }
                     
-                    document.getElementById('model-modal').style.display = 'block';
+                    document.getElementById('model-modal').style.display = 'flex';
                     
                     const responseTime = Date.now() - startTime;
                     alert(`✅ 成功获取 ${models.length} 个模型\n响应时间: ${responseTime}ms\n\n点击模型列表中的模型即可选择`);
@@ -21505,7 +21503,7 @@ ${recentHistory.map(msg => {
             const modal = document.createElement('div');
             modal.id = 'add-role-modal';
             modal.className = 'modal';
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             modal.innerHTML = modalContent;
             document.body.appendChild(modal);
             
@@ -21775,7 +21773,7 @@ ${recentHistory.map(msg => {
             input.classList.remove('error');
             errorElement.classList.remove('visible');
             
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             
             // 聚焦输入框
             setTimeout(() => input.focus(), 100);
@@ -21879,7 +21877,7 @@ ${recentHistory.map(msg => {
             // 保存当前操作类型
             modal.dataset.operation = 'role';
             
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             
             // 聚焦输入框
             setTimeout(() => input.focus(), 100);
@@ -21936,7 +21934,7 @@ ${recentHistory.map(msg => {
                 personaInput.value = savedPersona;
             }
             
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
 
         // 关闭用户人物设定模态框
@@ -22296,7 +22294,7 @@ ${recentHistory.map(msg => {
                 avatarPreview.classList.remove('has-image');
             }
             
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
 
         // 关闭角色编辑模态框
