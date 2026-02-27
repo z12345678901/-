@@ -149,7 +149,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #ffffff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             min-height: 100vh;
             height: auto;
             overflow-x: hidden;
@@ -202,15 +205,15 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(200, 200, 200, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
@@ -255,9 +258,10 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: #333;
+            color: white;
             font-size: 18px;
             font-weight: 300;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             margin-left: -10px;
             white-space: nowrap;
             overflow: hidden;
@@ -300,16 +304,16 @@
             max-width: 80px;
             height: 30px;
             border-radius: 12px;
-            background: rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(200, 200, 200, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
             padding: 0 12px;
             font-size: 14px;
             font-weight: 300;
-            color: #333;
+            color: white;
             outline: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-backface-visibility: visible;
@@ -319,19 +323,19 @@
         }
 
         .input-widget::placeholder {
-            color: rgba(100, 100, 100, 0.6);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .input-widget:focus {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(200, 200, 200, 0.8);
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.6);
         }
 
         /* iOS备忘录风格便签 */
         .note-widget {
-            background: rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(200, 200, 200, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             padding: 12px;
             width: 180px;
@@ -344,7 +348,7 @@
             z-index: 100;
             box-shadow: 
                 0 6px 16px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
@@ -377,7 +381,7 @@
         .heart-icon svg {
             width: 100%;
             height: 100%;
-            fill: rgba(200, 200, 200, 0.7);
+            fill: rgba(255, 255, 255, 0.7);
             pointer-events: none;
         }
 
@@ -391,9 +395,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: rgba(100, 100, 100, 0.9);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
             font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             white-space: nowrap;
             pointer-events: none;
         }
@@ -685,10 +690,11 @@
         }
 
         .app-name {
-            color: #333;
+            color: white;
             font-size: 13px;
             font-weight: 500;
             text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             letter-spacing: -0.2px;
         }
 
@@ -699,17 +705,17 @@
             transform: translateX(-50%);
             width: 340px;
             height: 85px;
-            background: rgba(240, 240, 240, 0.8);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border-radius: 28px;
-            border: 1px solid rgba(200, 200, 200, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             display: flex;
             justify-content: space-around;
             align-items: center;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.08), 
                 0 4px 16px rgba(0, 0, 0, 0.05), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.8), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.3), 
                 inset 0 -1px 0 rgba(0, 0, 0, 0.05);
         }
 
@@ -813,19 +819,26 @@
             overflow: hidden;
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
-            transform-origin: 0 0;
-            -webkit-transform-origin: 0 0;
-            will-change: transform;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             perspective: 1000px;
         }
 
-        .touch-scroll-container.dragging {
-            cursor: grabbing;
+        .touch-scroll-content {
+            position: relative;
+            will-change: transform;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            transform-origin: 0 0;
+            -webkit-transform-origin: 0 0;
         }
 
-        .touch-scroll-container.momentum {
+        .touch-scroll-container.dragging .touch-scroll-content {
+            cursor: grabbing;
+            transition: none;
+        }
+
+        .touch-scroll-container.momentum .touch-scroll-content {
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -2054,37 +2067,112 @@
             transition: background 0.3s ease;
         }
 
+        /* 顶栏核心变量 */
+        :root {
+            --safe-area-inset-top: env(safe-area-inset-top);
+            --safe-area-inset-left: env(safe-area-inset-left);
+            --safe-area-inset-right: env(safe-area-inset-right);
+            --top-bar-base-height: 58px;
+        }
+
+        /* 顶栏核心样式（填充顶部版） */
         .wechat-header {
-            background: rgba(255, 255, 255, 0.75);
-            -webkit-backdrop-filter: blur(12px);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            margin: 35px 8px 8px;
-            padding: 20px 16px;
+            font-family: '简修圆体-9', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            scrollbar-width: none;
+            
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            
+            border-radius: 0 0 24px 24px;
+            
+            margin: 0 12px 12px;
+            padding: calc(var(--safe-area-inset-top) + 12px) 20px 18px;
+            
             display: flex;
             align-items: center;
+            justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 100;
+            min-height: calc(var(--top-bar-base-height) + var(--safe-area-inset-top));
+            
             box-shadow: 
-                0 4px 16px rgba(0, 0, 0, 0.08),
-                0 2px 8px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 2px 12px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: none;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+            
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            background-image: 
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.85),
+                    rgba(255, 255, 255, 0.8)
+                ),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        .wechat-header:hover {
+        .wechat-header.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border-radius: 0 0 20px 20px;
+            margin: 0 8px 8px;
             box-shadow: 
-                0 6px 20px rgba(0, 0, 0, 0.1),
-                0 3px 10px rgba(0, 0, 0, 0.05);
+                0 12px 40px rgba(0, 0, 0, 0.08),
+                0 4px 16px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        .wechat-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(200, 200, 200, 0.4),
+                transparent
+            );
+            border-radius: 1px;
+        }
+
+        .wechat-header .icon {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #555;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .wechat-header .icon:hover {
+            stroke: #222;
+            transform: scale(1.05);
         }
 
         .wechat-header-title {
-            flex: 1;
             font-size: 17px;
-            font-weight: 600;
             color: #333;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            flex: 1;
             text-align: center;
+            margin-top: 15px;
         }
 
         .message-list {
@@ -2116,6 +2204,10 @@
             border-radius: 14px;
         }
 
+        .message-item-wrapper.pinned-wrapper {
+            overflow: visible;
+        }
+
         .message-item-actions {
             position: absolute;
             right: 0;
@@ -2126,10 +2218,12 @@
             transform: translateX(100%);
             transition: transform 0.15s ease-out;
             z-index: 1;
+            visibility: hidden;
         }
 
         .message-item-actions.visible {
             transform: translateX(0);
+            visibility: visible;
         }
 
         .message-action-btn {
@@ -2177,16 +2271,41 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
         }
 
+        .message-item.pinned {
+            background: #ffffff;
+            border: 1px solid rgba(230, 230, 230, 0.5);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.04),
+                0 1px 3px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            padding-top: 28px;
+            position: relative;
+        }
+
         .message-item.pinned::before {
             content: '';
             position: absolute;
-            top: 6px;
+            top: -4px;
+            left: 8px;
             right: 8px;
-            width: 14px;
-            height: 14px;
-            background: #333;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            opacity: 0.8;
+            height: 100%;
+            background: #fafafa;
+            border-radius: 14px;
+            z-index: -1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .message-item.pinned::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            right: 16px;
+            height: 100%;
+            background: #f5f5f5;
+            border-radius: 14px;
+            z-index: -2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
         .pinned-label {
@@ -2544,6 +2663,10 @@
             border: 1px solid rgba(0, 0, 0, 0.03);
         }
 
+        .wechat-header .back-btn {
+            margin-top: 15px;
+        }
+
         .back-btn:hover {
             background: rgba(0, 0, 0, 0.06);
             transform: scale(1.05);
@@ -2835,6 +2958,13 @@
             transform: scale(0.98);
             opacity: 0.9;
             transition: transform 0.1s ease, opacity 0.1s ease;
+        }
+
+
+
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
         }
 
         .message-context-menu {
@@ -3325,11 +3455,20 @@
                 top: 3px;
             }
 
+            .message-item.pinned {
+                padding-top: 22px;
+            }
+
             .message-item.pinned::before {
-                width: 12px;
-                height: 12px;
-                top: 6px;
+                top: -3px;
+                left: 6px;
                 right: 6px;
+            }
+
+            .message-item.pinned::after {
+                top: -6px;
+                left: 12px;
+                right: 12px;
             }
 
             .message-time-pinned {
@@ -3390,11 +3529,20 @@
                 top: 2px;
             }
 
+            .message-item.pinned {
+                padding-top: 20px;
+            }
+
             .message-item.pinned::before {
-                width: 10px;
-                height: 10px;
-                top: 5px;
+                top: -2px;
+                left: 5px;
                 right: 5px;
+            }
+
+            .message-item.pinned::after {
+                top: -4px;
+                left: 10px;
+                right: 10px;
             }
 
             .message-time-pinned {
@@ -3451,11 +3599,20 @@
                 top: 5px;
             }
 
+            .message-item.pinned {
+                padding-top: 36px;
+            }
+
             .message-item.pinned::before {
-                width: 16px;
-                height: 16px;
-                top: 10px;
+                top: -5px;
+                left: 10px;
                 right: 10px;
+            }
+
+            .message-item.pinned::after {
+                top: -10px;
+                left: 20px;
+                right: 20px;
             }
 
             .message-time-pinned {
@@ -4416,82 +4573,149 @@
             cursor: not-allowed;
         }
 
-        /* iOS液态玻璃效果底栏样式 */
+        /* 底栏核心变量（需保留，关联样式依赖） */
+        :root {
+            --safe-area-inset-top: env(safe-area-inset-top);
+            --safe-area-inset-left: env(safe-area-inset-left);
+            --safe-area-inset-right: env(safe-area-inset-right);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom);
+            --primary-blue: #000000;
+            --bg-gray: rgba(233, 233, 235, 0.85);
+            --text-gray: #86868b;
+            --ios-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --glass-blur: 12px;
+            --border-top: rgba(255, 255, 255, 0.6);
+            --border-bottom: rgba(200, 200, 205, 0.4);
+        }
+
+        /* 底栏容器（整体固定在底部） */
         .ios-glass-tabbar {
+            -webkit-tap-highlight-color: transparent;
             position: fixed;
-            bottom: 16px;
-            left: 16px;
-            right: 16px;
-            height: 72px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 20px;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            border-top: none;
+            z-index: 1000;
             display: none;
             align-items: center;
-            justify-content: space-around;
-            z-index: 1000;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0 8px;
+            justify-content: center;
+            padding: 12px 16px 8px;
         }
 
         .ios-glass-tabbar.visible {
             display: flex;
         }
 
-        @supports not (backdrop-filter: blur(20px)) {
-            .ios-glass-tabbar {
-                background: rgba(255, 255, 255, 0.95);
-            }
+        /* 底栏玻璃容器（仅包裹左侧三个图标） */
+        .bottom-bar__content {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 32px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            flex: 1;
+            max-width: calc(100% - 60px);
+            margin-right: 8px;
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.95);
         }
 
-        .tabbar-item {
-            flex: 1;
-            height: 100%;
+        /* 左侧三图标容器 */
+        .bottom-bar__left-group {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        /* 单个图标项样式 */
+        .tabbar-item {
+            display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             position: relative;
-            transition: all 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
-            border-radius: 16px;
+            color: var(--text-gray);
+            transition: all 0.2s var(--ios-easing);
+            -webkit-tap-highlight-color: rgba(0, 122, 255, 0.1);
+            padding: 8px 16px;
         }
 
-        .tabbar-item:active {
-            transform: scale(0.92);
-        }
-
+        /* 图标样式 */
         .tabbar-item svg {
-            width: 30px;
-            height: 30px;
-            stroke: #666;
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
             fill: none;
-            transition: all 0.2s ease;
         }
 
-        .tabbar-item span {
-            font-size: 10px;
-            color: #666;
-            margin-top: 2px;
-            font-weight: 500;
-            transition: all 0.2s ease;
+        /* 图标选中态 */
+        .tabbar-item.active {
+            color: var(--primary-blue);
+            transform: scale(1.05);
         }
 
-        .tabbar-item.active svg {
-            stroke: #000;
+        /* 右侧独立搜索按钮 */
+        .bottom-bar__search-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow:
+                0 4px 15px rgba(180, 180, 180, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.2s var(--ios-easing);
+            flex-shrink: 0;
         }
 
-        .tabbar-item.active span {
-            color: #000;
+        .bottom-bar__search-btn:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 6px 20px rgba(180, 180, 180, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.3));
+        }
+
+        /* 小屏适配 */
+        @media (max-width: 375px) {
+            .ios-glass-tabbar {
+                padding: 10px 12px 6px;
+            }
+            .bottom-bar__content {
+                padding: 6px 12px;
+                margin-right: 6px;
+                max-width: calc(100% - 56px);
+                box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            }
+            .bottom-bar__search-btn {
+                width: 44px;
+                height: 44px;
+                box-shadow: 0 3px 12px rgba(180, 180, 180, 0.2);
+            }
+            .search-icon {
+                width: 18px;
+                height: 18px;
+            }
         }
 
         .profile-menu {
@@ -6286,6 +6510,32 @@
 
         .message-enter {
             animation: messageSlideIn 0.3s ease-out;
+        }
+
+        .load-more-btn {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            width: 100%;
+        }
+
+        .load-more-btn button {
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            border-radius: 16px;
+            padding: 8px 20px;
+            font-size: 13px;
+            color: #576b95;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .load-more-btn button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .load-more-btn button:active {
+            transform: scale(0.98);
         }
 
         @keyframes messageSlideIn {
@@ -8445,7 +8695,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
+            background: #f5f5f7;
             z-index: 3000;
             display: none;
             overflow-y: auto;
@@ -8480,7 +8730,6 @@
             position: relative;
             min-height: 60px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
             border-radius: 20px 20px 20px 20px;
             margin: 12px 12px 0 12px;
             background-clip: padding-box;
@@ -8634,7 +8883,7 @@
             padding: 12px 12px;
             padding-bottom: calc(20px + env(safe-area-inset-bottom));
             position: relative;
-            background: transparent;
+            background: #f5f5f7;
             gap: 16px;
         }
 
@@ -10387,15 +10636,16 @@
         <div class="announcement-card">
             <div class="announcement-header">
                 <h2 class="announcement-title">本次更新内容</h2>
-                <div class="announcement-date" id="announcement-date">2026年2月26日</div>
+                <div class="announcement-date" id="announcement-date">2026年2月28日</div>
             </div>
             <div class="announcement-body">
                 <div class="announcement-content">
                     <p>欢迎使用小鼠机！本次更新内容如下：</p>
                     <ul>
-                        <li>📞 增加了通话功能</li>
-                        <li>🤖 接入了Minimax</li>
-                        <li>🐛 修复了一些小bug</li>
+                        <li>🎨 更新了部分UI</li>
+                        <li>🐛 修复了一些bug</li>
+                        <li>☑️ 增加了多选功能</li>
+                        <li>🎲 增加了重roll功能</li>
                     </ul>
                 </div>
             </div>
@@ -10442,17 +10692,17 @@
     <div class="ios-container">
         <div class="home-screen">
             <div class="input-widgets-container">
-                <input type="text" class="input-widget" id="input-widget-1" placeholder="₊𝔹𝕒𝕓𝕖₊" style="color: rgb(245, 245, 245); --placeholder-color: #f5f5f5;">
-                <input type="text" class="input-widget" id="input-widget-2" placeholder="♰𝐾𝑖𝑡𝑡𝑒𝑛♰" style="color: rgb(245, 245, 245); --placeholder-color: #f5f5f5;">
+                <input type="text" class="input-widget" id="input-widget-1" placeholder="₊𝔹𝕒𝕓𝕖₊" style="color: rgb(0, 0, 0); --placeholder-color: #f5f5f5;">
+                <input type="text" class="input-widget" id="input-widget-2" placeholder="♰𝐾𝑖𝑡𝑡𝑒𝑛♰" style="color: rgb(0, 0, 0); --placeholder-color: #f5f5f5;">
             </div>
             <div class="circle-inputs-container">
-                <input type="text" class="input-widget" id="circle-input-1" placeholder="+ Elf Ear ★" style="color: rgb(245, 245, 245); --placeholder-color: #f5f5f5;">
-                <input type="text" class="input-widget" id="circle-input-2" placeholder="ʟɪᴇɴ" style="color: rgb(245, 245, 245); --placeholder-color: #f5f5f5;">
+                <input type="text" class="input-widget" id="circle-input-1" placeholder="+ Elf Ear ★" style="color: rgb(0, 0, 0); --placeholder-color: #f5f5f5;">
+                <input type="text" class="input-widget" id="circle-input-2" placeholder="ʟɪᴇɴ" style="color: rgb(0, 0, 0); --placeholder-color: #f5f5f5;">
             </div>
             <div class="widget-section">
                 <div class="left-widgets">
                     <div class="circle-widget" id="circle-widget"><img src="" alt="小组件图片" style="border-radius: 50%; box-shadow: 0 0 4px 1px rgba(255,255,255,0.4), 0 4px 12px rgba(0,0,0,0.3); border: 2px solid white;"></div>
-                    <div class="text-widget" id="text-widget" style="color: rgb(245, 245, 245);">₊˚. ♰𝓚𝓲𝓽𝓽𝓮𝓷 𝓤𝓷𝓲𝓿𝓮𝓻𝓼𝓮ฅ . ⁺</div>
+                    <div class="text-widget" id="text-widget" style="color: rgb(0, 0, 0);">₊˚. ♰𝓚𝓲𝓽𝓽𝓮𝓷 𝓤𝓷𝓲𝓿𝓮𝓻𝓼𝓮ฅ . ⁺</div>
 
                 </div>
                 </div>
@@ -10462,36 +10712,36 @@
         <div class="app-grid">
                     <div class="app-icon" data-app="wechat" style="">
                         <div class="icon-container"><img src="" alt="微信"></div>
-                        <div class="app-name" style="color: rgb(245, 245, 245);">微信</div>
+                        <div class="app-name" style="color: rgb(0, 0, 0);">微信</div>
                     </div>
                     <div class="app-icon" data-app="worldbook">
                         <div class="icon-container"><img src="" alt="世界书"></div>
-                        <div class="app-name" style="color: rgb(245, 245, 245);">世界书</div>
+                        <div class="app-name" style="color: rgb(0, 0, 0);">世界书</div>
                     </div>
                     <div class="app-icon" data-app="netease">
                         <div class="icon-container"><img src="" alt="网易云"></div>
-                        <div class="app-name" style="color: rgb(245, 245, 245);">网易云</div>
+                        <div class="app-name" style="color: rgb(0, 0, 0);">网易云</div>
                     </div>
                     <div class="app-icon" data-app="forum">
                         <div class="icon-container"><img src="" alt="微博"></div>
-                        <div class="app-name" style="color: rgb(245, 245, 245);">微博</div>
+                        <div class="app-name" style="color: rgb(0, 0, 0);">微博</div>
                     </div>
                 </div>
         
         <div class="dock">
             <div class="dock-app" data-app="home">
                 <div class="dock-icon"><img src="" alt="模拟人生"></div>
-                <div class="dock-name" style="color: rgb(245, 245, 245);">模拟人生</div>
+                <div class="dock-name" style="color: rgb(0, 0, 0);">模拟人生</div>
             </div>
             
             <div class="dock-app" data-app="anniversary">
                 <div class="dock-icon"><img src="" alt="纪念日"></div>
-                <div class="dock-name" style="color: rgb(245, 245, 245);">纪念日</div>
+                <div class="dock-name" style="color: rgb(0, 0, 0);">纪念日</div>
             </div>
             
             <div class="dock-app" data-app="settings">
                 <div class="dock-icon"><img src="" alt="设置"></div>
-                <div class="dock-name" style="color: rgb(245, 245, 245);">设置</div>
+                <div class="dock-name" style="color: rgb(0, 0, 0);">设置</div>
             </div>
         </div>
     
@@ -12466,28 +12716,33 @@
         
         <!-- iOS液态玻璃效果底栏 -->
         <div id="ios-glass-tabbar" class="ios-glass-tabbar">
-            <div class="tabbar-item active" data-tab="messages" onclick="handleTabbarClick(event, &#39;messages&#39;)">
-                <svg viewBox="0 0 24 24">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
+            <div class="bottom-bar__content">
+                <div class="bottom-bar__left-group">
+                    <div class="tabbar-item active" data-tab="messages" onclick="handleTabbarClick(event, &#39;messages&#39;)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="tabbar-item" data-tab="contacts" onclick="handleTabbarClick(event, &#39;contacts&#39;)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="tabbar-item" data-tab="profile" onclick="handleTabbarClick(event, &#39;profile&#39;)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="tabbar-item" data-tab="contacts" onclick="handleTabbarClick(event, &#39;contacts&#39;)">
-                <svg viewBox="0 0 24 24">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-            </div>
-            <div class="tabbar-item" data-tab="discover" onclick="handleTabbarClick(event, &#39;discover&#39;)">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                </svg>
-            </div>
-            <div class="tabbar-item" data-tab="profile" onclick="handleTabbarClick(event, &#39;profile&#39;)">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
+            <div class="bottom-bar__search-btn" onclick="handleTabbarClick(event, &#39;discover&#39;)">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4" fill="none"></circle>
                 </svg>
             </div>
         </div>
@@ -13705,6 +13960,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 }
                 
                 init() {
+                    this.createContentWrapper();
                     this.updateBounds();
                     this.bindEvents();
                     
@@ -13713,6 +13969,19 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                     }
                     
                     this.element.classList.add('touch-scroll-container');
+                }
+                
+                createContentWrapper() {
+                    // 创建内部内容包装器，用于滚动
+                    this.contentWrapper = document.createElement('div');
+                    this.contentWrapper.className = 'touch-scroll-content';
+                    
+                    // 移动所有子元素到包装器中
+                    while (this.element.firstChild) {
+                        this.contentWrapper.appendChild(this.element.firstChild);
+                    }
+                    
+                    this.element.appendChild(this.contentWrapper);
                 }
                 
                 createIndicator() {
@@ -13726,7 +13995,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                     if (!this.indicator) return;
                     
                     const containerHeight = this.element.clientHeight;
-                    const contentHeight = this.element.scrollHeight;
+                    const contentHeight = this.contentWrapper.scrollHeight;
                     
                     if (contentHeight <= containerHeight) {
                         this.indicator.classList.remove('visible');
@@ -13742,8 +14011,8 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 }
                 
                 updateBounds() {
-                    this.maxScrollX = Math.max(0, this.element.scrollWidth - this.element.clientWidth);
-                    this.maxScrollY = Math.max(0, this.element.scrollHeight - this.element.clientHeight);
+                    this.maxScrollX = Math.max(0, this.contentWrapper.scrollWidth - this.element.clientWidth);
+                    this.maxScrollY = Math.max(0, this.contentWrapper.scrollHeight - this.element.clientHeight);
                 }
                 
                 bindEvents() {
@@ -13961,8 +14230,8 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 applyTransform() {
                     // 使用CSS transform而不是直接修改scrollTop/scrollLeft
                     // 这样可以获得更流畅的滚动体验，特别是在移动设备上
-                    this.element.style.transform = `translate(${this.translateX}px, ${this.translateY}px)`;
-                    this.element.style.transformOrigin = '0 0';
+                    this.contentWrapper.style.transform = `translate(${this.translateX}px, ${this.translateY}px)`;
+                    this.contentWrapper.style.transformOrigin = '0 0';
                 }
                 
                 scrollTo(x, y, animated = true) {
@@ -17519,6 +17788,49 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
         let roles = JSON.parse(localStorage.getItem('wechatRoles')) || [];
         let messages = JSON.parse(localStorage.getItem('wechatMessages')) || {};
         let moments = JSON.parse(localStorage.getItem('wechatMoments')) || [];
+        let visibleMessageCount = 50;
+        const MESSAGES_PER_PAGE = 50;
+
+        // 未读消息管理器
+        const UnreadManager = {
+            STORAGE_KEY: 'roleLastReadTimestamp',
+            
+            getLastReadTime: function(roleId) {
+                const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || {};
+                return data[roleId] ? new Date(data[roleId]) : null;
+            },
+            
+            setLastReadTime: function(roleId) {
+                const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || {};
+                data[roleId] = new Date().toISOString();
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
+            },
+            
+            hasUnreadMessages: function(roleId) {
+                const roleMessages = messages[roleId] || [];
+                if (roleMessages.length === 0) return false;
+                
+                const lastReadTime = this.getLastReadTime(roleId);
+                if (!lastReadTime) return true;
+                
+                const receivedMessages = roleMessages.filter(msg => msg.type === 'received' && msg.context !== 'call');
+                if (receivedMessages.length === 0) return false;
+                
+                const lastReceivedMsg = receivedMessages[receivedMessages.length - 1];
+                const lastReceivedTime = new Date(lastReceivedMsg.timestamp);
+                
+                return lastReceivedTime > lastReadTime;
+            },
+            
+            hasAnyUnreadMessages: function() {
+                for (const roleId in messages) {
+                    if (this.hasUnreadMessages(roleId)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
 
         // 保存朋友圈动态
         function saveMoments() {
@@ -18694,6 +19006,7 @@ ${commenterInfo}
                 const isPinned = pinnedRoles.includes(role.id);
                 if (isPinned) {
                     messageItem.classList.add('pinned');
+                    wrapper.classList.add('pinned-wrapper');
                 }
 
                 const avatar = document.createElement('div');
@@ -18763,6 +19076,13 @@ ${commenterInfo}
                 messageItem.appendChild(info);
 
                 if (isPinned) {
+                    const binderClip = document.createElement('div');
+                    binderClip.className = 'pinned-binder-clip';
+                    const clipMiddle = document.createElement('div');
+                    clipMiddle.className = 'pinned-clip-middle';
+                    binderClip.appendChild(clipMiddle);
+                    messageItem.appendChild(binderClip);
+                    
                     const pinnedLabel = document.createElement('div');
                     pinnedLabel.className = 'pinned-label';
                     pinnedLabel.textContent = '置顶';
@@ -18818,20 +19138,32 @@ ${commenterInfo}
         function togglePin(roleId, messageItem, pinBtn) {
             let pinnedRoles = JSON.parse(localStorage.getItem('pinnedRoles')) || [];
             const isPinned = pinnedRoles.includes(roleId);
+            const wrapper = messageItem.closest('.message-item-wrapper');
 
             if (isPinned) {
                 pinnedRoles = pinnedRoles.filter(id => id !== roleId);
                 messageItem.classList.remove('pinned');
+                if (wrapper) wrapper.classList.remove('pinned-wrapper');
                 pinBtn.classList.remove('pinned');
                 pinBtn.querySelector('span').textContent = '置顶';
                 const label = messageItem.querySelector('.pinned-label');
                 if (label) label.remove();
+                const binderClip = messageItem.querySelector('.pinned-binder-clip');
+                if (binderClip) binderClip.remove();
                 showToast('已取消置顶');
             } else {
                 pinnedRoles.push(roleId);
                 messageItem.classList.add('pinned');
+                if (wrapper) wrapper.classList.add('pinned-wrapper');
                 pinBtn.classList.add('pinned');
                 pinBtn.querySelector('span').textContent = '取消置顶';
+                
+                const binderClip = document.createElement('div');
+                binderClip.className = 'pinned-binder-clip';
+                const clipMiddle = document.createElement('div');
+                clipMiddle.className = 'pinned-clip-middle';
+                binderClip.appendChild(clipMiddle);
+                messageItem.appendChild(binderClip);
                 
                 let pinnedLabel = messageItem.querySelector('.pinned-label');
                 if (!pinnedLabel) {
@@ -18870,6 +19202,7 @@ ${commenterInfo}
                 currentX = startX;
                 isSwiping = true;
                 messageItem.classList.add('swiping');
+                actions.classList.add('visible');
             }
 
             function handleTouchMove(e) {
@@ -18915,6 +19248,7 @@ ${commenterInfo}
                 currentX = startX;
                 isSwiping = true;
                 messageItem.classList.add('swiping');
+                actions.classList.add('visible');
                 
                 document.addEventListener('mousemove', handleMouseMove);
                 document.addEventListener('mouseup', handleMouseUp);
@@ -18970,6 +19304,7 @@ ${commenterInfo}
             const actions = messageItem.parentElement.querySelector('.message-item-actions');
             if (actions) {
                 actions.style.transform = 'translateX(100%)';
+                actions.classList.remove('visible');
             }
             messageItem.classList.remove('swiped');
             
@@ -19142,6 +19477,7 @@ ${commenterInfo}
                 }
                 chatMessages.innerHTML = '';
                 clearQuoteMessage();
+                visibleMessageCount = MESSAGES_PER_PAGE;
             }
             
             currentChatRole = role;
@@ -19178,6 +19514,8 @@ ${commenterInfo}
             loadChatWallpaper(role.id);
             applyRoleCustomCss(role.id);
             checkChatApiStatus();
+            
+            UnreadManager.setLastReadTime(role.id);
         }
 
         function checkChatApiStatus() {
@@ -20565,7 +20903,7 @@ ${recentHistory.map(msg => {
             
             const chatMessages = document.getElementById('chat-messages');
             const roleMessages = (messages[roleId] || []).filter(msg => msg.context !== 'call');
-            const existingMessages = chatMessages.querySelectorAll('.message:not(#typing-indicator)');
+            const existingMessages = chatMessages.querySelectorAll('.message:not(#typing-indicator):not(.load-more-btn)');
             const currentMessageCount = existingMessages.length;
             
             const role = roles.find(r => r.id === roleId);
@@ -20578,12 +20916,26 @@ ${recentHistory.map(msg => {
                 return;
             }
             
+            const totalMessages = roleMessages.length;
+            const startIndex = Math.max(0, totalMessages - visibleMessageCount);
+            const messagesToShow = roleMessages.slice(startIndex);
+            const hasMoreMessages = startIndex > 0;
+            
             if (currentMessageCount === 0 || currentMessageCount > roleMessages.length) {
                 chatMessages.innerHTML = '';
-                roleMessages.forEach((msg, index) => {
+                
+                if (hasMoreMessages) {
+                    const loadMoreBtn = document.createElement('div');
+                    loadMoreBtn.className = 'load-more-btn';
+                    loadMoreBtn.innerHTML = `<button onclick="loadMoreMessages()">显示更早消息 (${startIndex}条)</button>`;
+                    chatMessages.appendChild(loadMoreBtn);
+                }
+                
+                messagesToShow.forEach((msg, index) => {
+                    const actualIndex = startIndex + index;
                     const message = document.createElement('div');
                     message.className = `message ${msg.type} message-enter`;
-                    message.innerHTML = createMessageHTML(msg, roleAvatar, userAvatar, roleName, index);
+                    message.innerHTML = createMessageHTML(msg, roleAvatar, userAvatar, roleName, actualIndex);
                     chatMessages.appendChild(message);
                 });
             } else {
@@ -20599,6 +20951,12 @@ ${recentHistory.map(msg => {
                         chatMessages.appendChild(message);
                     }
                 }
+                
+                const loadMoreBtn = chatMessages.querySelector('.load-more-btn');
+                if (loadMoreBtn && hasMoreMessages) {
+                    const newStartIndex = Math.max(0, totalMessages - visibleMessageCount);
+                    loadMoreBtn.innerHTML = `<button onclick="loadMoreMessages()">显示更早消息 (${newStartIndex}条)</button>`;
+                }
             }
 
             attachMessageClickHandlers();
@@ -20611,6 +20969,53 @@ ${recentHistory.map(msg => {
                         behavior: 'smooth'
                     });
                 });
+            });
+        }
+        
+        function loadMoreMessages() {
+            if (!currentChatRole) return;
+            
+            const roleId = currentChatRole.id;
+            const roleMessages = (messages[roleId] || []).filter(msg => msg.context !== 'call');
+            const totalMessages = roleMessages.length;
+            
+            visibleMessageCount += MESSAGES_PER_PAGE;
+            
+            const chatMessages = document.getElementById('chat-messages');
+            const role = roles.find(r => r.id === roleId);
+            const roleAvatar = role ? role.avatar : '';
+            const roleName = role ? role.name : '';
+            const userAvatar = localStorage.getItem('userAvatar') || '';
+            
+            const startIndex = Math.max(0, totalMessages - visibleMessageCount);
+            const messagesToShow = roleMessages.slice(startIndex);
+            const hasMoreMessages = startIndex > 0;
+            
+            const oldScrollHeight = chatMessages.scrollHeight;
+            
+            chatMessages.innerHTML = '';
+            
+            if (hasMoreMessages) {
+                const loadMoreBtn = document.createElement('div');
+                loadMoreBtn.className = 'load-more-btn';
+                loadMoreBtn.innerHTML = `<button onclick="loadMoreMessages()">显示更早消息 (${startIndex}条)</button>`;
+                chatMessages.appendChild(loadMoreBtn);
+            }
+            
+            messagesToShow.forEach((msg, index) => {
+                const actualIndex = startIndex + index;
+                const message = document.createElement('div');
+                message.className = `message ${msg.type}`;
+                message.innerHTML = createMessageHTML(msg, roleAvatar, userAvatar, roleName, actualIndex);
+                chatMessages.appendChild(message);
+            });
+            
+            attachMessageClickHandlers();
+            applyChatFontColors();
+            
+            requestAnimationFrame(() => {
+                const newScrollHeight = chatMessages.scrollHeight;
+                chatMessages.scrollTop = newScrollHeight - oldScrollHeight;
             });
         }
 
@@ -21019,6 +21424,7 @@ ${recentHistory.map(msg => {
                 bubble.dataset.clickHandlerAttached = 'true';
                 bubble.style.cursor = 'pointer';
                 
+                // 点击事件 - 和引用按钮一样的触发方式
                 bubble.addEventListener('click', handleBubbleClick);
             });
         }
@@ -21046,10 +21452,11 @@ ${recentHistory.map(msg => {
             const messageEl = bubble.closest('.message');
             const isSent = messageEl.classList.contains('sent');
             
-            showMessageContextMenu(bubble, rect, isSent);
+            // 总是显示包含多选按钮的上下文菜单，和引用按钮一样的触发方式
+            showMessageContextMenu(bubble, rect, isSent, true);
         }
 
-        function showMessageContextMenu(bubble, rect, isSent) {
+        function showMessageContextMenu(bubble, rect, isSent, isLongPress = false) {
             hideContextMenu();
             
             const messageIndex = bubble.dataset.messageIndex;
@@ -21064,16 +21471,38 @@ ${recentHistory.map(msg => {
             
             const quoteIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>`;
             
-            contextMenu.innerHTML = `
+            const regenerateIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path></svg>`;
+            
+            const multiSelectIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>`;
+            
+            let menuHTML = '';
+            
+            // 如果是长按，添加多选按钮
+            if (isLongPress) {
+                menuHTML += `
+                    <div class="context-menu-item multi-select" data-message-index="${messageIndex}">
+                        ${multiSelectIcon}
+                        <span>多选</span>
+                    </div>
+                `;
+            }
+            
+            menuHTML += `
                 <div class="context-menu-item quote" data-message-index="${messageIndex}">
                     ${quoteIcon}
                     <span>引用</span>
+                </div>
+                <div class="context-menu-item regenerate" data-message-index="${messageIndex}">
+                    ${regenerateIcon}
+                    <span>重新生成</span>
                 </div>
                 <div class="context-menu-item delete" data-message-index="${messageIndex}">
                     ${deleteIcon}
                     <span>删除</span>
                 </div>
             `;
+            
+            contextMenu.innerHTML = menuHTML;
             
             document.body.appendChild(contextMenu);
             
@@ -21084,34 +21513,53 @@ ${recentHistory.map(msg => {
             
             let posX, posY;
             
-            if (isSent) {
-                posX = rect.right - menuWidth;
-            } else {
-                posX = rect.left;
-            }
+            // 计算消息气泡中心位置
+            const bubbleCenterX = rect.left + rect.width / 2;
             
-            posY = rect.top - menuHeight - 8;
+            // 让菜单显示在消息气泡的正下方
+            posX = bubbleCenterX - menuWidth / 2;
+            posY = rect.bottom + 8;
             
-            if (posY < 10) {
-                posY = rect.bottom + 8;
-            }
-            
-            if (posX + menuWidth > windowWidth - 10) {
-                posX = windowWidth - menuWidth - 10;
-            }
+            // 确保菜单位于屏幕内
             if (posX < 10) {
                 posX = 10;
+            } else if (posX + menuWidth > windowWidth - 10) {
+                posX = windowWidth - menuWidth - 10;
+            }
+            
+            // 如果下方空间不够，显示在上方
+            if (posY + menuHeight > windowHeight - 10) {
+                posY = rect.top - menuHeight - 8;
             }
             
             contextMenu.style.left = posX + 'px';
             contextMenu.style.top = posY + 'px';
             
+            // 多选按钮事件
+            const multiSelectItem = contextMenu.querySelector('.context-menu-item.multi-select');
+            if (multiSelectItem) {
+                multiSelectItem.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hideContextMenu();
+                    enterMultiSelectMode(parseInt(messageIndex));
+                });
+            }
+            
+            // 引用按钮事件
             contextMenu.querySelector('.context-menu-item.quote').addEventListener('click', (e) => {
                 e.stopPropagation();
                 hideContextMenu();
                 setQuoteMessage(parseInt(messageIndex));
             });
             
+            // 重新生成按钮事件
+            contextMenu.querySelector('.context-menu-item.regenerate').addEventListener('click', (e) => {
+                e.stopPropagation();
+                hideContextMenu();
+                regenerateMessage(parseInt(messageIndex));
+            });
+            
+            // 删除按钮事件
             contextMenu.querySelector('.context-menu-item.delete').addEventListener('click', (e) => {
                 e.stopPropagation();
                 hideContextMenu();
@@ -21122,6 +21570,225 @@ ${recentHistory.map(msg => {
                 document.addEventListener('click', handleContextMenuOutsideClick);
                 document.addEventListener('touchstart', handleContextMenuOutsideClick, { passive: true });
             }, 10);
+        }
+        
+        // 多选模式状态
+        let multiSelectMode = false;
+        let selectedMessages = [];
+        
+        function enterMultiSelectMode(startIndex) {
+            if (!currentChatRole) return;
+            
+            multiSelectMode = true;
+            selectedMessages = [startIndex];
+            
+            const chatHeader = document.querySelector('.chat-header');
+            if (chatHeader) {
+                chatHeader.style.display = 'none';
+            }
+            
+            showMultiSelectToolbar();
+            
+            updateMultiSelectUI();
+        }
+        
+        function showMultiSelectToolbar() {
+            const existingToolbar = document.getElementById('multi-select-toolbar');
+            if (existingToolbar) {
+                existingToolbar.remove();
+            }
+            
+            const toolbar = document.createElement('div');
+            toolbar.id = 'multi-select-toolbar';
+            toolbar.style.cssText = `
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100vw;
+                height: 88px;
+                padding: 0 16px;
+                background-color: #ffffff;
+                border-radius: 0 0 50% 50%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            `;
+            
+            const cancelIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="#007aff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
+            
+            toolbar.innerHTML = `
+                <div class="back-btn" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 22px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; overflow: hidden;">
+                    ${cancelIcon}
+                </div>
+                <div style="font-size: 17px; font-weight: 600; color: #1d1d1f; letter-spacing: -0.24px; position: absolute; left: 50%; transform: translate(-50%, -50%); top: 50%;">已选择 <span id="selected-count">1</span> 条</div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="multi-select-btn select-all" style="padding: 8px 16px; border: 1px solid #ddd; border-radius: 16px; background: white; color: #333; font-size: 14px; cursor: pointer;">
+                        全选
+                    </button>
+                    <button class="multi-select-btn delete" style="padding: 8px 16px; border: 1px solid #ff3b30; border-radius: 16px; background: #ff3b30; color: white; font-size: 14px; cursor: pointer;">
+                        删除
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(toolbar);
+            
+            const backBtn = toolbar.querySelector('.back-btn');
+            backBtn.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = 'rgba(0, 122, 255, 0.06)';
+                this.style.transform = 'scale(1.05)';
+            });
+            backBtn.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.transform = 'scale(1)';
+            });
+            
+            backBtn.addEventListener('click', exitMultiSelectMode);
+            toolbar.querySelector('.multi-select-btn.select-all').addEventListener('click', selectAllMessages);
+            toolbar.querySelector('.multi-select-btn.delete').addEventListener('click', deleteSelectedMessages);
+        }
+        
+        function updateMultiSelectUI() {
+            if (!currentChatRole) return;
+            
+            const chatMessages = document.getElementById('chat-messages');
+            const messageBubbles = chatMessages.querySelectorAll('.message-bubble');
+            
+            messageBubbles.forEach(bubble => {
+                const messageIndex = parseInt(bubble.dataset.messageIndex);
+                const messageEl = bubble.closest('.message');
+                
+                let selectCircle = messageEl.querySelector('.multi-select-circle');
+                if (!selectCircle) {
+                    selectCircle = document.createElement('div');
+                    selectCircle.className = 'multi-select-circle';
+                    selectCircle.style.cssText = `
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 2px solid #999;
+                        background: transparent;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        flex-shrink: 0;
+                        margin-left: 8px;
+                        margin-top: 10px;
+                    `;
+                    messageEl.appendChild(selectCircle);
+                }
+                
+                if (selectedMessages.includes(messageIndex)) {
+                    messageEl.classList.add('message-selected');
+                    selectCircle.style.background = '#999';
+                    selectCircle.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                } else {
+                    messageEl.classList.remove('message-selected');
+                    selectCircle.style.background = 'transparent';
+                    selectCircle.innerHTML = '';
+                }
+                
+                bubble.onclick = function() {
+                    toggleMessageSelection(messageIndex);
+                };
+            });
+            
+            const countElement = document.getElementById('selected-count');
+            if (countElement) {
+                countElement.textContent = selectedMessages.length;
+            }
+        }
+        
+        function toggleMessageSelection(messageIndex) {
+            if (!multiSelectMode) return;
+            
+            const index = selectedMessages.indexOf(messageIndex);
+            if (index > -1) {
+                // 取消选择
+                selectedMessages.splice(index, 1);
+            } else {
+                // 选择
+                selectedMessages.push(messageIndex);
+            }
+            
+            updateMultiSelectUI();
+        }
+        
+        function selectAllMessages() {
+            if (!currentChatRole) return;
+            
+            const roleId = currentChatRole.id;
+            const roleMessages = messages[roleId] || [];
+            
+            selectedMessages = [];
+            for (let i = 0; i < roleMessages.length; i++) {
+                selectedMessages.push(i);
+            }
+            
+            updateMultiSelectUI();
+        }
+        
+        function deleteSelectedMessages() {
+            if (!currentChatRole || selectedMessages.length === 0) return;
+            
+            if (confirm(`确定要删除选中的 ${selectedMessages.length} 条消息吗？`)) {
+                const roleId = currentChatRole.id;
+                
+                // 按索引从大到小排序，避免删除时索引变化
+                selectedMessages.sort((a, b) => b - a);
+                
+                selectedMessages.forEach(index => {
+                    if (messages[roleId][index]) {
+                        messages[roleId].splice(index, 1);
+                    }
+                });
+                
+                localStorage.setItem('wechatMessages', JSON.stringify(messages));
+                
+                // 退出多选模式
+                exitMultiSelectMode();
+                
+                // 重新加载消息
+                loadChatMessages(roleId);
+                loadMessages();
+            }
+        }
+        
+        function exitMultiSelectMode() {
+            multiSelectMode = false;
+            selectedMessages = [];
+            
+            const toolbar = document.getElementById('multi-select-toolbar');
+            if (toolbar) {
+                toolbar.remove();
+            }
+            
+            const chatHeader = document.querySelector('.chat-header');
+            if (chatHeader) {
+                chatHeader.style.display = '';
+            }
+            
+            const chatMessages = document.getElementById('chat-messages');
+            const messageBubbles = chatMessages.querySelectorAll('.message-bubble');
+            
+            messageBubbles.forEach(bubble => {
+                const messageEl = bubble.closest('.message');
+                messageEl.classList.remove('message-selected');
+                
+                const selectCircle = messageEl.querySelector('.multi-select-circle');
+                if (selectCircle) {
+                    selectCircle.remove();
+                }
+                
+                bubble.onclick = null;
+                bubble.addEventListener('click', handleBubbleClick);
+            });
+            
+            attachMessageClickHandlers();
         }
 
         function handleContextMenuOutsideClick(e) {
@@ -21138,6 +21805,325 @@ ${recentHistory.map(msg => {
             }
             document.removeEventListener('click', handleContextMenuOutsideClick);
             document.removeEventListener('touchstart', handleContextMenuOutsideClick);
+        }
+
+        async function regenerateMessage(messageIndex) {
+            console.log('开始重新生成消息，messageIndex:', messageIndex);
+            
+            if (!currentChatRole) {
+                console.log('没有当前聊天角色');
+                return;
+            }
+
+            const roleId = currentChatRole.id;
+            const roleMessages = messages[roleId] || [];
+            
+            console.log('当前角色ID:', roleId);
+            console.log('角色消息数量:', roleMessages.length);
+            
+            if (messageIndex < 0 || messageIndex >= roleMessages.length) {
+                console.log('消息索引超出范围');
+                return;
+            }
+
+            const targetMessage = roleMessages[messageIndex];
+            if (targetMessage.type !== 'received') {
+                console.log('目标消息不是接收类型:', targetMessage.type);
+                return;
+            }
+
+            // 显示加载指示器
+            console.log('尝试查找消息气泡元素，messageIndex:', messageIndex);
+            let messageBubbleElement = null;
+            
+            // 尝试直接通过选择器查找
+            messageBubbleElement = document.querySelector(`.message-bubble[data-message-index="${messageIndex}"]`);
+            
+            // 如果直接查找失败，遍历所有消息气泡元素
+            if (!messageBubbleElement) {
+                const allBubbles = document.querySelectorAll('.message-bubble');
+                console.log('所有消息气泡元素数量:', allBubbles.length);
+                allBubbles.forEach((bubble, index) => {
+                    console.log(`气泡 ${index} 的data-message-index:`, bubble.dataset.messageIndex);
+                    if (bubble.dataset.messageIndex === messageIndex.toString()) {
+                        messageBubbleElement = bubble;
+                        console.log('通过遍历找到消息气泡元素:', bubble);
+                    }
+                });
+            }
+            
+            if (messageBubbleElement) {
+                console.log('找到消息气泡元素:', messageBubbleElement);
+                messageBubbleElement.classList.add('message-loading');
+                console.log('已添加message-loading类');
+                console.log('元素当前类:', messageBubbleElement.className);
+                
+                // 直接修改元素样式
+                messageBubbleElement.style.opacity = '0.6';
+                messageBubbleElement.style.position = 'relative';
+                
+                // 直接创建并添加加载图标元素到气泡外部右侧
+                let loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                if (!loadingIcon) {
+                    loadingIcon = document.createElement('div');
+                    loadingIcon.className = 'loading-icon';
+                    loadingIcon.style.position = 'absolute';
+                    loadingIcon.style.top = '50%';
+                    loadingIcon.style.right = '-25px';
+                    loadingIcon.style.transform = 'translateY(-50%)';
+                    loadingIcon.style.width = '16px';
+                    loadingIcon.style.height = '16px';
+                    loadingIcon.style.border = '2px solid #999';
+                    loadingIcon.style.borderTop = '2px solid #fff';
+                    loadingIcon.style.borderRadius = '50%';
+                    loadingIcon.style.animation = 'spin 1s linear infinite';
+                    loadingIcon.style.zIndex = '9999';
+                    messageBubbleElement.appendChild(loadingIcon);
+                    console.log('已添加加载图标元素到气泡外部');
+                }
+            } else {
+                console.log('未找到消息气泡元素，messageIndex:', messageIndex);
+            }
+
+            try {
+                const savedApiUrl = localStorage.getItem('apiUrl') || '';
+                const apiKey = localStorage.getItem('apiKey') || '';
+                const selectedModel = localStorage.getItem('selectedModel') || '';
+                
+                const chatEndpoint = getChatEndpoint(savedApiUrl);
+
+                if (!chatEndpoint || !apiKey || !selectedModel) {
+                    if (messageBubbleElement) {
+                        // 移除加载图标
+                        const loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                        if (loadingIcon) {
+                            loadingIcon.remove();
+                            console.log('已移除加载图标');
+                        }
+                        
+                        // 恢复原始样式
+                        messageBubbleElement.style.opacity = '';
+                        messageBubbleElement.style.position = '';
+                        
+                        messageBubbleElement.classList.remove('message-loading');
+                        console.log('已移除message-loading类');
+                    }
+                    
+                    // 显示错误提示
+                    alert('API配置不完整，请先在设置中配置API参数');
+                    console.log('API配置不完整，无法重新生成消息');
+                    return;
+                }
+
+                const userSettings = getUserPersona();
+                const userName = userSettings.name || '用户';
+                
+                // 使用适合文本消息的系统提示
+                let systemPrompt = `你是一个真实的活人，正在和${userName}进行微信聊天。
+
+## 重要要求
+- 严格遵守角色设定和世界书信息
+- 回复要简短，不要长篇大论
+- 要有活人感，说话自然真实
+- 语言简洁，符合微信聊天风格
+- 保持对话的连贯性和逻辑性
+- 只生成一条消息，不要生成多条消息
+- 回复要直接针对用户的最后一条消息
+- 不要使用Emoji表情符号
+- 不要使用句号和逗号，用空格来代替逗号
+
+## 角色信息
+- 角色名称：${currentChatRole.name}
+${currentChatRole.description ? `- 角色描述：${currentChatRole.description}` : ''}
+${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${currentChatRole.tags.join('、')}` : ''}
+
+## 用户信息
+- 用户名称：${userName}
+
+## 聊天对话风格
+- 回复要自然流畅，符合角色设定
+- 可以使用语气词，增加对话的生动性
+- 回复要符合微信聊天的风格，不要太正式
+- 回复要简短，通常1-3句话即可
+- 保持口语化，避免使用正式的书面语
+- 要有真实感，就像真人在聊天一样`;
+                
+                const worldbookPrompt = getWorldbookPrompt(currentChatRole.id);
+                if (worldbookPrompt) {
+                    systemPrompt += worldbookPrompt;
+                }
+                
+                const summaryKey = 'summaryContents_' + currentChatRole.id;
+                let summaryContents = [];
+                try {
+                    summaryContents = JSON.parse(localStorage.getItem(summaryKey) || '[]');
+                    if (!Array.isArray(summaryContents)) {
+                        summaryContents = [];
+                    }
+                } catch (e) {
+                    summaryContents = [];
+                }
+                
+                if (summaryContents.length > 0) {
+                    systemPrompt += '\n\n【对话总结】';
+                    summaryContents.forEach((item) => {
+                        if (item.content && item.content.trim()) {
+                            const typeLabel = item.type === 'auto' ? '自动总结' : '手动总结';
+                            systemPrompt += `\n\n[${typeLabel} - ${new Date(item.timestamp).toLocaleDateString('zh-CN')}]\n${item.content}`;
+                        }
+                    });
+                }
+
+                // 读取前5条消息作为上下文
+                const contextMessages = roleMessages.slice(Math.max(0, messageIndex - 5), messageIndex);
+                
+                const apiMessages = [
+                    { role: 'system', content: systemPrompt }
+                ];
+                
+                contextMessages.forEach(msg => {
+                    if (msg.type === 'sent') {
+                        apiMessages.push({ role: 'user', content: msg.content });
+                    } else if (msg.type === 'received') {
+                        apiMessages.push({ role: 'assistant', content: msg.content });
+                    }
+                });
+
+                // 添加最后一条用户消息作为触发
+                const lastUserMessage = contextMessages.filter(msg => msg.type === 'sent').pop();
+                if (lastUserMessage) {
+                    apiMessages.push({ role: 'user', content: lastUserMessage.content });
+                }
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+
+                const response = await fetch(chatEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: selectedModel,
+                        messages: apiMessages,
+                        max_tokens: 800,
+                        temperature: parseFloat(localStorage.getItem('apiTemperature')) || 1.0,
+                        presence_penalty: 0.6,
+                        frequency_penalty: 0.5
+                    }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.choices && data.choices[0] && data.choices[0].message) {
+                        let reply = data.choices[0].message.content;
+                        
+                        reply = reply.replace(/\[STATUS:[^\]]+\]/g, '');
+                        reply = reply.replace(/^(作为|作为一个|作为AI|作为一个AI|作为一个人工智能|作为大语言模型)[，,。：: ]*/gi, '');
+                        reply = reply.replace(/我(不)?是(AI|人工智能|语言模型|大语言模型|助手|机器人)[，,。：: ]*/gi, '');
+                        reply = reply.replace(/(请注意|请注意，|需要说明的是|需要说明的是，)[，,。：: ]*(我|本|此)[^。！？]*[。！？]/gi, '');
+                        reply = reply.replace(/作为(一个)?(虚拟|数字|AI|人工智能)[^。！？]*[，,。：: ]*/gi, '');
+                        reply = reply.replace(/(我不能|我无法|我不可以)[^。！？]*[。！？]/gi, '这个嘛……');
+                        reply = reply.trim();
+
+                        // 更新消息内容
+                        roleMessages[messageIndex].content = reply;
+                        roleMessages[messageIndex].timestamp = new Date().toISOString();
+                        localStorage.setItem('wechatMessages', JSON.stringify(messages));
+
+                        // 更新UI
+                        if (messageBubbleElement) {
+                            // 保存加载图标
+                            const loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                            
+                            // 更新内容
+                            const contentElement = messageBubbleElement.querySelector('.message-content');
+                            if (contentElement) {
+                                contentElement.innerHTML = reply;
+                            }
+                            
+                            // 恢复原始样式
+                            messageBubbleElement.style.opacity = '';
+                            messageBubbleElement.style.position = '';
+                            
+                            // 移除加载图标
+                            if (loadingIcon) {
+                                loadingIcon.remove();
+                                console.log('已移除加载图标');
+                            }
+                            
+                            messageBubbleElement.classList.remove('message-loading');
+                            console.log('已移除message-loading类');
+                        }
+                    } else {
+                        // 处理API返回但没有正确消息的情况
+                        console.error('API返回但没有正确的消息:', data);
+                        if (messageBubbleElement) {
+                            // 移除加载图标
+                            const loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                            if (loadingIcon) {
+                                loadingIcon.remove();
+                                console.log('已移除加载图标');
+                            }
+                            
+                            // 恢复原始样式
+                            messageBubbleElement.style.opacity = '';
+                            messageBubbleElement.style.position = '';
+                            
+                            messageBubbleElement.classList.remove('message-loading');
+                            console.log('已移除message-loading类');
+                        }
+                        
+                        // 显示错误提示
+                        alert('重新生成消息失败：API返回了无效的响应');
+                    }
+                } else {
+                    // 处理API调用失败的情况
+                    const errorText = await response.text();
+                    console.error('API调用失败:', response.status, errorText);
+                    
+                    if (messageBubbleElement) {
+                        // 移除加载图标
+                        const loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                        if (loadingIcon) {
+                            loadingIcon.remove();
+                            console.log('已移除加载图标');
+                        }
+                        
+                        // 恢复原始样式
+                        messageBubbleElement.style.opacity = '';
+                        messageBubbleElement.style.position = '';
+                        
+                        messageBubbleElement.classList.remove('message-loading');
+                        console.log('已移除message-loading类');
+                    }
+                    
+                    // 显示错误提示
+                    alert(`重新生成消息失败：API请求失败 (${response.status})`);
+                }
+            } catch (error) {
+                console.error('重新生成消息失败:', error);
+                if (messageBubbleElement) {
+                    // 移除加载图标
+                    const loadingIcon = messageBubbleElement.querySelector('.loading-icon');
+                    if (loadingIcon) {
+                        loadingIcon.remove();
+                        console.log('已移除加载图标');
+                    }
+                    
+                    // 恢复原始样式
+                    messageBubbleElement.style.opacity = '';
+                    messageBubbleElement.style.position = '';
+                    
+                    messageBubbleElement.classList.remove('message-loading');
+                    console.log('已移除message-loading类');
+                }
+            }
         }
 
         function showDeleteConfirmModal(messageIndex) {
