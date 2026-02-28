@@ -21722,6 +21722,7 @@ ${recentHistory.map(msg => {
             document.getElementById('wechat-contacts').style.display = 'flex';
             document.getElementById('ios-glass-tabbar').classList.add('visible');
             currentDetailRole = null;
+            localStorage.removeItem('currentCharacterId');
             closeGroupSelector();
         }
 
@@ -24128,6 +24129,36 @@ ${recentHistory.map(msg => {
             positionY: 50
         };
 
+        function saveCropState() {
+            if (currentCropType && currentCropImage) {
+                localStorage.setItem('cropState', JSON.stringify({
+                    type: currentCropType,
+                    image: currentCropImage,
+                    settings: cropSettings
+                }));
+            }
+        }
+
+        function restoreCropState() {
+            const savedState = localStorage.getItem('cropState');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    currentCropType = state.type;
+                    currentCropImage = state.image;
+                    cropSettings = state.settings || { scale: 100, positionY: 50 };
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        function clearCropState() {
+            localStorage.removeItem('cropState');
+        }
+
         function openWechatSettings() {
             document.getElementById('wechat-profile').style.display = 'none';
             document.getElementById('wechat-settings').style.display = 'flex';
@@ -24186,6 +24217,7 @@ ${recentHistory.map(msg => {
                 currentCropType = type;
                 currentCropImage = e.target.result;
                 cropSettings = { scale: 100, positionY: 50 };
+                saveCropState();
                 openCropModal();
             };
             reader.readAsDataURL(file);
@@ -24200,11 +24232,11 @@ ${recentHistory.map(msg => {
             const positionSlider = document.getElementById('crop-position-y');
             
             cropImage.src = currentCropImage;
-            scaleSlider.value = 100;
-            positionSlider.value = 50;
+            scaleSlider.value = cropSettings.scale;
+            positionSlider.value = cropSettings.positionY;
             
-            updateCropScale(100);
-            updateCropPosition(50);
+            updateCropScale(cropSettings.scale);
+            updateCropPosition(cropSettings.positionY);
             
             modal.style.display = 'flex';
         }
@@ -24213,6 +24245,7 @@ ${recentHistory.map(msg => {
             document.getElementById('image-crop-modal').style.display = 'none';
             currentCropType = null;
             currentCropImage = null;
+            clearCropState();
         }
 
         function updateCropScale(value) {
@@ -24231,10 +24264,15 @@ ${recentHistory.map(msg => {
             const cropImage = document.getElementById('crop-image');
             const translateY = (cropSettings.positionY - 50) * 2;
             cropImage.style.transform = `scale(${cropSettings.scale / 100}) translateY(${translateY}px)`;
+            saveCropState();
         }
 
         function confirmCropImage() {
-            if (!currentCropType || !currentCropImage) return;
+            if (!currentCropType || !currentCropImage) {
+                if (!restoreCropState()) {
+                    return;
+                }
+            }
 
             const backgrounds = JSON.parse(localStorage.getItem('wechatBackgrounds')) || {};
             
@@ -24957,6 +24995,59 @@ ${recentHistory.map(msg => {
                 }
             });
         }
+
+        // iOS端页面恢复处理 - 解决从照片选择器返回后状态丢失的问题
+        function handleIOSPageRestore() {
+            const savedCharacterId = localStorage.getItem('currentCharacterId');
+            const detailPanel = document.getElementById('contact-detail-panel');
+            
+            if (savedCharacterId && detailPanel && detailPanel.style.display !== 'none') {
+                if (!currentDetailRole || currentDetailRole.id !== savedCharacterId) {
+                    const role = roles.find(r => r.id === savedCharacterId);
+                    if (role) {
+                        currentDetailRole = role;
+                        loadCharacterBackground();
+                        loadDetailImageBoxes();
+                    }
+                } else {
+                    loadCharacterBackground();
+                    loadDetailImageBoxes();
+                }
+            }
+
+            const cropModal = document.getElementById('image-crop-modal');
+            if (cropModal && cropModal.style.display !== 'none') {
+                if (restoreCropState()) {
+                    const cropImage = document.getElementById('crop-image');
+                    const scaleSlider = document.getElementById('crop-scale');
+                    const positionSlider = document.getElementById('crop-position-y');
+                    
+                    if (cropImage && currentCropImage) {
+                        cropImage.src = currentCropImage;
+                        scaleSlider.value = cropSettings.scale;
+                        positionSlider.value = cropSettings.positionY;
+                        applyCropPreview();
+                    }
+                }
+            }
+        }
+
+        // 监听pageshow事件 - iOS Safari从照片选择器返回时会触发
+        window.addEventListener('pageshow', function(event) {
+            handleIOSPageRestore();
+        });
+
+        // 监听visibilitychange事件 - 处理iOS从后台返回的情况
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                handleIOSPageRestore();
+            }
+        });
+
+        // 监听resume事件 - 处理iOS WebView从后台返回
+        window.addEventListener('resume', function() {
+            handleIOSPageRestore();
+        });
 
         // ==================== 角色对话隔离单元测试 ====================
         const ChatIsolationTests = {
