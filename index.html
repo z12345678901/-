@@ -10628,6 +10628,824 @@
             color: #8b9497;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
+
+        /* 网易云音乐播放器样式 - 红白配色 */
+        :root {
+            --netease-primary-red: #C20C0C;
+            --netease-bg-white: #FFFFFF;
+            --netease-bg-light: #F8F8F8;
+            --netease-bg-card: #FFF;
+            --netease-text-black: #333333;
+            --netease-text-gray: #86868b;
+            --netease-glass-blur: 12px;
+            --netease-border-light: rgba(0, 0, 0, 0.1);
+            --netease-border-lighter: rgba(0, 0, 0, 0.05);
+        }
+
+        .netease-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFF8F8 0%, #FFEEEE 50%, #FDF0F0 100%);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: var(--netease-text-black);
+        }
+
+        .netease-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(var(--netease-glass-blur));
+            -webkit-backdrop-filter: blur(var(--netease-glass-blur));
+            padding: 12px 20px;
+            padding-top: max(12px, env(safe-area-inset-top));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--netease-border-lighter);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .netease-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .netease-back-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(194, 12, 12, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .netease-back-btn:hover {
+            background: rgba(194, 12, 12, 0.2);
+        }
+
+        .netease-back-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--netease-primary-red);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .netease-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .netease-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--netease-primary-red) 0%, #E01E1E 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .netease-logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .netease-logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--netease-primary-red);
+            letter-spacing: -0.5px;
+        }
+
+        .netease-header-center {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+
+        .netease-search-box {
+            display: flex;
+            align-items: center;
+            background: var(--netease-bg-light);
+            border-radius: 18px;
+            padding: 8px 16px;
+            transition: all 0.2s;
+            border: 1px solid rgba(194, 12, 12, 0.1);
+        }
+
+        .netease-search-box:focus-within {
+            background: #fff;
+            box-shadow: 0 0 0 2px rgba(194, 12, 12, 0.2);
+        }
+
+        .netease-search-box svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--netease-text-gray);
+            stroke-width: 2;
+            fill: none;
+            margin-right: 8px;
+        }
+
+        .netease-search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--netease-text-black);
+            font-size: 14px;
+        }
+
+        .netease-search-input::placeholder {
+            color: var(--netease-text-gray);
+        }
+
+        .netease-header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .netease-header-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(194, 12, 12, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .netease-header-btn:hover {
+            background: rgba(194, 12, 12, 0.2);
+        }
+
+        .netease-header-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--netease-primary-red);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .netease-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--netease-primary-red) 0%, #E01E1E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .netease-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .netease-avatar svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .netease-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .netease-sidebar {
+            width: 200px;
+            background: rgba(255, 255, 255, 0.8);
+            border-right: 1px solid var(--netease-border-lighter);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .netease-sidebar-section {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--netease-border-lighter);
+        }
+
+        .netease-sidebar-title {
+            padding: 8px 20px;
+            font-size: 12px;
+            color: var(--netease-text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .netease-sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--netease-text-black);
+        }
+
+        .netease-sidebar-item:hover {
+            background: rgba(194, 12, 12, 0.05);
+            color: var(--netease-primary-red);
+        }
+
+        .netease-sidebar-item.active {
+            background: rgba(194, 12, 12, 0.1);
+            color: var(--netease-primary-red);
+            border-right: 3px solid var(--netease-primary-red);
+        }
+
+        .netease-sidebar-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .netease-sidebar-item span {
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .netease-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .netease-content-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .netease-album-cover {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--netease-primary-red) 0%, #E01E1E 100%);
+            box-shadow: 0 8px 24px rgba(194, 12, 12, 0.2);
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .netease-album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .netease-album-cover.playing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .netease-album-cover.playing::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/contain no-repeat;
+            animation: neteasePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neteasePulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .netease-song-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .netease-song-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--netease-text-black);
+            line-height: 1.2;
+        }
+
+        .netease-song-artist {
+            font-size: 16px;
+            color: var(--netease-text-gray);
+        }
+
+        .netease-song-artist a {
+            color: var(--netease-primary-red);
+            text-decoration: none;
+        }
+
+        .netease-song-artist a:hover {
+            text-decoration: underline;
+        }
+
+        .netease-song-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .netease-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .netease-action-btn.primary {
+            background: linear-gradient(135deg, var(--netease-primary-red) 0%, #E01E1E 100%);
+            color: #fff;
+        }
+
+        .netease-action-btn.primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(194, 12, 12, 0.3);
+        }
+
+        .netease-action-btn.secondary {
+            background: rgba(194, 12, 12, 0.1);
+            color: var(--netease-primary-red);
+            border: 1px solid rgba(194, 12, 12, 0.2);
+        }
+
+        .netease-action-btn.secondary:hover {
+            background: rgba(194, 12, 12, 0.15);
+        }
+
+        .netease-action-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .netease-playlist-section {
+            margin-top: 20px;
+        }
+
+        .netease-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .netease-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--netease-primary-red);
+        }
+
+        .netease-section-more {
+            font-size: 13px;
+            color: var(--netease-text-gray);
+            cursor: pointer;
+        }
+
+        .netease-section-more:hover {
+            color: var(--netease-primary-red);
+        }
+
+        .netease-playlist {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .netease-playlist-header {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr 80px;
+            gap: 16px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--netease-text-gray);
+            border-bottom: 1px solid var(--netease-border-lighter);
+        }
+
+        .netease-playlist-item {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr 80px;
+            gap: 16px;
+            padding: 12px 16px;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .netease-playlist-item:hover {
+            background: rgba(194, 12, 12, 0.05);
+        }
+
+        .netease-playlist-item.playing {
+            background: rgba(194, 12, 12, 0.1);
+        }
+
+        .netease-playlist-item.playing .netease-song-name {
+            color: var(--netease-primary-red);
+        }
+
+        .netease-playlist-index {
+            font-size: 14px;
+            color: var(--netease-text-gray);
+            text-align: center;
+        }
+
+        .netease-playlist-item.playing .netease-playlist-index {
+            color: var(--netease-primary-red);
+        }
+
+        .netease-playlist-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .netease-playlist-cover {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            background: linear-gradient(45deg, #FFF, #FFEEEE);
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(194, 12, 12, 0.1);
+        }
+
+        .netease-playlist-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .netease-playlist-song {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+
+        .netease-song-name {
+            font-size: 14px;
+            color: var(--netease-text-black);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-song-subtitle {
+            font-size: 12px;
+            color: var(--netease-text-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-playlist-album {
+            font-size: 13px;
+            color: var(--netease-text-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-playlist-duration {
+            font-size: 13px;
+            color: var(--netease-text-gray);
+            text-align: right;
+        }
+
+        .netease-bottom-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(var(--netease-glass-blur));
+            -webkit-backdrop-filter: blur(var(--netease-glass-blur));
+            border-top: 2px solid var(--netease-primary-red);
+            padding: 12px 20px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            box-shadow: 0 -1px 8px rgba(0,0,0,0.05);
+        }
+
+        .netease-progress-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .netease-progress-time {
+            font-size: 12px;
+            color: var(--netease-text-gray);
+            min-width: 40px;
+        }
+
+        .netease-progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .netease-progress-bar:hover {
+            height: 6px;
+        }
+
+        .netease-progress-fill {
+            height: 100%;
+            background: var(--netease-primary-red);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .netease-progress-bar:hover .netease-progress-fill::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--netease-primary-red);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(194, 12, 12, 0.3);
+        }
+
+        .netease-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .netease-controls-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .netease-now-playing {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 250px;
+        }
+
+        .netease-now-playing-cover {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            background: linear-gradient(45deg, var(--netease-primary-red), #E01E1E);
+            overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .netease-now-playing-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .netease-now-playing-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+
+        .netease-now-playing-title {
+            font-size: 14px;
+            color: var(--netease-text-black);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-now-playing-artist {
+            font-size: 12px;
+            color: var(--netease-text-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .netease-controls-center {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .netease-control-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--netease-text-gray);
+        }
+
+        .netease-control-btn:hover {
+            color: var(--netease-primary-red);
+            transform: scale(1.1);
+        }
+
+        .netease-control-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .netease-control-btn.small svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .netease-control-btn.large {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--netease-primary-red) 0%, #E01E1E 100%);
+            border-radius: 50%;
+            color: #fff;
+        }
+
+        .netease-control-btn.large svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .netease-control-btn.large:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 20px rgba(194, 12, 12, 0.3);
+        }
+
+        .netease-controls-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .netease-volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .netease-volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .netease-volume-fill {
+            height: 100%;
+            background: var(--netease-primary-red);
+            border-radius: 2px;
+            width: 70%;
+        }
+
+        .netease-like-btn.liked {
+            color: var(--netease-primary-red);
+        }
+
+        .netease-like-btn.liked svg {
+            fill: var(--netease-primary-red);
+            stroke: var(--netease-primary-red);
+        }
+
+        @media (max-width: 768px) {
+            .netease-header-center {
+                display: none;
+            }
+
+            .netease-sidebar {
+                display: none;
+            }
+
+            .netease-content-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .netease-song-info {
+                align-items: center;
+            }
+
+            .netease-playlist-header {
+                display: none;
+            }
+
+            .netease-playlist-item {
+                grid-template-columns: 40px 1fr 60px;
+            }
+
+            .netease-playlist-album {
+                display: none;
+            }
+
+            .netease-now-playing {
+                max-width: 150px;
+            }
+
+            .netease-volume-control {
+                display: none;
+            }
+
+            .netease-controls-left {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .netease-song-title {
+                font-size: 22px;
+            }
+
+            .netease-album-cover {
+                width: 160px;
+                height: 160px;
+            }
+
+            .netease-controls-center {
+                gap: 12px;
+            }
+
+            .netease-control-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .netease-control-btn.large {
+                width: 44px;
+                height: 44px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -11766,11 +12584,266 @@
             </div>
             <div class="worldbook-modal-body">
                 <div id="sims-worldbook-list" class="worldbook-entries-container">
-                    <!-- 世界书列表将通过JavaScript动态添加 -->
                 </div>
             </div>
             <div class="worldbook-modal-footer">
                 <button class="worldbook-btn worldbook-btn-secondary" onclick="closeSimsWorldbookSelector()">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 网易云音乐播放器界面 -->
+    <div id="netease-app" class="netease-container">
+        <div class="netease-header">
+            <div class="netease-header-left">
+                <div class="netease-back-btn" onclick="closeNeteaseApp()">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="netease-logo">
+                    <div class="netease-logo-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                    </div>
+                    <span class="netease-logo-text">网易云音乐</span>
+                </div>
+            </div>
+            <div class="netease-header-center">
+                <div class="netease-search-box">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="netease-search-input" placeholder="搜索音乐、歌手、歌词" id="netease-search-input">
+                </div>
+            </div>
+            <div class="netease-header-right">
+                <div class="netease-header-btn" title="消息">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="netease-header-btn" title="设置">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
+                <div class="netease-avatar" title="用户">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="netease-body">
+            <div class="netease-sidebar">
+                <div class="netease-sidebar-section">
+                    <div class="netease-sidebar-title">推荐</div>
+                    <div class="netease-sidebar-item active" data-tab="discover">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                        </svg>
+                        <span>发现音乐</span>
+                    </div>
+                    <div class="netease-sidebar-item" data-tab="fm">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                        <span>私人FM</span>
+                    </div>
+                    <div class="netease-sidebar-item" data-tab="video">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                        <span>视频</span>
+                    </div>
+                </div>
+                <div class="netease-sidebar-section">
+                    <div class="netease-sidebar-title">我的音乐</div>
+                    <div class="netease-sidebar-item" data-tab="local">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15V6"></path>
+                            <path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path>
+                            <path d="M12 12H3"></path>
+                            <path d="M16 6H3"></path>
+                            <path d="M12 18H3"></path>
+                        </svg>
+                        <span>本地音乐</span>
+                    </div>
+                    <div class="netease-sidebar-item" data-tab="download">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>下载管理</span>
+                    </div>
+                    <div class="netease-sidebar-item" data-tab="cloud">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                        <span>我的音乐云盘</span>
+                    </div>
+                </div>
+                <div class="netease-sidebar-section">
+                    <div class="netease-sidebar-title">创建的歌单</div>
+                    <div class="netease-sidebar-item" data-tab="favorite">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span>我喜欢的音乐</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="netease-main">
+                <div class="netease-content">
+                    <div class="netease-content-header">
+                        <div class="netease-album-cover" id="netease-album-cover">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23C20C0C' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='60' text-anchor='middle' dominant-baseline='middle'%3E%E2%99%AB%3C/text%3E%3C/svg%3E" alt="专辑封面" id="netease-cover-img">
+                        </div>
+                        <div class="netease-song-info">
+                            <h1 class="netease-song-title" id="netease-song-title">选择一首歌曲开始播放</h1>
+                            <div class="netease-song-artist">
+                                歌手：<a href="#" id="netease-artist-name">未知歌手</a>
+                            </div>
+                            <div class="netease-song-artist" style="font-size: 13px; color: #86868b;">
+                                专辑：<span id="netease-album-name">未知专辑</span>
+                            </div>
+                            <div class="netease-song-actions">
+                                <button class="netease-action-btn primary" id="netease-play-all-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    播放全部
+                                </button>
+                                <button class="netease-action-btn secondary" id="netease-collect-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                    收藏
+                                </button>
+                                <button class="netease-action-btn secondary" id="netease-share-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="18" cy="5" r="3"></circle>
+                                        <circle cx="6" cy="12" r="3"></circle>
+                                        <circle cx="18" cy="19" r="3"></circle>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                    </svg>
+                                    分享
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="netease-playlist-section">
+                        <div class="netease-section-header">
+                            <h2 class="netease-section-title">歌曲列表</h2>
+                            <span class="netease-section-more">共 <span id="netease-song-count">0</span> 首</span>
+                        </div>
+                        <div class="netease-playlist">
+                            <div class="netease-playlist-header">
+                                <div></div>
+                                <div>歌曲</div>
+                                <div>专辑</div>
+                                <div>时长</div>
+                            </div>
+                            <div id="netease-playlist-items">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="netease-bottom-bar">
+            <div class="netease-progress-container">
+                <span class="netease-progress-time" id="netease-current-time">0:00</span>
+                <div class="netease-progress-bar" id="netease-progress-bar">
+                    <div class="netease-progress-fill" id="netease-progress-fill"></div>
+                </div>
+                <span class="netease-progress-time" id="netease-total-time">0:00</span>
+            </div>
+            
+            <div class="netease-controls">
+                <div class="netease-controls-left">
+                    <div class="netease-now-playing">
+                        <div class="netease-now-playing-cover" id="netease-mini-cover">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect fill='%23C20C0C' width='48' height='48'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='20' text-anchor='middle' dominant-baseline='middle'%3E%E2%99%AB%3C/text%3E%3C/svg%3E" alt="封面" id="netease-mini-cover-img">
+                        </div>
+                        <div class="netease-now-playing-info">
+                            <div class="netease-now-playing-title" id="netease-mini-title">未播放</div>
+                            <div class="netease-now-playing-artist" id="netease-mini-artist">-</div>
+                        </div>
+                    </div>
+                    <div class="netease-control-btn netease-like-btn" id="netease-like-btn" title="喜欢">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="netease-controls-center">
+                    <div class="netease-control-btn small" id="netease-mode-btn" title="播放模式">
+                        <svg viewBox="0 0 24 24" id="netease-mode-icon">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
+                    <div class="netease-control-btn" id="netease-prev-btn" title="上一首">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                    </div>
+                    <div class="netease-control-btn large" id="netease-play-btn" title="播放">
+                        <svg viewBox="0 0 24 24" id="netease-play-icon">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                    <div class="netease-control-btn" id="netease-next-btn" title="下一首">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                    </div>
+                    <div class="netease-control-btn small" id="netease-list-btn" title="播放列表">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="netease-controls-right">
+                    <div class="netease-volume-control">
+                        <div class="netease-control-btn small" id="netease-volume-btn" title="音量">
+                            <svg viewBox="0 0 24 24" id="netease-volume-icon">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                        </div>
+                        <div class="netease-volume-slider" id="netease-volume-slider">
+                            <div class="netease-volume-fill" id="netease-volume-fill"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -14459,6 +15532,8 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                         AnniversaryModule.openAnniversaryPage();
                     } else if (appData === 'worldbook' || appName === '世界书') {
                         openWorldbook();
+                    } else if (appData === 'netease' || appName === '网易云') {
+                        openNetease();
                     } else if (appData === 'home' || appName === '模拟人生') {
                         openSimsPanel();
                     } else {
@@ -19190,8 +20265,11 @@ ${commenterInfo}
             let startX = 0;
             let currentX = 0;
             let isSwiping = false;
+            let isTracking = false;
+            let wasAlreadyOpen = false;
             const threshold = 80;
             const maxSwipe = 180;
+            const startThreshold = 10;
 
             function handleTouchStart(e) {
                 if (activeSwipeItem && activeSwipeItem !== messageItem) {
@@ -19200,42 +20278,88 @@ ${commenterInfo}
                 
                 startX = e.touches[0].clientX;
                 currentX = startX;
-                isSwiping = true;
-                messageItem.classList.add('swiping');
-                actions.classList.add('visible');
+                isTracking = true;
+                isSwiping = false;
+                wasAlreadyOpen = messageItem.classList.contains('swiped');
             }
 
             function handleTouchMove(e) {
-                if (!isSwiping) return;
+                if (!isTracking) return;
                 
                 currentX = e.touches[0].clientX;
                 let diff = startX - currentX;
                 
-                if (diff < 0) {
-                    diff = 0;
-                } else if (diff > maxSwipe) {
-                    diff = maxSwipe;
+                if (!wasAlreadyOpen) {
+                    if (diff < 0) {
+                        diff = 0;
+                    } else if (diff > maxSwipe) {
+                        diff = maxSwipe;
+                    }
+                    
+                    if (!isSwiping && diff >= startThreshold) {
+                        isSwiping = true;
+                        messageItem.classList.add('swiping');
+                        actions.classList.add('visible');
+                    }
+                    
+                    if (isSwiping) {
+                        messageItem.style.transform = `translateX(-${diff}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${diff}px))`;
+                    }
+                } else {
+                    const currentOffset = maxSwipe + diff;
+                    
+                    if (currentOffset < 0) {
+                        diff = -maxSwipe;
+                    } else if (currentOffset > maxSwipe) {
+                        diff = 0;
+                    }
+                    
+                    if (!isSwiping && Math.abs(diff) >= startThreshold) {
+                        isSwiping = true;
+                        messageItem.classList.add('swiping');
+                    }
+                    
+                    if (isSwiping) {
+                        const newOffset = Math.max(0, Math.min(maxSwipe, maxSwipe + diff));
+                        messageItem.style.transform = `translateX(-${newOffset}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${newOffset}px))`;
+                    }
                 }
-                
-                messageItem.style.transform = `translateX(-${diff}px)`;
-                actions.style.transform = `translateX(calc(100% - ${diff}px))`;
             }
 
             function handleTouchEnd(e) {
-                if (!isSwiping) return;
+                if (!isTracking) return;
+                
+                isTracking = false;
+                
+                if (!isSwiping) {
+                    return;
+                }
                 
                 isSwiping = false;
                 messageItem.classList.remove('swiping');
-                messageItem.classList.add('swiped');
                 
                 const diff = startX - currentX;
                 
-                if (diff >= threshold) {
-                    messageItem.style.transform = `translateX(-${maxSwipe}px)`;
-                    actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
-                    activeSwipeItem = messageItem;
+                if (!wasAlreadyOpen) {
+                    if (diff >= threshold) {
+                        messageItem.style.transform = `translateX(-${maxSwipe}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
+                        messageItem.classList.add('swiped');
+                        activeSwipeItem = messageItem;
+                    } else {
+                        closeSwipe(messageItem);
+                    }
                 } else {
-                    closeSwipe(messageItem);
+                    if (diff <= -threshold) {
+                        closeSwipe(messageItem);
+                    } else {
+                        messageItem.style.transform = `translateX(-${maxSwipe}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
+                        messageItem.classList.add('swiped');
+                        activeSwipeItem = messageItem;
+                    }
                 }
             }
 
@@ -19246,48 +20370,94 @@ ${commenterInfo}
                 
                 startX = e.clientX;
                 currentX = startX;
-                isSwiping = true;
-                messageItem.classList.add('swiping');
-                actions.classList.add('visible');
+                isTracking = true;
+                isSwiping = false;
+                wasAlreadyOpen = messageItem.classList.contains('swiped');
                 
                 document.addEventListener('mousemove', handleMouseMove);
                 document.addEventListener('mouseup', handleMouseUp);
             }
 
             function handleMouseMove(e) {
-                if (!isSwiping) return;
+                if (!isTracking) return;
                 
                 currentX = e.clientX;
                 let diff = startX - currentX;
                 
-                if (diff < 0) {
-                    diff = 0;
-                } else if (diff > maxSwipe) {
-                    diff = maxSwipe;
+                if (!wasAlreadyOpen) {
+                    if (diff < 0) {
+                        diff = 0;
+                    } else if (diff > maxSwipe) {
+                        diff = maxSwipe;
+                    }
+                    
+                    if (!isSwiping && diff >= startThreshold) {
+                        isSwiping = true;
+                        messageItem.classList.add('swiping');
+                        actions.classList.add('visible');
+                    }
+                    
+                    if (isSwiping) {
+                        messageItem.style.transform = `translateX(-${diff}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${diff}px))`;
+                    }
+                } else {
+                    const currentOffset = maxSwipe + diff;
+                    
+                    if (currentOffset < 0) {
+                        diff = -maxSwipe;
+                    } else if (currentOffset > maxSwipe) {
+                        diff = 0;
+                    }
+                    
+                    if (!isSwiping && Math.abs(diff) >= startThreshold) {
+                        isSwiping = true;
+                        messageItem.classList.add('swiping');
+                    }
+                    
+                    if (isSwiping) {
+                        const newOffset = Math.max(0, Math.min(maxSwipe, maxSwipe + diff));
+                        messageItem.style.transform = `translateX(-${newOffset}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${newOffset}px))`;
+                    }
                 }
-                
-                messageItem.style.transform = `translateX(-${diff}px)`;
-                actions.style.transform = `translateX(calc(100% - ${diff}px))`;
             }
 
             function handleMouseUp(e) {
-                if (!isSwiping) return;
+                if (!isTracking) return;
                 
-                isSwiping = false;
-                messageItem.classList.remove('swiping');
-                messageItem.classList.add('swiped');
+                isTracking = false;
                 
                 document.removeEventListener('mousemove', handleMouseMove);
                 document.removeEventListener('mouseup', handleMouseUp);
                 
+                if (!isSwiping) {
+                    return;
+                }
+                
+                isSwiping = false;
+                messageItem.classList.remove('swiping');
+                
                 const diff = startX - currentX;
                 
-                if (diff >= threshold) {
-                    messageItem.style.transform = `translateX(-${maxSwipe}px)`;
-                    actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
-                    activeSwipeItem = messageItem;
+                if (!wasAlreadyOpen) {
+                    if (diff >= threshold) {
+                        messageItem.style.transform = `translateX(-${maxSwipe}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
+                        messageItem.classList.add('swiped');
+                        activeSwipeItem = messageItem;
+                    } else {
+                        closeSwipe(messageItem);
+                    }
                 } else {
-                    closeSwipe(messageItem);
+                    if (diff <= -threshold) {
+                        closeSwipe(messageItem);
+                    } else {
+                        messageItem.style.transform = `translateX(-${maxSwipe}px)`;
+                        actions.style.transform = `translateX(calc(100% - ${maxSwipe}px))`;
+                        messageItem.classList.add('swiped');
+                        activeSwipeItem = messageItem;
+                    }
                 }
             }
 
@@ -21918,35 +23088,14 @@ ${recentHistory.map(msg => {
                 const userSettings = getUserPersona();
                 const userName = userSettings.name || '用户';
                 
-                // 使用适合文本消息的系统提示
-                let systemPrompt = `你是一个真实的活人，正在和${userName}进行微信聊天。
-
-## 重要要求
-- 严格遵守角色设定和世界书信息
-- 回复要简短，不要长篇大论
-- 要有活人感，说话自然真实
-- 语言简洁，符合微信聊天风格
-- 保持对话的连贯性和逻辑性
-- 只生成一条消息，不要生成多条消息
-- 回复要直接针对用户的最后一条消息
-- 不要使用Emoji表情符号
-- 不要使用句号和逗号，用空格来代替逗号
-
-## 角色信息
-- 角色名称：${currentChatRole.name}
-${currentChatRole.description ? `- 角色描述：${currentChatRole.description}` : ''}
-${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${currentChatRole.tags.join('、')}` : ''}
-
-## 用户信息
-- 用户名称：${userName}
-
-## 聊天对话风格
-- 回复要自然流畅，符合角色设定
-- 可以使用语气词，增加对话的生动性
-- 回复要符合微信聊天的风格，不要太正式
-- 回复要简短，通常1-3句话即可
-- 保持口语化，避免使用正式的书面语
-- 要有真实感，就像真人在聊天一样`;
+                const roleInfo = {
+                    name: currentChatRole.name,
+                    description: currentChatRole.description || '',
+                    tags: currentChatRole.tags || [],
+                    greeting: currentChatRole.greeting || ''
+                };
+                
+                let systemPrompt = PromptsConfig.buildFullPrompt(roleInfo, userSettings);
                 
                 const worldbookPrompt = getWorldbookPrompt(currentChatRole.id);
                 if (worldbookPrompt) {
@@ -22030,8 +23179,12 @@ ${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${
                         reply = reply.replace(/作为(一个)?(虚拟|数字|AI|人工智能)[^。！？]*[，,。：: ]*/gi, '');
                         reply = reply.replace(/(我不能|我无法|我不可以)[^。！？]*[。！？]/gi, '这个嘛……');
                         reply = reply.trim();
+                        
+                        reply = processNaturalReply(reply);
+                        
+                        const messageList = splitIntoMessages(reply);
+                        reply = messageList[0] || reply;
 
-                        // 更新消息内容
                         roleMessages[messageIndex].content = reply;
                         roleMessages[messageIndex].timestamp = new Date().toISOString();
                         localStorage.setItem('wechatMessages', JSON.stringify(messages));
@@ -24257,14 +25410,14 @@ ${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${
         function splitIntoMessages(text) {
             if (!text) return [];
             
+            const targetCount = Math.floor(Math.random() * 5) + 1;
+            
             let lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
             
-            if (lines.length >= 3 && lines.length <= 6) {
-                return lines;
-            }
-            
-            if (lines.length > 6) {
-                const targetCount = Math.floor(Math.random() * 4) + 3;
+            if (lines.length >= targetCount) {
+                if (lines.length === targetCount) {
+                    return lines;
+                }
                 const result = [];
                 const chunkSize = Math.ceil(lines.length / targetCount);
                 
@@ -24279,11 +25432,7 @@ ${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${
             
             const sentences = text.split(/[！？\n]+/).map(s => s.trim()).filter(s => s.length > 0);
             
-            if (sentences.length >= 3) {
-                const targetCount = Math.min(Math.max(sentences.length, 3), 6);
-                if (sentences.length <= 6) {
-                    return sentences;
-                }
+            if (sentences.length >= targetCount) {
                 const result = [];
                 const chunkSize = Math.ceil(sentences.length / targetCount);
                 for (let i = 0; i < sentences.length && result.length < targetCount; i += chunkSize) {
@@ -24295,8 +25444,11 @@ ${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${
                 return result;
             }
             
+            if (sentences.length > 1) {
+                return sentences.slice(0, Math.min(sentences.length, targetCount));
+            }
+            
             const words = text.split(/\s+/).filter(w => w.length > 0);
-            const targetCount = Math.floor(Math.random() * 4) + 3;
             
             if (words.length <= targetCount) {
                 return [text];
@@ -24305,7 +25457,7 @@ ${currentChatRole.tags && currentChatRole.tags.length > 0 ? `- 性格特点：${
             const result = [];
             const chunkSize = Math.ceil(words.length / targetCount);
             
-            for (let i = 0; i < words.length; i += chunkSize) {
+            for (let i = 0; i < words.length && result.length < targetCount; i += chunkSize) {
                 const chunk = words.slice(i, i + chunkSize).join(' ');
                 if (chunk.trim()) {
                     result.push(chunk.trim());
@@ -25963,6 +27115,340 @@ ${conversationContext.slice(-3).map(m => `${m.type === 'sent' ? '对方' : '我'
             }, { passive: false });
         })();
 
+
+        // ==================== 网易云音乐播放器功能 ====================
+        const NeteasePlayer = {
+            currentIndex: -1,
+            isPlaying: false,
+            currentTime: 0,
+            duration: 0,
+            volume: 0.7,
+            playMode: 'list',
+            likedSongs: new Set(),
+            progressInterval: null,
+            
+            playlist: [
+                { id: 1, title: '起风了', artist: '买辣椒也用券', album: '起风了', duration: 325, cover: '' },
+                { id: 2, title: '晴天', artist: '周杰伦', album: '叶惠美', duration: 269, cover: '' },
+                { id: 3, title: '稻香', artist: '周杰伦', album: '魔杰座', duration: 223, cover: '' },
+                { id: 4, title: '夜曲', artist: '周杰伦', album: '十一月的萧邦', duration: 226, cover: '' },
+                { id: 5, title: '告白气球', artist: '周杰伦', album: '周杰伦的床边故事', duration: 215, cover: '' },
+                { id: 6, title: '七里香', artist: '周杰伦', album: '七里香', duration: 299, cover: '' },
+                { id: 7, title: '光年之外', artist: '邓紫棋', album: '光年之外', duration: 235, cover: '' },
+                { id: 8, title: '泡沫', artist: '邓紫棋', album: '新的心跳', duration: 252, cover: '' },
+                { id: 9, title: '演员', artist: '薛之谦', album: '绅士', duration: 280, cover: '' },
+                { id: 10, title: '认真的雪', artist: '薛之谦', album: '薛之谦', duration: 261, cover: '' },
+                { id: 11, title: '平凡之路', artist: '朴树', album: '猎户星座', duration: 298, cover: '' },
+                { id: 12, title: '那些年', artist: '胡夏', album: '那些年', duration: 276, cover: '' }
+            ],
+            
+            init: function() {
+                this.loadSavedData();
+                this.renderPlaylist();
+                this.bindEvents();
+                this.updateVolumeUI();
+            },
+            
+            loadSavedData: function() {
+                const savedLiked = localStorage.getItem('neteaseLikedSongs');
+                if (savedLiked) {
+                    this.likedSongs = new Set(JSON.parse(savedLiked));
+                }
+                const savedVolume = localStorage.getItem('neteaseVolume');
+                if (savedVolume !== null) {
+                    this.volume = parseFloat(savedVolume);
+                }
+                const savedMode = localStorage.getItem('neteasePlayMode');
+                if (savedMode) {
+                    this.playMode = savedMode;
+                    this.updateModeIcon();
+                }
+            },
+            
+            saveData: function() {
+                localStorage.setItem('neteaseLikedSongs', JSON.stringify([...this.likedSongs]));
+                localStorage.setItem('neteaseVolume', this.volume.toString());
+                localStorage.setItem('neteasePlayMode', this.playMode);
+            },
+            
+            renderPlaylist: function() {
+                const container = document.getElementById('netease-playlist-items');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                document.getElementById('netease-song-count').textContent = this.playlist.length;
+                
+                this.playlist.forEach((song, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'netease-playlist-item' + (index === this.currentIndex ? ' playing' : '');
+                    item.dataset.index = index;
+                    
+                    item.innerHTML = `
+                        <div class="netease-playlist-index">${index + 1}</div>
+                        <div class="netease-playlist-info">
+                            <div class="netease-playlist-cover">
+                                <img src="${song.cover || this.generateCover(song.title)}" alt="${song.title}">
+                            </div>
+                            <div class="netease-playlist-song">
+                                <div class="netease-song-name">${song.title}</div>
+                                <div class="netease-song-subtitle">${song.artist}</div>
+                            </div>
+                        </div>
+                        <div class="netease-playlist-album">${song.album}</div>
+                        <div class="netease-playlist-duration">${this.formatTime(song.duration)}</div>
+                    `;
+                    
+                    item.addEventListener('click', () => this.playSong(index));
+                    container.appendChild(item);
+                });
+            },
+            
+            generateCover: function(title) {
+                const colors = ['#C20C0C', '#E01E1E', '#D32020', '#B01010', '#A00808', '#C83030', '#D84040', '#E85050'];
+                const color = colors[title.charCodeAt(0) % colors.length];
+                return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='${encodeURIComponent(color)}' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='14' text-anchor='middle' dominant-baseline='middle'%3E${encodeURIComponent(title.charAt(0))}%3C/text%3E%3C/svg%3E`;
+            },
+            
+            bindEvents: function() {
+                document.getElementById('netease-play-btn')?.addEventListener('click', () => this.togglePlay());
+                document.getElementById('netease-prev-btn')?.addEventListener('click', () => this.prevSong());
+                document.getElementById('netease-next-btn')?.addEventListener('click', () => this.nextSong());
+                document.getElementById('netease-mode-btn')?.addEventListener('click', () => this.toggleMode());
+                document.getElementById('netease-like-btn')?.addEventListener('click', () => this.toggleLike());
+                document.getElementById('netease-play-all-btn')?.addEventListener('click', () => this.playSong(0));
+                
+                document.getElementById('netease-progress-bar')?.addEventListener('click', (e) => this.seekTo(e));
+                document.getElementById('netease-volume-slider')?.addEventListener('click', (e) => this.setVolume(e));
+                document.getElementById('netease-volume-btn')?.addEventListener('click', () => this.toggleMute());
+                
+                document.querySelectorAll('.netease-sidebar-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        document.querySelectorAll('.netease-sidebar-item').forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                    });
+                });
+            },
+            
+            playSong: function(index) {
+                if (index < 0 || index >= this.playlist.length) return;
+                
+                this.currentIndex = index;
+                const song = this.playlist[index];
+                
+                document.getElementById('netease-song-title').textContent = song.title;
+                document.getElementById('netease-artist-name').textContent = song.artist;
+                document.getElementById('netease-album-name').textContent = song.album;
+                document.getElementById('netease-mini-title').textContent = song.title;
+                document.getElementById('netease-mini-artist').textContent = song.artist;
+                
+                const cover = song.cover || this.generateCover(song.title);
+                document.getElementById('netease-cover-img').src = cover;
+                document.getElementById('netease-mini-cover-img').src = cover;
+                
+                this.duration = song.duration;
+                this.currentTime = 0;
+                document.getElementById('netease-total-time').textContent = this.formatTime(this.duration);
+                document.getElementById('netease-current-time').textContent = '0:00';
+                
+                this.updatePlayingItem();
+                this.updateLikeButton();
+                this.isPlaying = true;
+                this.updatePlayButton();
+                this.startProgress();
+            },
+            
+            togglePlay: function() {
+                if (this.currentIndex === -1) {
+                    this.playSong(0);
+                    return;
+                }
+                this.isPlaying = !this.isPlaying;
+                this.updatePlayButton();
+                
+                if (this.isPlaying) {
+                    this.startProgress();
+                } else {
+                    this.stopProgress();
+                }
+            },
+            
+            updatePlayButton: function() {
+                const icon = document.getElementById('netease-play-icon');
+                const cover = document.getElementById('netease-album-cover');
+                
+                if (this.isPlaying) {
+                    icon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+                    cover?.classList.add('playing');
+                } else {
+                    icon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+                    cover?.classList.remove('playing');
+                }
+            },
+            
+            updatePlayingItem: function() {
+                document.querySelectorAll('.netease-playlist-item').forEach((item, idx) => {
+                    item.classList.toggle('playing', idx === this.currentIndex);
+                });
+            },
+            
+            prevSong: function() {
+                let newIndex;
+                if (this.playMode === 'random') {
+                    newIndex = Math.floor(Math.random() * this.playlist.length);
+                } else {
+                    newIndex = this.currentIndex <= 0 ? this.playlist.length - 1 : this.currentIndex - 1;
+                }
+                this.playSong(newIndex);
+            },
+            
+            nextSong: function() {
+                let newIndex;
+                if (this.playMode === 'random') {
+                    newIndex = Math.floor(Math.random() * this.playlist.length);
+                } else {
+                    newIndex = this.currentIndex >= this.playlist.length - 1 ? 0 : this.currentIndex + 1;
+                }
+                this.playSong(newIndex);
+            },
+            
+            toggleMode: function() {
+                const modes = ['list', 'single', 'random'];
+                const currentIdx = modes.indexOf(this.playMode);
+                this.playMode = modes[(currentIdx + 1) % modes.length];
+                this.updateModeIcon();
+                this.saveData();
+            },
+            
+            updateModeIcon: function() {
+                const icon = document.getElementById('netease-mode-icon');
+                if (!icon) return;
+                
+                switch(this.playMode) {
+                    case 'single':
+                        icon.innerHTML = '<circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon><line x1="10" y1="4" x2="14" y2="4" stroke-width="3"></line>';
+                        break;
+                    case 'random':
+                        icon.innerHTML = '<polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line>';
+                        break;
+                    default:
+                        icon.innerHTML = '<polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path>';
+                }
+            },
+            
+            toggleLike: function() {
+                if (this.currentIndex === -1) return;
+                
+                const songId = this.playlist[this.currentIndex].id;
+                if (this.likedSongs.has(songId)) {
+                    this.likedSongs.delete(songId);
+                } else {
+                    this.likedSongs.add(songId);
+                }
+                this.updateLikeButton();
+                this.saveData();
+            },
+            
+            updateLikeButton: function() {
+                const btn = document.getElementById('netease-like-btn');
+                if (!btn || this.currentIndex === -1) return;
+                
+                const songId = this.playlist[this.currentIndex].id;
+                btn.classList.toggle('liked', this.likedSongs.has(songId));
+            },
+            
+            startProgress: function() {
+                this.stopProgress();
+                this.progressInterval = setInterval(() => {
+                    if (this.isPlaying && this.currentTime < this.duration) {
+                        this.currentTime += 1;
+                        this.updateProgress();
+                    } else if (this.currentTime >= this.duration) {
+                        if (this.playMode === 'single') {
+                            this.currentTime = 0;
+                            this.updateProgress();
+                        } else {
+                            this.nextSong();
+                        }
+                    }
+                }, 1000);
+            },
+            
+            stopProgress: function() {
+                if (this.progressInterval) {
+                    clearInterval(this.progressInterval);
+                    this.progressInterval = null;
+                }
+            },
+            
+            updateProgress: function() {
+                const progress = (this.currentTime / this.duration) * 100;
+                document.getElementById('netease-progress-fill').style.width = progress + '%';
+                document.getElementById('netease-current-time').textContent = this.formatTime(this.currentTime);
+            },
+            
+            seekTo: function(e) {
+                const bar = e.currentTarget;
+                const rect = bar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                this.currentTime = Math.floor(this.duration * percent);
+                this.updateProgress();
+            },
+            
+            setVolume: function(e) {
+                const slider = e.currentTarget;
+                const rect = slider.getBoundingClientRect();
+                this.volume = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                this.updateVolumeUI();
+                this.saveData();
+            },
+            
+            updateVolumeUI: function() {
+                document.getElementById('netease-volume-fill').style.width = (this.volume * 100) + '%';
+                this.updateVolumeIcon();
+            },
+            
+            toggleMute: function() {
+                if (this.volume > 0) {
+                    this._prevVolume = this.volume;
+                    this.volume = 0;
+                } else {
+                    this.volume = this._prevVolume || 0.7;
+                }
+                this.updateVolumeUI();
+                this.saveData();
+            },
+            
+            updateVolumeIcon: function() {
+                const icon = document.getElementById('netease-volume-icon');
+                if (!icon) return;
+                
+                if (this.volume === 0) {
+                    icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+                } else if (this.volume < 0.5) {
+                    icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
+                } else {
+                    icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
+                }
+            },
+            
+            formatTime: function(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+        };
+
+        function openNetease() {
+            document.getElementById('netease-app').style.display = 'flex';
+            NeteasePlayer.init();
+        }
+
+        function closeNeteaseApp() {
+            document.getElementById('netease-app').style.display = 'none';
+            NeteasePlayer.stopProgress();
+            NeteasePlayer.isPlaying = false;
+            NeteasePlayer.updatePlayButton();
+        }
 
     </script>
 
