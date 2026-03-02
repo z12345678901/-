@@ -5749,119 +5749,6 @@
             color: #999;
         }
 
-        /* 图片裁剪模态窗口样式 */
-        .crop-modal-content {
-            max-width: 400px;
-            max-height: 90vh;
-            overflow: hidden;
-        }
-
-        .crop-modal-body {
-            padding: 16px;
-            max-height: calc(90vh - 120px);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .crop-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .crop-preview-area {
-            width: 100%;
-            height: 300px;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            background: #f5f5f7;
-        }
-
-        .crop-preview-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.1s ease;
-        }
-
-        .crop-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-        }
-
-        .crop-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .crop-slider-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            touch-action: none;
-        }
-
-        .crop-label {
-            font-size: 14px;
-            color: #666;
-            min-width: 40px;
-        }
-
-        .crop-slider {
-            flex: 1;
-            height: 6px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-            outline: none;
-            touch-action: none;
-        }
-
-        .crop-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #000;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .crop-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #000;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .crop-value {
-            font-size: 13px;
-            color: #333;
-            min-width: 45px;
-            text-align: right;
-            font-weight: 500;
-        }
-
-        .crop-hint {
-            font-size: 12px;
-            color: #999;
-            text-align: center;
-            margin-top: 8px;
-        }
-
         .modal-footer {
             display: flex;
             gap: 12px;
@@ -10645,6 +10532,7 @@
             z-index: 1000;
             display: none;
             flex-direction: column;
+            pointer-events: auto;
         }
 
         .netease-device {
@@ -10655,6 +10543,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            pointer-events: auto;
         }
 
         .netease-header {
@@ -10663,6 +10552,7 @@
             background: #fff;
             z-index: 20;
             position: relative;
+            pointer-events: auto;
         }
 
         .netease-magazine-title {
@@ -10812,6 +10702,7 @@
             background: #fff;
             display: flex;
             flex-direction: column;
+            pointer-events: auto;
         }
 
         .netease-main-content::-webkit-scrollbar {
@@ -10824,6 +10715,7 @@
             padding: 20px;
             animation: neteaseFadeIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
             flex: 1;
+            pointer-events: auto;
         }
 
         .netease-view-container.active {
@@ -11406,6 +11298,7 @@
 
         #netease-view-profile {
             background: #fff;
+            pointer-events: auto;
         }
 
         .netease-profile-header {
@@ -11466,6 +11359,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            pointer-events: auto;
         }
 
         .netease-import-header {
@@ -11481,6 +11375,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            pointer-events: auto;
         }
 
         .netease-file-label {
@@ -11496,6 +11391,13 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            pointer-events: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+            z-index: 1;
+            touch-action: auto;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .netease-file-label:hover {
@@ -12571,7 +12473,7 @@
                 <div class="netease-view-container active" id="netease-view-discover">
                     <div class="netease-ad-slider" onclick="neteaseClickEffect(this)">
                         <div class="netease-slider-track" id="neteaseSliderTrack">
-                            <div class="netease-slide"><div class="netease-css-art-vinyl"></div><div class="netease-slide-label">Curated Vinyl</div></div>
+                            <div class="netease-slide"><div class="netease-css-art-vinyl" id="neteaseVinylSlide"></div><div class="netease-slide-label">Curated Vinyl</div></div>
                             <div class="netease-slide"><div class="netease-css-art-wave"><div class="netease-css-bar"></div><div class="netease-css-bar"></div><div class="netease-css-bar"></div><div class="netease-css-bar"></div><div class="netease-css-bar"></div></div><div class="netease-slide-label">Lo-Fi Study</div></div>
                             <div class="netease-slide"><div class="netease-css-art-grids"><div style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.5rem;">Aesthetic</div></div><div class="netease-slide-label">Minimalism</div></div>
                         </div>
@@ -12579,9 +12481,9 @@
 
                     <div class="netease-section-title">For Your Mood</div>
                     <div class="netease-playlist-scroll">
-                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-acoustics"></div></div><div class="netease-playlist-name">Morning Coffee</div></div>
-                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-piano"><div class="netease-c-key"></div><div class="netease-c-key"></div><div class="netease-c-key"></div></div></div><div class="netease-playlist-name">White Linen</div></div>
-                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-electro"><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div></div></div><div class="netease-playlist-name">Late Night</div></div>
+                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-acoustics" id="neteaseCoverAcoustics"></div></div><div class="netease-playlist-name">Morning Coffee</div></div>
+                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-piano" id="neteaseCoverPiano"><div class="netease-c-key"></div><div class="netease-c-key"></div><div class="netease-c-key"></div></div></div><div class="netease-playlist-name">White Linen</div></div>
+                        <div class="netease-playlist-card"><div class="netease-playlist-cover"><div class="netease-css-art-wrap netease-cover-electro" id="neteaseCoverElectro"><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div><div class="netease-e-block"></div></div></div><div class="netease-playlist-name">Late Night</div></div>
                     </div>
 
                     <div style="font-size:0.8rem; color:#888; text-align:center; padding: 20px;">Try searching a track or importing locally!</div>
@@ -12645,13 +12547,41 @@
                     <div class="netease-local-import-box">
                         <div class="netease-import-header">Local Import</div>
                         <div class="netease-file-input-wrapper">
-                            <div class="netease-file-label" id="neteaseAudioLabel" onclick="document.getElementById('neteaseLocalAudioInput').click()">+ Select Audio (.mp3)</div>
+                            <div class="netease-file-label" id="neteaseAudioLabel">+ Select Audio (.mp3)</div>
                             <input type="file" id="neteaseLocalAudioInput" accept="audio/*" style="display:none;">
 
-                            <div class="netease-file-label" id="neteaseLrcLabel" onclick="document.getElementById('neteaseLocalLrcInput').click()">+ Select Lyrics (.lrc) *Optional</div>
+                            <div class="netease-file-label" id="neteaseLrcLabel">+ Select Lyrics (.lrc) *Optional</div>
                             <input type="file" id="neteaseLocalLrcInput" accept=".lrc,.txt" style="display:none;">
                         </div>
-                        <button class="netease-start-local-btn" onclick="neteaseStartLocalPlay()">Play Local Track</button>
+                        <button class="netease-start-local-btn" id="neteaseStartPlayBtn">Play Local Track</button>
+                    </div>
+
+                    <div class="netease-local-import-box">
+                        <div class="netease-import-header">Custom Slider Image</div>
+                        <div class="netease-file-input-wrapper">
+                            <div class="netease-file-label" id="neteaseVinylLabel">+ Select Image (.jpg/.png)</div>
+                            <input type="file" id="neteaseVinylInput" accept="image/*" style="display:none;">
+                            <input type="text" id="neteaseVinylUrlInput" placeholder="Or paste image URL here..." style="width:100%; padding:10px; border:1px solid #eee; border-radius:8px; font-size:0.75rem; margin-top:5px;">
+                        </div>
+                        <button class="netease-start-local-btn" id="neteaseApplyVinylBtn">Apply Image</button>
+                    </div>
+
+                    <div class="netease-local-import-box">
+                        <div class="netease-import-header">Playlist Covers</div>
+                        <div class="netease-file-input-wrapper">
+                            <div class="netease-file-label" id="neteaseCover1Label">+ Morning Coffee Cover</div>
+                            <input type="file" id="neteaseCover1Input" accept="image/*" style="display:none;">
+                            <input type="text" id="neteaseCover1UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
+
+                            <div class="netease-file-label" id="neteaseCover2Label">+ White Linen Cover</div>
+                            <input type="file" id="neteaseCover2Input" accept="image/*" style="display:none;">
+                            <input type="text" id="neteaseCover2UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
+
+                            <div class="netease-file-label" id="neteaseCover3Label">+ Late Night Cover</div>
+                            <input type="file" id="neteaseCover3Input" accept="image/*" style="display:none;">
+                            <input type="text" id="neteaseCover3UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
+                        </div>
+                        <button class="netease-start-local-btn" id="neteaseApplyCoversBtn">Apply Covers</button>
                     </div>
                 </div>
             </main>
@@ -13774,41 +13704,6 @@
                             </button>
                         </div>
                     </div>
-                </div>
-            <div class="scroll-indicator"></div></div>
-        </div>
-        
-        <!-- 图片裁剪模态窗口 -->
-        <div id="image-crop-modal" class="modal">
-            <div class="modal-content crop-modal-content">
-                <div class="modal-header">
-                    <h2 style="color: rgb(51, 51, 51);">调整背景图片</h2>
-                    <button class="close-btn" onclick="closeCropModal()">×</button>
-                </div>
-                <div class="crop-modal-body touch-scroll-container" style="overflow: hidden auto; touch-action: manipulation;">
-                    <div class="crop-container">
-                        <div class="crop-preview-area" id="crop-preview-area">
-                            <img id="crop-image" src="" alt="裁剪预览">
-                            <div class="crop-overlay"></div>
-                        </div>
-                        <div class="crop-controls">
-                            <div class="crop-slider-container">
-                                <span class="crop-label">缩放</span>
-                                <input type="range" id="crop-scale" class="crop-slider" min="100" max="300" value="100" oninput="updateCropScale(this.value)">
-                                <span class="crop-value" id="crop-scale-value">100%</span>
-                            </div>
-                            <div class="crop-slider-container">
-                                <span class="crop-label">位置</span>
-                                <input type="range" id="crop-position-y" class="crop-slider" min="0" max="100" value="50" oninput="updateCropPosition(this.value)">
-                                <span class="crop-value" id="crop-position-value">50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="crop-hint">拖动滑块调整图片缩放和位置，图片将自动适配屏幕</p>
-                </div>
-                <div class="modal-footer" style="position: relative; z-index: 10;">
-                    <button class="btn-secondary" onclick="closeCropModal()" style="color: rgb(51, 51, 51); -webkit-tap-highlight-color: transparent;">取消</button>
-                    <button class="btn-primary" id="confirm-crop-btn" style="color: rgb(51, 51, 51); -webkit-tap-highlight-color: transparent;">确认设置</button>
                 </div>
             <div class="scroll-indicator"></div></div>
         </div>
@@ -15145,7 +15040,6 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                                            target.classList.contains('btn-secondary') ||
                                            target.closest('.btn-primary') !== null ||
                                            target.closest('.btn-secondary') !== null ||
-                                           target.id === 'confirm-crop-btn' ||
                                            target.closest('.modal-footer') !== null;
                     
                     // 检查是否点击了需要点击事件的元素
@@ -15398,7 +15292,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                     }
                 },
                 
-                initAll(selector = '.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body:not(.crop-modal-body), .wechat-settings-content, .moments-content') {
+                initAll(selector = '.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content') {
                     document.querySelectorAll(selector).forEach(el => {
                         TouchScroll.create(el, {
                             direction: 'vertical',
@@ -15418,7 +15312,7 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
             TouchScroll.initAll();
             
             // 确保所有可滚动元素都有正确的CSS样式
-            const scrollableElements = document.querySelectorAll('.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body:not(.crop-modal-body), .wechat-settings-content, .moments-content');
+            const scrollableElements = document.querySelectorAll('.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content');
             scrollableElements.forEach(el => {
                 el.style.overflowY = 'auto';
                 el.style.overflowX = 'hidden';
@@ -17432,6 +17326,9 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
             
             selectedSimsWorldbookIds = JSON.parse(localStorage.getItem('selectedSimsWorldbookIds')) || [];
             
+            // 清理孤立数据
+            cleanOrphanedData();
+            
             console.log('所有数据重新加载完成');
         }
 
@@ -18940,6 +18837,95 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
             localStorage.setItem('wechatMoments', JSON.stringify(moments));
         }
 
+        // 清理孤立数据（已删除角色的聊天记录和朋友圈动态）
+        function cleanOrphanedData() {
+            console.log('[DataClean] 开始清理孤立数据...');
+            
+            const validRoleIds = new Set(roles.map(r => r.id));
+            let cleanedMessages = 0;
+            let cleanedMoments = 0;
+            let hasChanges = false;
+            
+            // 清理孤立的聊天记录
+            const messageKeys = Object.keys(messages);
+            messageKeys.forEach(roleId => {
+                if (!validRoleIds.has(roleId)) {
+                    console.log(`[DataClean] 发现孤立聊天记录: roleId=${roleId}`);
+                    delete messages[roleId];
+                    cleanedMessages++;
+                    hasChanges = true;
+                }
+            });
+            
+            if (cleanedMessages > 0) {
+                localStorage.setItem('wechatMessages', JSON.stringify(messages));
+                console.log(`[DataClean] 已清理 ${cleanedMessages} 个孤立角色的聊天记录`);
+            }
+            
+            // 清理孤立的朋友圈动态
+            const originalMomentsCount = moments.length;
+            moments = moments.filter(moment => {
+                if (!validRoleIds.has(moment.roleId)) {
+                    console.log(`[DataClean] 发现孤立朋友圈动态: roleId=${moment.roleId}, content=${moment.content?.substring(0, 20)}...`);
+                    cleanedMoments++;
+                    return false;
+                }
+                return true;
+            });
+            
+            if (cleanedMoments > 0) {
+                saveMoments();
+                console.log(`[DataClean] 已清理 ${cleanedMoments} 条孤立的朋友圈动态`);
+            }
+            
+            // 清理孤立的角色相关localStorage项
+            const keysToCheck = [
+                'chatWallpaper_',
+                'characterBackground_',
+                'detailImages_',
+                'roleCustomCss_',
+                'simsThoughts_',
+                'simsUsedThoughts_'
+            ];
+            
+            let cleanedKeys = 0;
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key) {
+                    for (const prefix of keysToCheck) {
+                        if (key.startsWith(prefix)) {
+                            const roleId = key.substring(prefix.length);
+                            if (!validRoleIds.has(roleId)) {
+                                console.log(`[DataClean] 发现孤立localStorage项: ${key}`);
+                                localStorage.removeItem(key);
+                                cleanedKeys++;
+                                hasChanges = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (cleanedKeys > 0) {
+                console.log(`[DataClean] 已清理 ${cleanedKeys} 个孤立的localStorage项`);
+            }
+            
+            const totalCleaned = cleanedMessages + cleanedMoments + cleanedKeys;
+            if (totalCleaned > 0) {
+                console.log(`[DataClean] 清理完成，共清理 ${totalCleaned} 项孤立数据`);
+            } else {
+                console.log('[DataClean] 未发现孤立数据');
+            }
+            
+            return {
+                cleanedMessages,
+                cleanedMoments,
+                cleanedKeys,
+                totalCleaned
+            };
+        }
+
         // 删除指定角色的所有朋友圈动态
         function deleteRoleMoments(roleId) {
             try {
@@ -19074,7 +19060,11 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
         function renderMoments() {
             const momentsList = document.getElementById('moments-list');
             
-            if (moments.length === 0) {
+            // 过滤掉已删除角色的朋友圈动态
+            const validRoleIds = new Set(roles.map(r => r.id));
+            const validMoments = moments.filter(m => validRoleIds.has(m.roleId));
+            
+            if (validMoments.length === 0) {
                 momentsList.innerHTML = `
                     <div class="moments-empty">
                         <div class="moments-empty-icon">📸</div>
@@ -19084,7 +19074,7 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
                 return;
             }
             
-            momentsList.innerHTML = moments.map(moment => {
+            momentsList.innerHTML = validMoments.map(moment => {
                 let imagesHtml = '';
                 if (moment.images && moment.images.length > 0) {
                     let imagesClass = 'triple';
@@ -19626,11 +19616,22 @@ ${commenterInfo}
                 console.error('生成朋友圈动态失败:', error);
             }
             
-            const fallbackPosts = [
-                '今天天气真好，适合出去走走',
-                '刚刚完成了一个重要的任务，感觉很开心',
-                '和朋友们聚了一下，很愉快的一天'
-            ];
+            const roleDesc = randomRole.description || '';
+            const roleName = randomRole.name || '角色';
+            const fallbackPosts = [];
+            
+            if (roleDesc && roleDesc.length > 0) {
+                fallbackPosts.push(`${roleName}的一天，又是平凡而充实的一天`);
+                fallbackPosts.push(`今天有些感慨，生活就是这样点点滴滴`);
+                fallbackPosts.push(`记录一下此刻的心情`);
+                fallbackPosts.push(`又是新的一天，继续前行`);
+                fallbackPosts.push(`有些话想说，又不知从何说起`);
+            } else {
+                fallbackPosts.push('今天天气真好');
+                fallbackPosts.push('又是新的一天');
+                fallbackPosts.push('记录一下');
+            }
+            
             createMoment(randomRole, fallbackPosts[Math.floor(Math.random() * fallbackPosts.length)]);
             renderMoments();
             alert(`${randomRole.name} 发布了 1 条朋友圈`);
@@ -19776,18 +19777,24 @@ ${commenterInfo}
             const chatEndpoint = getChatEndpoint(savedApiUrl);
             
             if (!chatEndpoint || !apiKey || !selectedModel) {
-                const prompts = [
-                    '今天天气真好，适合出去走走',
-                    '刚刚完成了一个重要的任务，感觉很开心',
-                    '和朋友们聚了一下，很愉快的一天',
-                    '分享一下今天的心情',
-                    '生活中总有一些小确幸',
-                    '记录一下美好的瞬间',
-                    '今天的收获很多',
-                    '感觉自己成长了很多',
-                    '感谢身边的每一个人',
-                    '继续加油，未来可期'
-                ];
+                const roleDesc = role.description || '';
+                const roleName = role.name || '角色';
+                const prompts = [];
+                
+                if (roleDesc && roleDesc.length > 0) {
+                    prompts.push(`${roleName}的一天，又是平凡而充实的一天`);
+                    prompts.push(`今天有些感慨，生活就是这样点点滴滴`);
+                    prompts.push(`记录一下此刻的心情`);
+                    prompts.push(`又是新的一天，继续前行`);
+                    prompts.push(`有些话想说，又不知从何说起`);
+                } else {
+                    prompts.push('今天天气真好');
+                    prompts.push('又是新的一天');
+                    prompts.push('记录一下');
+                    prompts.push('分享一下今天的心情');
+                    prompts.push('美好的一天');
+                }
+                
                 const content = prompts[Math.floor(Math.random() * prompts.length)];
                 createMoment(role, content);
                 renderMoments();
@@ -19934,19 +19941,25 @@ ${commenterInfo}
                 console.error('生成朋友圈动态失败:', error);
             }
             
-            const prompts = [
-                '今天天气真好，适合出去走走',
-                '刚刚完成了一个重要的任务，感觉很开心',
-                '和朋友们聚了一下，很愉快的一天',
-                '分享一下今天的心情',
-                '生活中总有一些小确幸',
-                '记录一下美好的瞬间',
-                '今天的收获很多',
-                '感觉自己成长了很多',
-                '感谢身边的每一个人',
-                '继续加油，未来可期'
-            ];
-            const content = prompts[Math.floor(Math.random() * prompts.length)];
+            const roleDesc = role.description || '';
+            const roleName = role.name || '角色';
+            const fallbackPrompts = [];
+            
+            if (roleDesc && roleDesc.length > 0) {
+                fallbackPrompts.push(`${roleName}的一天，又是平凡而充实的一天`);
+                fallbackPrompts.push(`今天有些感慨，生活就是这样点点滴滴`);
+                fallbackPrompts.push(`记录一下此刻的心情`);
+                fallbackPrompts.push(`又是新的一天，继续前行`);
+                fallbackPrompts.push(`有些话想说，又不知从何说起`);
+            } else {
+                fallbackPrompts.push('今天天气真好');
+                fallbackPrompts.push('又是新的一天');
+                fallbackPrompts.push('记录一下');
+                fallbackPrompts.push('分享一下今天的心情');
+                fallbackPrompts.push('美好的一天');
+            }
+            
+            const content = fallbackPrompts[Math.floor(Math.random() * fallbackPrompts.length)];
             createMoment(role, content);
             renderMoments();
         }
@@ -19961,6 +19974,10 @@ ${commenterInfo}
         let neteaseUserScrollTimer = null;
         let neteaseLocalAudioFile = null;
         let neteaseLocalLrcFile = null;
+        let neteaseVinylImageFile = null;
+        let neteaseCover1File = null;
+        let neteaseCover2File = null;
+        let neteaseCover3File = null;
         let neteaseSearchTimeout = null;
         let neteaseSliderInterval = null;
 
@@ -19992,6 +20009,8 @@ ${commenterInfo}
                 }, 4500);
             }
             initNeteaseEvents();
+            initNeteaseFileEvents();
+            neteaseLoadSavedImages();
         }
 
         function closeNetease() {
@@ -20025,6 +20044,9 @@ ${commenterInfo}
 
             const audioInput = document.getElementById('neteaseLocalAudioInput');
             const lrcInput = document.getElementById('neteaseLocalLrcInput');
+            const audioLabelEl = document.getElementById('neteaseAudioLabel');
+            const lrcLabelEl = document.getElementById('neteaseLrcLabel');
+            const startPlayBtn = document.getElementById('neteaseStartPlayBtn');
 
             if (audioInput && !audioInput.hasAttribute('data-initialized')) {
                 audioInput.setAttribute('data-initialized', 'true');
@@ -20050,6 +20072,53 @@ ${commenterInfo}
                         console.log('LRC file selected:', neteaseLocalLrcFile.name);
                     }
                 });
+            }
+
+            if (audioLabelEl && audioInput && !audioLabelEl.hasAttribute('data-initialized')) {
+                audioLabelEl.setAttribute('data-initialized', 'true');
+                
+                const handleClick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Audio label clicked');
+                    audioInput.click();
+                    return false;
+                };
+                
+                audioLabelEl.addEventListener('click', handleClick);
+                audioLabelEl.addEventListener('touchend', handleClick);
+                audioLabelEl.addEventListener('mousedown', handleClick);
+            }
+
+            if (lrcLabelEl && lrcInput && !lrcLabelEl.hasAttribute('data-initialized')) {
+                lrcLabelEl.setAttribute('data-initialized', 'true');
+                
+                const handleClick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('LRC label clicked');
+                    lrcInput.click();
+                    return false;
+                };
+                
+                lrcLabelEl.addEventListener('click', handleClick);
+                lrcLabelEl.addEventListener('touchend', handleClick);
+                lrcLabelEl.addEventListener('mousedown', handleClick);
+            }
+
+            if (startPlayBtn && !startPlayBtn.hasAttribute('data-initialized')) {
+                startPlayBtn.setAttribute('data-initialized', 'true');
+                
+                const handlePlayClick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Start play button clicked');
+                    neteaseStartLocalPlay();
+                    return false;
+                };
+                
+                startPlayBtn.addEventListener('click', handlePlayClick);
+                startPlayBtn.addEventListener('touchend', handlePlayClick);
             }
 
             const audio = neteaseAudio.element;
@@ -20108,6 +20177,418 @@ ${commenterInfo}
             if(!viewId) return;
             document.querySelectorAll('.netease-view-container').forEach(view => view.classList.remove('active'));
             document.getElementById(viewId).classList.add('active');
+            
+            if (viewId === 'netease-view-profile') {
+                setTimeout(() => {
+                    initNeteaseFileEvents();
+                }, 100);
+            } else if (viewId === 'netease-view-discover') {
+                setTimeout(() => {
+                    neteaseLoadSavedImages();
+                }, 100);
+            }
+        }
+
+        function initNeteaseFileEvents() {
+            const audioInput = document.getElementById('neteaseLocalAudioInput');
+            const lrcInput = document.getElementById('neteaseLocalLrcInput');
+            const audioLabelEl = document.getElementById('neteaseAudioLabel');
+            const lrcLabelEl = document.getElementById('neteaseLrcLabel');
+            const startPlayBtn = document.getElementById('neteaseStartPlayBtn');
+
+            if (audioInput && !audioInput.hasAttribute('data-init-v2')) {
+                audioInput.setAttribute('data-init-v2', 'true');
+                audioInput.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseLocalAudioFile = e.target.files[0];
+                        const audioLabel = document.getElementById('neteaseAudioLabel');
+                        audioLabel.innerText = neteaseLocalAudioFile.name;
+                        audioLabel.classList.add('selected');
+                        console.log('Audio file selected:', neteaseLocalAudioFile.name);
+                    }
+                });
+            }
+
+            if (lrcInput && !lrcInput.hasAttribute('data-init-v2')) {
+                lrcInput.setAttribute('data-init-v2', 'true');
+                lrcInput.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseLocalLrcFile = e.target.files[0];
+                        const lrcLabel = document.getElementById('neteaseLrcLabel');
+                        lrcLabel.innerText = neteaseLocalLrcFile.name;
+                        lrcLabel.classList.add('selected');
+                        console.log('LRC file selected:', neteaseLocalLrcFile.name);
+                    }
+                });
+            }
+
+            if (audioLabelEl && audioInput && !audioLabelEl.hasAttribute('data-init-v2')) {
+                audioLabelEl.setAttribute('data-init-v2', 'true');
+                
+                audioLabelEl.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Audio label clicked');
+                    audioInput.click();
+                    return false;
+                });
+                
+                audioLabelEl.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    audioInput.click();
+                    return false;
+                });
+            }
+
+            if (lrcLabelEl && lrcInput && !lrcLabelEl.hasAttribute('data-init-v2')) {
+                lrcLabelEl.setAttribute('data-init-v2', 'true');
+                
+                lrcLabelEl.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('LRC label clicked');
+                    lrcInput.click();
+                    return false;
+                });
+                
+                lrcLabelEl.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    lrcInput.click();
+                    return false;
+                });
+            }
+
+            if (startPlayBtn && !startPlayBtn.hasAttribute('data-init-v2')) {
+                startPlayBtn.setAttribute('data-init-v2', 'true');
+                
+                startPlayBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Start play button clicked');
+                    neteaseStartLocalPlay();
+                    return false;
+                });
+                
+                startPlayBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    neteaseStartLocalPlay();
+                    return false;
+                });
+            }
+
+            const audio = neteaseAudio.element;
+            if (audio && !audio.hasAttribute('data-init-v2')) {
+                audio.setAttribute('data-init-v2', 'true');
+                audio.addEventListener('loadedmetadata', () => { 
+                    neteaseAudio.totalTimeText.innerText = neteaseFormatTime(audio.duration); 
+                    console.log('Audio duration:', audio.duration);
+                });
+                audio.addEventListener('timeupdate', () => { 
+                    if (audio.duration) { 
+                        const progressPercent = (audio.currentTime / audio.duration) * 100;
+                        neteaseAudio.progressBar.style.width = progressPercent + '%';
+                        neteaseAudio.currentTimeText.innerText = neteaseFormatTime(audio.currentTime);
+                        neteaseUpdateRollingLyrics(audio.currentTime); 
+                    } 
+                });
+                audio.addEventListener('ended', () => { 
+                    neteaseIsPlaying = false;
+                    neteaseAudio.playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    neteaseAudio.playerDisc.classList.add('netease-spin-paused'); 
+                    neteaseAudio.toneArm.classList.remove('netease-arm-playing'); 
+                    neteaseAudio.toneArm.classList.add('netease-arm-paused'); 
+                    neteaseAudio.progressBar.style.width = '0%'; 
+                    neteaseAudio.currentTimeText.innerText = "00:00";
+                    neteaseCurrentLyricIndex = -1; 
+                    neteaseAudio.lyricsContainer.scrollTo({ top: 0, behavior: 'smooth' }); 
+                    document.querySelectorAll('.netease-lyric-line').forEach(el => el.classList.remove('active')); 
+                });
+            }
+
+            const vinylInput = document.getElementById('neteaseVinylInput');
+            const vinylLabelEl = document.getElementById('neteaseVinylLabel');
+            const applyVinylBtn = document.getElementById('neteaseApplyVinylBtn');
+
+            if (vinylInput && !vinylInput.hasAttribute('data-init-v2')) {
+                vinylInput.setAttribute('data-init-v2', 'true');
+                vinylInput.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseVinylImageFile = e.target.files[0];
+                        vinylLabelEl.innerText = neteaseVinylImageFile.name;
+                        vinylLabelEl.classList.add('selected');
+                        console.log('Vinyl image selected:', neteaseVinylImageFile.name);
+                    }
+                });
+            }
+
+            if (vinylLabelEl && vinylInput && !vinylLabelEl.hasAttribute('data-init-v2')) {
+                vinylLabelEl.setAttribute('data-init-v2', 'true');
+                
+                vinylLabelEl.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    vinylInput.click();
+                    return false;
+                });
+                
+                vinylLabelEl.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    vinylInput.click();
+                    return false;
+                });
+            }
+
+            if (applyVinylBtn && !applyVinylBtn.hasAttribute('data-init-v2')) {
+                applyVinylBtn.setAttribute('data-init-v2', 'true');
+                
+                applyVinylBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    neteaseApplyVinylImage();
+                    return false;
+                });
+                
+                applyVinylBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    neteaseApplyVinylImage();
+                    return false;
+                });
+            }
+
+            const cover1Input = document.getElementById('neteaseCover1Input');
+            const cover2Input = document.getElementById('neteaseCover2Input');
+            const cover3Input = document.getElementById('neteaseCover3Input');
+            const cover1LabelEl = document.getElementById('neteaseCover1Label');
+            const cover2LabelEl = document.getElementById('neteaseCover2Label');
+            const cover3LabelEl = document.getElementById('neteaseCover3Label');
+            const applyCoversBtn = document.getElementById('neteaseApplyCoversBtn');
+
+            if (cover1Input && !cover1Input.hasAttribute('data-init-v2')) {
+                cover1Input.setAttribute('data-init-v2', 'true');
+                cover1Input.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseCover1File = e.target.files[0];
+                        cover1LabelEl.innerText = neteaseCover1File.name;
+                        cover1LabelEl.classList.add('selected');
+                    }
+                });
+            }
+
+            if (cover2Input && !cover2Input.hasAttribute('data-init-v2')) {
+                cover2Input.setAttribute('data-init-v2', 'true');
+                cover2Input.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseCover2File = e.target.files[0];
+                        cover2LabelEl.innerText = neteaseCover2File.name;
+                        cover2LabelEl.classList.add('selected');
+                    }
+                });
+            }
+
+            if (cover3Input && !cover3Input.hasAttribute('data-init-v2')) {
+                cover3Input.setAttribute('data-init-v2', 'true');
+                cover3Input.addEventListener('change', (e) => {
+                    if(e.target.files.length > 0) {
+                        neteaseCover3File = e.target.files[0];
+                        cover3LabelEl.innerText = neteaseCover3File.name;
+                        cover3LabelEl.classList.add('selected');
+                    }
+                });
+            }
+
+            [cover1LabelEl, cover2LabelEl, cover3LabelEl].forEach((labelEl, index) => {
+                const inputEl = [cover1Input, cover2Input, cover3Input][index];
+                if (labelEl && inputEl && !labelEl.hasAttribute('data-init-v2')) {
+                    labelEl.setAttribute('data-init-v2', 'true');
+                    labelEl.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        inputEl.click();
+                        return false;
+                    });
+                    labelEl.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        inputEl.click();
+                        return false;
+                    });
+                }
+            });
+
+            if (applyCoversBtn && !applyCoversBtn.hasAttribute('data-init-v2')) {
+                applyCoversBtn.setAttribute('data-init-v2', 'true');
+                applyCoversBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    neteaseApplyCoverImages();
+                    return false;
+                });
+                applyCoversBtn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    neteaseApplyCoverImages();
+                    return false;
+                });
+            }
+        }
+
+        function neteaseApplyVinylImage() {
+            const vinylSlide = document.getElementById('neteaseVinylSlide');
+            if(!vinylSlide) {
+                console.error('Vinyl slide element not found');
+                return;
+            }
+
+            // Check for URL input first
+            const urlInput = document.getElementById('neteaseVinylUrlInput');
+            const imageUrl = urlInput ? urlInput.value.trim() : '';
+            
+            if (imageUrl) {
+                // Use URL directly
+                vinylSlide.style.backgroundImage = `url(${imageUrl})`;
+                vinylSlide.style.backgroundSize = 'cover';
+                vinylSlide.style.backgroundPosition = 'center';
+                vinylSlide.style.backgroundRepeat = 'no-repeat';
+                localStorage.setItem('neteaseVinylImage', imageUrl);
+                console.log('Vinyl image URL applied:', imageUrl);
+                alert('图片链接已应用！');
+                return;
+            }
+
+            // Fall back to file input
+            if(!neteaseVinylImageFile) {
+                alert("请选择图片文件或输入图片链接。");
+                return;
+            }
+
+            console.log('Starting to read file:', neteaseVinylImageFile.name, 'size:', neteaseVinylImageFile.size);
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                console.log('File read complete, data length:', e.target.result.length);
+                const imageData = e.target.result;
+                vinylSlide.style.backgroundImage = `url(${imageData})`;
+                vinylSlide.style.backgroundSize = 'cover';
+                vinylSlide.style.backgroundPosition = 'center';
+                vinylSlide.style.backgroundRepeat = 'no-repeat';
+                
+                try {
+                    localStorage.setItem('neteaseVinylImage', imageData);
+                    console.log('Vinyl image saved, size:', imageData.length);
+                    alert('图片保存成功！');
+                } catch(err) {
+                    console.error('localStorage error:', err.name, err.message);
+                    if (err.name === 'QuotaExceededError' || err.code === 22) {
+                        alert('图片太大！建议使用图片链接方式。');
+                    } else {
+                        alert('保存出错: ' + err.message);
+                    }
+                }
+            };
+            reader.onerror = function(e) {
+                console.error('Failed to read image file:', e);
+                alert('读取图片文件失败。');
+            };
+            reader.readAsDataURL(neteaseVinylImageFile);
+        }
+
+        function neteaseApplyCoverImages() {
+            const coverMap = [
+                { file: neteaseCover1File, elementId: 'neteaseCoverAcoustics', name: 'Morning Coffee', storageKey: 'neteaseCover1', urlInputId: 'neteaseCover1UrlInput' },
+                { file: neteaseCover2File, elementId: 'neteaseCoverPiano', name: 'White Linen', storageKey: 'neteaseCover2', urlInputId: 'neteaseCover2UrlInput' },
+                { file: neteaseCover3File, elementId: 'neteaseCoverElectro', name: 'Late Night', storageKey: 'neteaseCover3', urlInputId: 'neteaseCover3UrlInput' }
+            ];
+
+            let appliedCount = 0;
+
+            coverMap.forEach(item => {
+                const element = document.getElementById(item.elementId);
+                if (!element) return;
+
+                // Check for URL input first
+                const urlInput = document.getElementById(item.urlInputId);
+                const imageUrl = urlInput ? urlInput.value.trim() : '';
+                
+                if (imageUrl) {
+                    element.style.backgroundImage = `url(${imageUrl})`;
+                    element.style.backgroundSize = 'cover';
+                    element.style.backgroundPosition = 'center';
+                    element.style.backgroundRepeat = 'no-repeat';
+                    localStorage.setItem(item.storageKey, imageUrl);
+                    console.log(`${item.name} cover URL applied:`, imageUrl);
+                    appliedCount++;
+                    return;
+                }
+
+                // Fall back to file input
+                if (item.file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageData = e.target.result;
+                        element.style.backgroundImage = `url(${imageData})`;
+                        element.style.backgroundSize = 'cover';
+                        element.style.backgroundPosition = 'center';
+                        element.style.backgroundRepeat = 'no-repeat';
+                        try {
+                            localStorage.setItem(item.storageKey, imageData);
+                            console.log(`${item.name} cover saved, size:`, imageData.length);
+                        } catch(err) {
+                            console.error('Failed to save cover:', err);
+                        }
+                    };
+                    reader.readAsDataURL(item.file);
+                    appliedCount++;
+                }
+            });
+
+            if (appliedCount === 0) {
+                alert("请至少选择一张图片或输入图片链接。");
+            } else {
+                alert(`已应用 ${appliedCount} 张图片。`);
+            }
+        }
+
+        function neteaseLoadSavedImages() {
+            console.log('neteaseLoadSavedImages called');
+            
+            const vinylImage = localStorage.getItem('neteaseVinylImage');
+            console.log('Vinyl image from storage:', vinylImage ? 'found, length: ' + vinylImage.length : 'not found');
+            if (vinylImage) {
+                const vinylSlide = document.getElementById('neteaseVinylSlide');
+                if (vinylSlide) {
+                    vinylSlide.style.backgroundImage = `url(${vinylImage})`;
+                    vinylSlide.style.backgroundSize = 'cover';
+                    vinylSlide.style.backgroundPosition = 'center';
+                    vinylSlide.style.backgroundRepeat = 'no-repeat';
+                    console.log('Vinyl image applied from storage');
+                }
+            }
+
+            const coverMap = [
+                { storageKey: 'neteaseCover1', elementId: 'neteaseCoverAcoustics' },
+                { storageKey: 'neteaseCover2', elementId: 'neteaseCoverPiano' },
+                { storageKey: 'neteaseCover3', elementId: 'neteaseCoverElectro' }
+            ];
+
+            coverMap.forEach(item => {
+                const savedImage = localStorage.getItem(item.storageKey);
+                console.log(`${item.storageKey} from storage:`, savedImage ? 'found, length: ' + savedImage.length : 'not found');
+                if (savedImage) {
+                    const element = document.getElementById(item.elementId);
+                    if (element) {
+                        element.style.backgroundImage = `url(${savedImage})`;
+                        element.style.backgroundSize = 'cover';
+                        element.style.backgroundPosition = 'center';
+                        element.style.backgroundRepeat = 'no-repeat';
+                        console.log(`${item.storageKey} image applied from storage`);
+                    }
+                }
+            });
         }
 
         function neteaseFetchMusicFromAPI(keyword) {
@@ -20172,6 +20653,7 @@ ${commenterInfo}
             neteaseAudio.lyricsScroll.innerHTML = "";
             neteaseParsedLyricsArray = [];
             neteaseAudio.lyricsContainer.scrollTop = 0;
+            neteaseCurrentLyricIndex = -1;
 
             const lines = lrcStr.split('\n');
             const timeReg = /\[(\d{2}):(\d{2})(?:\.(\d+))?\]/;
@@ -20183,11 +20665,18 @@ ${commenterInfo}
                     const s = parseInt(match[2]);
                     const ms = match[3] ? parseFloat("0." + match[3]) : 0;
                     const text = line.replace(timeReg, "").trim();
-                    neteaseParsedLyricsArray.push({ time: (m * 60) + s + ms, text: text });
+                    if(text) {
+                        neteaseParsedLyricsArray.push({ time: (m * 60) + s + ms, text: text });
+                    }
                 }
             });
 
-            if(neteaseParsedLyricsArray.length === 0) { neteaseRenderBlankLyricsState(); return; }
+            if(neteaseParsedLyricsArray.length === 0) { 
+                neteaseRenderBlankLyricsState(); 
+                return; 
+            }
+
+            neteaseParsedLyricsArray.sort((a, b) => a.time - b.time);
 
             neteaseParsedLyricsArray.forEach((item, idx) => {
                 let el = document.createElement('div');
@@ -20196,12 +20685,15 @@ ${commenterInfo}
                 el.innerText = item.text;
                 neteaseAudio.lyricsScroll.appendChild(el);
             });
+
+            console.log('Parsed lyrics:', neteaseParsedLyricsArray.length, 'lines');
         }
 
         function neteaseRenderBlankLyricsState() {
             neteaseAudio.lyricsScroll.innerHTML = "";
             neteaseParsedLyricsArray = [];
             neteaseAudio.lyricsContainer.scrollTop = 0;
+            neteaseCurrentLyricIndex = -1;
         }
 
         function neteaseForceScrollToCurrentIndex() {
@@ -20217,9 +20709,11 @@ ${commenterInfo}
             if(neteaseParsedLyricsArray.length === 0) return;
 
             let detectedIndex = -1;
-            for (let i = 0; i < neteaseParsedLyricsArray.length; i++) {
-                if (currentTime >= neteaseParsedLyricsArray[i].time) { detectedIndex = i; }
-                else { break; }
+            for (let i = neteaseParsedLyricsArray.length - 1; i >= 0; i--) {
+                if (currentTime >= neteaseParsedLyricsArray[i].time) {
+                    detectedIndex = i;
+                    break;
+                }
             }
 
             if (detectedIndex !== neteaseCurrentLyricIndex && detectedIndex !== -1) {
@@ -20229,7 +20723,10 @@ ${commenterInfo}
                 }
                 neteaseCurrentLyricIndex = detectedIndex;
                 const newLine = document.getElementById('netease-lyric-' + neteaseCurrentLyricIndex);
-                if(newLine) newLine.classList.add('active');
+                if(newLine) {
+                    newLine.classList.add('active');
+                    console.log('Lyric line', detectedIndex, 'at', currentTime.toFixed(2), 's:', neteaseParsedLyricsArray[detectedIndex].text);
+                }
 
                 if(!neteaseIsUserScrolling) { neteaseForceScrollToCurrentIndex(); }
             }
@@ -20275,10 +20772,20 @@ ${commenterInfo}
             }
 
             if(neteaseLocalLrcFile) {
+                console.log('Loading LRC file:', neteaseLocalLrcFile.name);
                 const reader = new FileReader();
-                reader.onload = function(e) { neteaseProcessLrcString(e.target.result); }
+                reader.onload = function(e) { 
+                    console.log('LRC file content loaded, length:', e.target.result.length);
+                    neteaseProcessLrcString(e.target.result); 
+                };
+                reader.onerror = function(e) {
+                    console.error('Failed to read LRC file:', e);
+                };
                 reader.readAsText(neteaseLocalLrcFile);
-            } else { neteaseRenderBlankLyricsState(); }
+            } else { 
+                console.log('No LRC file selected');
+                neteaseRenderBlankLyricsState(); 
+            }
 
             if (!neteaseIsPlaying) neteaseTogglePlay();
             else neteaseAudio.element.play();
@@ -24208,6 +24715,9 @@ ${recentHistory.map(msg => {
                 console.log('初始化空roles数组');
             }
             
+            // 清理孤立数据（已删除角色的聊天记录和朋友圈动态）
+            cleanOrphanedData();
+            
             loadWechatId();
             loadProfileName();
             
@@ -24527,42 +25037,6 @@ ${recentHistory.map(msg => {
         // ============================================
         // 微信背景设置功能
         // ============================================
-        let currentCropType = null;
-        let currentCropImage = null;
-        let cropSettings = {
-            scale: 100,
-            positionY: 50
-        };
-
-        function saveCropState() {
-            if (currentCropType && currentCropImage) {
-                localStorage.setItem('cropState', JSON.stringify({
-                    type: currentCropType,
-                    image: currentCropImage,
-                    settings: cropSettings
-                }));
-            }
-        }
-
-        function restoreCropState() {
-            const savedState = localStorage.getItem('cropState');
-            if (savedState) {
-                try {
-                    const state = JSON.parse(savedState);
-                    currentCropType = state.type;
-                    currentCropImage = state.image;
-                    cropSettings = state.settings || { scale: 100, positionY: 50 };
-                    return true;
-                } catch (e) {
-                    return false;
-                }
-            }
-            return false;
-        }
-
-        function clearCropState() {
-            localStorage.removeItem('cropState');
-        }
 
         function openWechatSettings() {
             document.getElementById('wechat-profile').style.display = 'none';
@@ -24619,117 +25093,27 @@ ${recentHistory.map(msg => {
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                currentCropType = type;
-                currentCropImage = e.target.result;
-                cropSettings = { scale: 100, positionY: 50 };
-                saveCropState();
-                openCropModal();
+                try {
+                    const backgrounds = JSON.parse(localStorage.getItem('wechatBackgrounds')) || {};
+                    
+                    backgrounds[type] = {
+                        image: e.target.result,
+                        scale: 100,
+                        positionY: 50
+                    };
+                    
+                    localStorage.setItem('wechatBackgrounds', JSON.stringify(backgrounds));
+                    
+                    loadBackgroundPreviews();
+                    applyWechatBackgrounds();
+                    showToast('背景设置成功');
+                } catch (err) {
+                    showToast('保存失败，请重试');
+                }
             };
             reader.readAsDataURL(file);
             
             event.target.value = '';
-        }
-
-        function openCropModal() {
-            const modal = document.getElementById('image-crop-modal');
-            const cropImage = document.getElementById('crop-image');
-            const scaleSlider = document.getElementById('crop-scale');
-            const positionSlider = document.getElementById('crop-position-y');
-            
-            cropImage.src = currentCropImage;
-            scaleSlider.value = cropSettings.scale;
-            positionSlider.value = cropSettings.positionY;
-            
-            updateCropScale(cropSettings.scale);
-            updateCropPosition(cropSettings.positionY);
-            
-            modal.style.display = 'flex';
-            
-            initCropModalButtons();
-        }
-
-        function initCropModalButtons() {
-            const confirmBtn = document.getElementById('confirm-crop-btn');
-            if (confirmBtn) {
-                const newBtn = confirmBtn.cloneNode(true);
-                confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
-                
-                newBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    confirmCropImage();
-                });
-                
-                newBtn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    confirmCropImage();
-                }, { passive: false });
-                
-                newBtn.addEventListener('touchstart', function(e) {
-                    e.stopPropagation();
-                }, { passive: true });
-            }
-        }
-
-        function closeCropModal() {
-            document.getElementById('image-crop-modal').style.display = 'none';
-            currentCropType = null;
-            currentCropImage = null;
-            clearCropState();
-        }
-
-        function updateCropScale(value) {
-            cropSettings.scale = parseInt(value);
-            document.getElementById('crop-scale-value').textContent = value + '%';
-            applyCropPreview();
-        }
-
-        function updateCropPosition(value) {
-            cropSettings.positionY = parseInt(value);
-            document.getElementById('crop-position-value').textContent = value + '%';
-            applyCropPreview();
-        }
-
-        function applyCropPreview() {
-            const cropImage = document.getElementById('crop-image');
-            const translateY = (cropSettings.positionY - 50) * 2;
-            cropImage.style.transform = `scale(${cropSettings.scale / 100}) translateY(${translateY}px)`;
-            saveCropState();
-        }
-
-        function confirmCropImage() {
-            if (!currentCropType || !currentCropImage) {
-                if (!restoreCropState()) {
-                    showToast('请先选择图片');
-                    return;
-                }
-            }
-
-            if (!currentCropType || !currentCropImage) {
-                showToast('图片数据丢失，请重新选择');
-                closeCropModal();
-                return;
-            }
-
-            try {
-                const backgrounds = JSON.parse(localStorage.getItem('wechatBackgrounds')) || {};
-                
-                backgrounds[currentCropType] = {
-                    image: currentCropImage,
-                    scale: cropSettings.scale,
-                    positionY: cropSettings.positionY
-                };
-                
-                localStorage.setItem('wechatBackgrounds', JSON.stringify(backgrounds));
-                
-                loadBackgroundPreviews();
-                applyWechatBackgrounds();
-                closeCropModal();
-                showToast('背景设置成功');
-            } catch (e) {
-                showToast('保存失败，请重试');
-            }
         }
 
         function resetBackground(type) {
@@ -25454,23 +25838,6 @@ ${recentHistory.map(msg => {
                 } else {
                     loadCharacterBackground();
                     loadDetailImageBoxes();
-                }
-            }
-
-            const cropModal = document.getElementById('image-crop-modal');
-            if (cropModal && cropModal.style.display !== 'none') {
-                if (restoreCropState()) {
-                    const cropImage = document.getElementById('crop-image');
-                    const scaleSlider = document.getElementById('crop-scale');
-                    const positionSlider = document.getElementById('crop-position-y');
-                    
-                    if (cropImage && currentCropImage) {
-                        cropImage.src = currentCropImage;
-                        scaleSlider.value = cropSettings.scale;
-                        positionSlider.value = cropSettings.positionY;
-                        applyCropPreview();
-                        initCropModalButtons();
-                    }
                 }
             }
         }
@@ -27468,7 +27835,8 @@ ${conversationContext.slice(-3).map(m => `${m.type === 'sent' ? '对方' : '我'
                     .thought-text,
                     .need-name,
                     .font-item-name,
-                    .font-preview-text {
+                    .font-preview-text,
+                    .netease-lyric-line {
                         font-family: '${fontFamily}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
                     }
                 `;
