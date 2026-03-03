@@ -155,9 +155,9 @@
             background-position: center;
             background-repeat: no-repeat;
             min-height: 100vh;
-            height: auto;
+            height: 100vh;
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: hidden;
             -webkit-touch-callout: none;
             /* 移除全局用户选择限制，以确保输入元素正常工作 */
             /* -webkit-user-select: none;
@@ -186,6 +186,8 @@
             flex-direction: column;
             gap: 15px;
             position: relative;
+            overflow-y: hidden;
+            overflow-x: hidden;
         }
 
         .widget-section {
@@ -1381,6 +1383,24 @@
             
             .modal-body {
                 max-height: calc(80vh - 80px);
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                touch-action: pan-y !important;
+            }
+            
+            /* 手机端禁用自定义滚动，使用原生滚动 */
+            .touch-scroll-container {
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                touch-action: pan-y !important;
+            }
+            
+            .touch-scroll-content {
+                transform: none !important;
+                will-change: auto !important;
+                transition: none !important;
             }
             
             .wallpaper-grid {
@@ -1528,7 +1548,7 @@
         }
 
         .category-content.expanded {
-            max-height: 5000px;
+            max-height: none;
             opacity: 1;
             margin-top: 12px;
         }
@@ -3906,6 +3926,33 @@
             font-weight: 600;
             color: #333;
             text-align: center;
+        }
+
+        .contacts-add-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            color: #1C1C1E;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .contacts-add-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .contacts-add-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .contacts-group-tabs {
@@ -6671,12 +6718,19 @@
         }
 
         .character-modal-buttons .btn-primary {
-            background: #000;
-            color: white;
+            background: white;
+            color: black;
+            border: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         .character-modal-buttons .btn-primary:hover {
-            background: #000;
+            background: #f5f5f5;
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .character-modal-buttons .btn-primary:active {
+            background: #e8e8e8;
+            transform: scale(0.98);
         }
 
         .character-empty-state {
@@ -7224,7 +7278,12 @@
         }
 
         .chat-wallpaper-input {
-            display: none;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
         }
 
         .chat-menu-category {
@@ -8315,6 +8374,43 @@
             .worldbook-form-textarea::placeholder {
                 color: #636366;
             }
+        }
+
+        .worldbook-import-txt-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #F5F5F7;
+            border: 1px solid #E2E2E7;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #1C1C1E;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .worldbook-import-txt-btn {
+                background: #2C2C2E;
+                border-color: #38383A;
+                color: #FFFFFF;
+            }
+        }
+
+        .worldbook-import-txt-btn:hover {
+            background: #E2E2E7;
+            border-color: #C7C7CC;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .worldbook-import-txt-btn:hover {
+                background: #3A3A3C;
+                border-color: #48484A;
+            }
+        }
+
+        .worldbook-import-txt-btn:active {
+            transform: scale(0.98);
         }
 
         .worldbook-form-select {
@@ -12112,15 +12208,18 @@
         <div class="announcement-card">
             <div class="announcement-header">
                 <h2 class="announcement-title">本次更新内容</h2>
-                <div class="announcement-date" id="announcement-date">2026年3月3日</div>
+                <div class="announcement-date" id="announcement-date">2026年3月4日</div>
             </div>
             <div class="announcement-body">
                 <div class="announcement-content">
                     <p>欢迎使用小鼠机！本次更新内容如下：</p>
                     <ul>
-                        <li>🎵 网易云音乐实装</li>
-                        <li>🎧 增加了一起听歌功能</li>
-                        <li>📊 状态栏正在制作中</li>
+                        <li>💾 储存机制改了一下，现在每30秒会自动保存一次</li>
+                        <li>⚙️ 设置相关改了，现在点开不太会显示有问题了</li>
+                        <li>💾 角色编辑的保存按钮也改了，现在保存有点击反馈</li>
+                        <li>🔧 修复了无法更换纪念日和设置的图标</li>
+                        <li>📖 世界书可以导入txt啦</li>
+                        <li>👤 联系人页面增加直接跳转创建角色</li>
                     </ul>
                 </div>
             </div>
@@ -12553,7 +12652,7 @@
                 <button class="close-btn" onclick="closeSettings()">×</button>
             </div>
             
-            <div class="modal-body touch-scroll-container" style="overflow: hidden auto; touch-action: manipulation;">
+            <div class="modal-body" style="overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch;">
                 <!-- API设置分类 -->
                 <div class="category-wrapper">
                     <div class="category-header" onclick="toggleCategory(&#39;api&#39;)">
@@ -12668,7 +12767,6 @@
                     </div>
                     <div class="category-content" id="category-settings-beautify">
                         <div class="settings-section-inner">
-                            <!-- 壁纸设置 -->
                             <div class="form-group">
                                 <label style="color: rgb(51, 51, 51);">桌面壁纸:</label>
                                 <div class="wallpaper-options">
@@ -12680,12 +12778,28 @@
                                     <button class="btn-secondary" onclick="resetWallpaper()" style="color: rgb(51, 51, 51);">恢复默认</button>
                                 </div>
                             </div>
-                            
+                        </div>
+                    </div>
+                </div>
 
-                            
-                            <!-- 字体颜色设置 -->
+                <!-- 字体颜色分类 -->
+                <div class="category-wrapper">
+                    <div class="category-header" onclick="toggleCategory(&#39;font-colors&#39;)">
+                        <div class="category-title" style="color: rgb(51, 51, 51);">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+                                </svg>
+                            </div>
+                            字体颜色
+                        </div>
+                        <svg class="category-arrow" viewBox="0 0 24 24" fill="white">
+                            <path d="M7,10l5,5l5-5H7z"></path>
+                        </svg>
+                    </div>
+                    <div class="category-content" id="category-font-colors">
+                        <div class="settings-section-inner">
                             <div class="form-group">
-                                <label style="color: rgb(51, 51, 51);">字体颜色设置:</label>
                                 <div class="color-options">
                                     <div class="color-option">
                                         <label for="desktop-color" style="color: rgb(51, 51, 51);">桌面字体颜色:</label>
@@ -12709,7 +12823,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 颜色储存格子 -->
                                 <div class="color-palette">
                                     <label style="color: rgb(51, 51, 51);">颜色储存:</label>
                                     <div class="palette-grid" id="palette-grid"><div class="palette-item" data-color="#525252">
@@ -12727,10 +12840,28 @@
                                 <button class="btn-primary" onclick="saveFontColors()" style="color: rgb(51, 51, 51);">保存颜色设置</button>
                                 <button class="btn-secondary" onclick="resetFontColors()" style="color: rgb(51, 51, 51);">恢复默认颜色</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- 聊天字体颜色设置 -->
+                <!-- 聊天字体颜色分类 -->
+                <div class="category-wrapper">
+                    <div class="category-header" onclick="toggleCategory(&#39;chat-font-colors&#39;)">
+                        <div class="category-title" style="color: rgb(51, 51, 51);">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"></path>
+                                </svg>
+                            </div>
+                            聊天字体颜色
+                        </div>
+                        <svg class="category-arrow" viewBox="0 0 24 24" fill="white">
+                            <path d="M7,10l5,5l5-5H7z"></path>
+                        </svg>
+                    </div>
+                    <div class="category-content" id="category-chat-font-colors">
+                        <div class="settings-section-inner">
                             <div class="form-group">
-                                <label style="color: rgb(51, 51, 51);">聊天字体颜色:</label>
                                 <div class="color-options">
                                     <div class="color-option">
                                         <label for="chat-self-color" style="color: rgb(51, 51, 51);">自己消息颜色:</label>
@@ -12746,10 +12877,29 @@
                                 <button class="btn-primary" onclick="saveChatFontColors()" style="color: rgb(51, 51, 51);">保存聊天颜色</button>
                                 <button class="btn-secondary" onclick="resetChatFontColors()" style="color: rgb(51, 51, 51);">恢复默认</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- 图标设置 -->
+                <!-- 应用图标分类 -->
+                <div class="category-wrapper">
+                    <div class="category-header" onclick="toggleCategory(&#39;app-icons&#39;)">
+                        <div class="category-title" style="color: rgb(51, 51, 51);">
+                            <div class="category-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                                </svg>
+                            </div>
+                            应用图标
+                        </div>
+                        <svg class="category-arrow" viewBox="0 0 24 24" fill="white">
+                            <path d="M7,10l5,5l5-5H7z"></path>
+                        </svg>
+                    </div>
+                    <div class="category-content" id="category-app-icons">
+                        <div class="settings-section-inner">
                             <div class="form-group">
-                                <label style="color: rgb(51, 51, 51);">应用图标 (点击选择要修改的应用):</label>
+                                <label style="color: rgb(51, 51, 51);">点击选择要修改的应用:</label>
                                 <div class="icon-preview-grid" id="icon-grid">
                                 </div>
                                 <input type="file" id="icon-upload" accept="image/*" style="display: none;">
@@ -13147,7 +13297,7 @@
                             <input type="file" id="neteaseLocalAudioInput" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;">
 
                             <label class="netease-file-label" id="neteaseLrcLabel" for="neteaseLocalLrcInput">+ Select Lyrics (.lrc) *Optional</label>
-                            <input type="file" id="neteaseLocalLrcInput" accept=".lrc,.txt" style="display:none;">
+                            <input type="file" id="neteaseLocalLrcInput" accept="text/plain,.lrc,text/*" style="display:none;">
                         </div>
                         <button class="netease-start-local-btn" id="neteaseStartPlayBtn">Play Local Track</button>
                     </div>
@@ -13310,7 +13460,18 @@
                     <input type="text" class="worldbook-form-input" id="worldbook-entry-title-input" placeholder="输入条目标题">
                 </div>
                 <div class="worldbook-form-group">
-                    <label for="worldbook-entry-content-input">内容</label>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <label for="worldbook-entry-content-input" style="margin: 0;">内容</label>
+                        <label class="worldbook-import-txt-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            导入TXT
+                            <input type="file" id="worldbook-txt-import" accept=".txt" style="display: none;" onchange="importTxtToEntryContent(event)">
+                        </label>
+                    </div>
                     <textarea class="worldbook-form-textarea" id="worldbook-entry-content-input" placeholder="输入条目内容"></textarea>
                 </div>
                 <div class="worldbook-form-group">
@@ -13953,7 +14114,12 @@
                     </svg>
                 </div>
                 <div class="contacts-title">通讯录</div>
-                <div style="width: 36px;"></div>
+                <div class="contacts-add-btn" onclick="openCharacterSettings()" title="添加联系人">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </div>
             </div>
             <div class="contacts-group-tabs">
                 <div class="group-tab active" data-group="all" onclick="filterContactsByGroup(&#39;all&#39;, this)">全部</div>
@@ -14485,7 +14651,7 @@
                 
                 <div class="character-modal-buttons">
                     <button class="btn-secondary" onclick="closeCharacterEditModal()" style="color: rgb(51, 51, 51);">取消</button>
-                    <button class="btn-primary" onclick="saveCharacter()" style="color: rgb(51, 51, 51);">保存</button>
+                    <button class="btn-primary" onclick="saveCharacter()" style="color: black; background: white;">保存</button>
                 </div>
             </div>
         <div class="scroll-indicator"></div></div>
@@ -16006,7 +16172,19 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
                 },
                 
                 initAll(selector = '.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content') {
+                    // 检测是否为手机端（屏幕宽度小于768px）
+                    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                    
                     document.querySelectorAll(selector).forEach(el => {
+                        // 手机端使用原生滚动，不初始化TouchScroller
+                        if (isMobile) {
+                            el.style.overflowY = 'auto';
+                            el.style.overflowX = 'hidden';
+                            el.style.WebkitOverflowScrolling = 'touch';
+                            el.style.touchAction = 'pan-y';
+                            return;
+                        }
+                        
                         TouchScroll.create(el, {
                             direction: 'vertical',
                             momentum: true,
@@ -16020,18 +16198,31 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
 
         // 初始化触摸滚动
         document.addEventListener('DOMContentLoaded', function() {
-            // 无论是否支持触摸事件，都初始化TouchScroll
-            // 这样在桌面设备上也能使用鼠标拖拽滚动
-            TouchScroll.initAll();
+            // 检测是否为手机端
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
             
-            // 确保所有可滚动元素都有正确的CSS样式
-            const scrollableElements = document.querySelectorAll('.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content');
-            scrollableElements.forEach(el => {
-                el.style.overflowY = 'auto';
-                el.style.overflowX = 'hidden';
-                el.style.WebkitOverflowScrolling = 'touch';
-                el.style.touchAction = 'manipulation';
-            });
+            if (isMobile) {
+                // 手机端使用原生滚动
+                const scrollableElements = document.querySelectorAll('.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content');
+                scrollableElements.forEach(el => {
+                    el.style.overflowY = 'auto';
+                    el.style.overflowX = 'hidden';
+                    el.style.WebkitOverflowScrolling = 'touch';
+                    el.style.touchAction = 'pan-y';
+                });
+            } else {
+                // 桌面端使用TouchScroll
+                TouchScroll.initAll();
+                
+                // 确保所有可滚动元素都有正确的CSS样式
+                const scrollableElements = document.querySelectorAll('.chat-messages, .contacts-list, .message-list, .character-settings-content, .preset-list, .modal-body, .wechat-settings-content, .moments-content');
+                scrollableElements.forEach(el => {
+                    el.style.overflowY = 'auto';
+                    el.style.overflowX = 'hidden';
+                    el.style.WebkitOverflowScrolling = 'touch';
+                    el.style.touchAction = 'manipulation';
+                });
+            }
         });
 
         let selectedApp = null;
@@ -17484,14 +17675,13 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
                 const savedIcon = localStorage.getItem('icon_' + appId);
                 const iconContainer = element.querySelector('.icon-container, .dock-icon');
                 const appNameElement = element.querySelector('.app-name, .dock-name');
+                const app = apps.find(a => a.id === appId);
                 
-                if (savedIcon && iconContainer) {
-                    const app = apps.find(a => a.id === appId);
-                    iconContainer.innerHTML = `<img src="${savedIcon}" alt="${app ? app.name : ''}">`;
+                if (savedIcon && iconContainer && app) {
+                    iconContainer.innerHTML = `<img src="${savedIcon}" alt="${app.name}">`;
                 }
                 
-                if (appNameElement) {
-                    const app = apps.find(a => a.id === appId);
+                if (appNameElement && app) {
                     const savedName = localStorage.getItem('appName_' + appId) || app.name;
                     appNameElement.textContent = savedName;
                 }
@@ -19572,7 +19762,12 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
 
         // 保存朋友圈动态
         function saveMoments() {
-            localStorage.setItem('wechatMoments', JSON.stringify(moments));
+            try {
+                localStorage.setItem('wechatMoments', JSON.stringify(moments));
+                console.log('[Moments] 保存成功，当前动态数量:', moments.length);
+            } catch (e) {
+                console.error('[Moments] 保存失败:', e);
+            }
         }
 
         // 清理孤立数据（已删除角色的聊天记录和朋友圈动态）
@@ -19782,11 +19977,16 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
         
         function confirmDeleteMoment() {
             if (pendingDeleteMomentId) {
+                console.log('[Moments] 准备删除动态，ID:', pendingDeleteMomentId);
                 const index = moments.findIndex(m => m.id === pendingDeleteMomentId);
+                console.log('[Moments] 找到索引:', index, '当前动态数量:', moments.length);
                 if (index !== -1) {
+                    const deletedMoment = moments[index];
                     moments.splice(index, 1);
+                    console.log('[Moments] 已从数组中删除，剩余数量:', moments.length);
                     saveMoments();
                     renderMoments();
+                    console.log('[Moments] 删除操作完成');
                 }
             }
             closeDeleteModal();
@@ -20138,13 +20338,21 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
             
             setTimeout(() => {
                 const momentsContent = document.getElementById('moments-scroll-content');
-                if (momentsContent && !momentsContent.dataset.touchScrollInit) {
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                if (momentsContent && !momentsContent.dataset.touchScrollInit && !isMobile) {
                     TouchScroll.create(momentsContent, {
                         direction: 'vertical',
                         momentum: true,
                         bounce: true,
                         showIndicator: true
                     });
+                    momentsContent.dataset.touchScrollInit = 'true';
+                } else if (momentsContent && isMobile) {
+                    // 手机端使用原生滚动
+                    momentsContent.style.overflowY = 'auto';
+                    momentsContent.style.overflowX = 'hidden';
+                    momentsContent.style.WebkitOverflowScrolling = 'touch';
+                    momentsContent.style.touchAction = 'pan-y';
                     momentsContent.dataset.touchScrollInit = 'true';
                 }
                 
@@ -20803,11 +21011,35 @@ ${commenterInfo}
                 lrcInput.setAttribute('data-initialized', 'true');
                 lrcInput.addEventListener('change', (e) => {
                     if(e.target.files.length > 0) {
-                        neteaseLocalLrcFile = e.target.files[0];
+                        const file = e.target.files[0];
                         const lrcLabel = document.getElementById('neteaseLrcLabel');
-                        lrcLabel.innerText = neteaseLocalLrcFile.name;
+                        
+                        // iOS兼容：严格校验文件类型，确保文件名以.lrc结尾
+                        if (!file.name.toLowerCase().endsWith('.lrc')) {
+                            // 非.lrc文件提示错误并清空选择
+                            alert('请选择有效的LRC歌词文件（.lrc格式）');
+                            e.target.value = '';
+                            neteaseLocalLrcFile = null;
+                            lrcLabel.innerText = '+ Select Lyrics (.lrc) *Optional';
+                            lrcLabel.classList.remove('selected');
+                            return;
+                        }
+                        
+                        neteaseLocalLrcFile = file;
+                        
+                        // 格式化文件大小显示
+                        const formatFileSize = (bytes) => {
+                            if (bytes === 0) return '0 Bytes';
+                            const k = 1024;
+                            const sizes = ['Bytes', 'KB', 'MB'];
+                            const i = Math.floor(Math.log(bytes) / Math.log(k));
+                            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+                        };
+                        
+                        // 显示文件名和大小
+                        lrcLabel.innerText = file.name + ' (' + formatFileSize(file.size) + ')';
                         lrcLabel.classList.add('selected');
-                        console.log('LRC file selected:', neteaseLocalLrcFile.name);
+                        console.log('LRC file selected:', file.name, 'Size:', file.size);
                     }
                 });
             }
@@ -23627,7 +23859,9 @@ ${commenterInfo}
                 return;
             }
 
-            const summaryCount = parseInt(localStorage.getItem('manualSummaryCount')) || 20;
+            const summaryCount = summaryType === 'auto' 
+                ? parseInt(localStorage.getItem('autoSummaryCount')) || 50
+                : parseInt(localStorage.getItem('manualSummaryCount')) || 20;
             const recentHistory = conversationHistory.slice(-summaryCount);
 
             let savedApiUrl = localStorage.getItem('apiUrl') || '';
@@ -25091,10 +25325,11 @@ ${recentHistory.map(msg => {
                 
                 localStorage.setItem('wechatMessages', JSON.stringify(messages));
                 
-                // 退出多选模式
+                const chatMessages = document.getElementById('chat-messages');
+                chatMessages.innerHTML = '';
+                
                 exitMultiSelectMode();
                 
-                // 重新加载消息
                 loadChatMessages(roleId);
                 loadMessages();
             }
@@ -25644,6 +25879,9 @@ ${recentHistory.map(msg => {
                     messages[roleId].splice(messageIndex, 1);
                     
                     localStorage.setItem('wechatMessages', JSON.stringify(messages));
+                    
+                    const chatMessages = document.getElementById('chat-messages');
+                    chatMessages.innerHTML = '';
                     
                     loadChatMessages(roleId);
                     
@@ -26299,6 +26537,7 @@ ${recentHistory.map(msg => {
         // 打开角色设定页面
         function openCharacterSettings() {
             document.getElementById('wechat-profile').style.display = 'none';
+            document.getElementById('wechat-contacts').style.display = 'none';
             document.getElementById('character-settings').style.display = 'flex';
             renderCharacterList();
         }
@@ -26321,13 +26560,21 @@ ${recentHistory.map(msg => {
             
             setTimeout(() => {
                 const settingsContent = document.querySelector('.wechat-settings-content');
-                if (settingsContent && !settingsContent.dataset.touchScrollInit) {
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                if (settingsContent && !settingsContent.dataset.touchScrollInit && !isMobile) {
                     TouchScroll.create(settingsContent, {
                         direction: 'vertical',
                         momentum: true,
                         bounce: true,
                         showIndicator: true
                     });
+                    settingsContent.dataset.touchScrollInit = 'true';
+                } else if (settingsContent && isMobile) {
+                    // 手机端使用原生滚动
+                    settingsContent.style.overflowY = 'auto';
+                    settingsContent.style.overflowX = 'hidden';
+                    settingsContent.style.WebkitOverflowScrolling = 'touch';
+                    settingsContent.style.touchAction = 'pan-y';
                     settingsContent.dataset.touchScrollInit = 'true';
                 }
             }, 100);
@@ -27116,7 +27363,6 @@ ${recentHistory.map(msg => {
             });
         }
 
-        // iOS端页面恢复处理 - 解决从照片选择器返回后状态丢失的问题
         function handleIOSPageRestore() {
             const savedCharacterId = localStorage.getItem('currentCharacterId');
             const detailPanel = document.getElementById('contact-detail-panel');
@@ -27136,22 +27382,111 @@ ${recentHistory.map(msg => {
             }
         }
 
-        // 监听pageshow事件 - iOS Safari从照片选择器返回时会触发
+        function saveAllData() {
+            try {
+                if (typeof roles !== 'undefined' && roles) {
+                    localStorage.setItem('wechatRoles', JSON.stringify(roles));
+                }
+                if (typeof messages !== 'undefined' && messages) {
+                    localStorage.setItem('wechatMessages', JSON.stringify(messages));
+                }
+                if (typeof moments !== 'undefined' && moments) {
+                    localStorage.setItem('wechatMoments', JSON.stringify(moments));
+                    console.log('[AutoSave] moments 已保存，数量:', moments.length);
+                }
+                const momentsCoverImg = document.getElementById('moments-cover-img');
+                if (momentsCoverImg && momentsCoverImg.src && momentsCoverImg.style.display !== 'none') {
+                    localStorage.setItem('momentsCover', momentsCoverImg.src);
+                }
+                const momentsAvatarEl = document.getElementById('moments-avatar');
+                if (momentsAvatarEl) {
+                    const avatarImg = momentsAvatarEl.querySelector('img');
+                    if (avatarImg && avatarImg.src) {
+                        localStorage.setItem('momentsAvatar', avatarImg.src);
+                    }
+                }
+                const momentsNameInput = document.getElementById('moments-name-input');
+                if (momentsNameInput && momentsNameInput.value) {
+                    localStorage.setItem('momentsUsername', momentsNameInput.value.trim());
+                }
+                if (typeof simsRolesData !== 'undefined' && simsRolesData) {
+                    localStorage.setItem('simsRolesData', JSON.stringify(simsRolesData));
+                }
+                if (typeof selectedSimsWorldbookIds !== 'undefined' && selectedSimsWorldbookIds) {
+                    localStorage.setItem('selectedSimsWorldbookIds', JSON.stringify(selectedSimsWorldbookIds));
+                }
+                if (typeof simsThoughtMessages !== 'undefined' && currentSelectedRoleId && simsThoughtMessages.length > 0) {
+                    localStorage.setItem(`simsThoughts_${currentSelectedRoleId}`, JSON.stringify(simsThoughtMessages));
+                }
+                if (typeof simsUsedThoughtMessages !== 'undefined' && currentSelectedRoleId && simsUsedThoughtMessages.length > 0) {
+                    localStorage.setItem(`simsUsedThoughts_${currentSelectedRoleId}`, JSON.stringify(simsUsedThoughtMessages));
+                }
+                console.log('[AutoSave] 数据已自动保存');
+            } catch (e) {
+                console.error('[AutoSave] 保存数据失败:', e);
+            }
+        }
+
+        let autoSaveInterval = null;
+        let lastSaveTime = 0;
+        const AUTO_SAVE_INTERVAL = 30000;
+        const MIN_SAVE_INTERVAL = 5000;
+
+        function startAutoSave() {
+            if (autoSaveInterval) return;
+            autoSaveInterval = setInterval(() => {
+                const now = Date.now();
+                if (now - lastSaveTime >= MIN_SAVE_INTERVAL) {
+                    saveAllData();
+                    lastSaveTime = now;
+                }
+            }, AUTO_SAVE_INTERVAL);
+            console.log('[AutoSave] 定期自动保存已启动');
+        }
+
+        function stopAutoSave() {
+            if (autoSaveInterval) {
+                clearInterval(autoSaveInterval);
+                autoSaveInterval = null;
+                console.log('[AutoSave] 定期自动保存已停止');
+            }
+        }
+
         window.addEventListener('pageshow', function(event) {
             handleIOSPageRestore();
+            startAutoSave();
         });
 
-        // 监听visibilitychange事件 - 处理iOS从后台返回的情况
         document.addEventListener('visibilitychange', function() {
             if (document.visibilityState === 'visible') {
                 handleIOSPageRestore();
+                startAutoSave();
+            } else {
+                saveAllData();
+                lastSaveTime = Date.now();
             }
         });
 
-        // 监听resume事件 - 处理iOS WebView从后台返回
+        window.addEventListener('pagehide', function(event) {
+            saveAllData();
+        });
+
+        window.addEventListener('beforeunload', function(event) {
+            saveAllData();
+        });
+
         window.addEventListener('resume', function() {
             handleIOSPageRestore();
+            startAutoSave();
         });
+
+        if (document.readyState === 'complete') {
+            startAutoSave();
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                startAutoSave();
+            });
+        }
 
         // ==================== 角色对话隔离单元测试 ====================
         const ChatIsolationTests = {
@@ -28118,6 +28453,22 @@ ${recentHistory.map(msg => {
             document.getElementById('worldbook-entry-modal').style.display = 'none';
             editingWorldbookEntry = null;
             selectedEntryRoles = [];
+        }
+
+        function importTxtToEntryContent(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                document.getElementById('worldbook-entry-content-input').value = content;
+            };
+            reader.onerror = function() {
+                alert('读取文件失败，请重试');
+            };
+            reader.readAsText(file, 'UTF-8');
+            event.target.value = '';
         }
 
         function saveWorldbookEntry() {
