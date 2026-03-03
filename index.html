@@ -2833,7 +2833,7 @@
             padding: 12px 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             flex: 0 0 auto;
             flex-shrink: 0;
             min-height: 56px;
@@ -2865,6 +2865,596 @@
             backface-visibility: visible;
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
+            min-width: 0;
+        }
+
+        .add-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.02);
+            color: #555;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .add-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.25s ease;
+        }
+
+        .add-btn:hover {
+            color: #333;
+            transform: scale(1.08);
+            background: rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .add-btn:active {
+            transform: scale(0.96);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .add-menu {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-radius: 14px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.15),
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) scale(0.95);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            min-width: 140px;
+        }
+
+        .add-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .add-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            font-size: 14px;
+            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .add-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .add-menu-item:hover {
+            background: rgba(255, 200, 220, 0.15);
+        }
+
+        .add-menu-item:active {
+            background: rgba(255, 200, 220, 0.25);
+        }
+
+        .add-menu-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: #666;
+        }
+
+        .add-menu-item:hover svg {
+            color: #333;
+        }
+
+        .music-room-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .music-room-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .music-mobile-frame {
+            width: 375px;
+            height: 812px;
+            max-width: 95vw;
+            max-height: 90vh;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), inset 0 0 0 8px #ffffff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-color: #fdfdfd;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .music-room-overlay.active .music-mobile-frame {
+            transform: scale(1);
+        }
+
+        .music-frame-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, #fdfdfd 0%, #e8eaed 100%);
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            transition: background-image 0.5s ease;
+        }
+
+        .music-frame-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .music-frame-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(#aeb4ba 1px, transparent 1px);
+            background-size: 18px 18px;
+            opacity: 0.15;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .music-header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 35px 25px 5px;
+            z-index: 20;
+            text-shadow: 0 1px 4px rgba(255,255,255,0.8);
+        }
+
+        .music-header p {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            color: #5c636a;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .music-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            outline: none;
+        }
+
+        .music-icon-btn svg {
+            fill: none;
+            stroke: #5c636a;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            filter: drop-shadow(0 1px 2px rgba(255,255,255,0.8));
+        }
+
+        .music-dropdown {
+            position: relative;
+        }
+
+        .music-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: -5px;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 140px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform-origin: top right;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .music-dropdown-menu.show {
+            display: flex;
+            animation: musicDropIn 0.2s ease forwards;
+        }
+
+        @keyframes musicDropIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .music-menu-item {
+            padding: 14px 15px;
+            font-size: 12.5px;
+            color: #4a4d52;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: block;
+            position: relative;
+            text-shadow: none;
+        }
+
+        .music-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .music-menu-item:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .music-menu-item input[type="file"] {
+            display: none;
+        }
+
+        .music-realm-area {
+            position: relative;
+            height: 180px;
+            width: 100%;
+            margin-top: 10px;
+            z-index: 10;
+        }
+
+        .music-upload-label {
+            cursor: pointer;
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .music-upload-label:active {
+            transform: scale(0.95);
+        }
+
+        .music-upload-label input[type="file"] {
+            display: none;
+        }
+
+        .music-polaroid {
+            position: absolute;
+            background: rgba(255,255,255,0.85);
+            padding: 5px 5px 16px 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .music-polaroid img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(1.1);
+        }
+
+        .music-polaroid.left {
+            top: 10px;
+            left: 45px;
+            transform: rotate(-5deg);
+            z-index: 12;
+        }
+
+        .music-polaroid.right {
+            top: 25px;
+            right: 45px;
+            transform: rotate(4deg);
+            z-index: 11;
+        }
+
+        .music-realistic-earphone {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .music-player-card {
+            position: relative;
+            z-index: 15;
+            margin: 0 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.7);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .music-player-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .music-album-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .music-album-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .music-song-info {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .music-song-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2b2c2f;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-artist-name {
+            font-size: 11px;
+            color: #5c636a;
+            font-weight: 500;
+        }
+
+        .music-mini-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .music-play-toggle-btn {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.5);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: 0.15s;
+            outline: none;
+        }
+
+        .music-play-toggle-btn:active {
+            transform: scale(0.9);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .music-play-toggle-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: #4a4d52;
+        }
+
+        .music-progress-bar {
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: #4a4d52;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+
+        .music-chat-area {
+            flex: 1;
+            width: 100%;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .music-chat-area::-webkit-scrollbar {
+            display: none;
+        }
+
+        .music-msg-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .music-msg-content {
+            max-width: 78%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .music-msg-row.left {
+            justify-content: flex-start;
+        }
+
+        .music-msg-row.left .music-msg-content {
+            align-items: flex-start;
+        }
+
+        .music-msg-row.left .music-msg-bubble {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(15px);
+            color: #35373a;
+            border-radius: 4px 18px 18px 18px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .music-msg-row.right {
+            justify-content: flex-end;
+        }
+
+        .music-msg-row.right .music-msg-content {
+            align-items: flex-end;
+        }
+
+        .music-msg-row.right .music-msg-bubble {
+            background: rgba(74, 77, 82, 0.9);
+            backdrop-filter: blur(15px);
+            color: #ffffff;
+            border-radius: 18px 4px 18px 18px;
+            box-shadow: 0 4px 15px rgba(74,77,82,0.15);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .music-msg-bubble {
+            padding: 12px 16px;
+            font-size: 13.5px;
+            line-height: 1.45;
+            word-wrap: break-word;
+        }
+
+        .music-msg-time {
+            font-size: 10px;
+            color: #7f8489;
+            margin-top: 6px;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
+        }
+
+        .music-input-area {
+            position: relative;
+            margin: 0 15px 25px 15px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(25px) saturate(150%);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            z-index: 15;
+        }
+
+        .music-chat-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px 15px;
+            font-size: 14px;
+            outline: none;
+            color: #333;
+            font-weight: 400;
+        }
+
+        .music-chat-input::placeholder {
+            color: #888d94;
+            text-shadow: none;
+        }
+
+        .music-send-btn {
+            background: rgba(74, 77, 82, 0.95);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.15s;
+            outline: none;
+        }
+
+        .music-send-btn:active {
+            transform: scale(0.9);
+        }
+
+        .music-send-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @keyframes floatWire {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(3px); }
+        }
+
+        @keyframes musicTyping {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-2px); }
+        }
+
+        @keyframes musicMenuFadeIn {
+            from { opacity: 0; transform: scale(0.9) translateY(-5px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .chat-input:focus {
@@ -10563,17 +11153,21 @@
             line-height: 1;
             margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
 
-        .netease-magazine-title span {
+        .netease-vol-label {
+            position: absolute;
+            top: 75px;
+            right: 17px;
+            left: auto;
             font-size: 0.75rem;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 400;
             letter-spacing: 1px;
-            padding-bottom: 4px;
             color: #888;
+            z-index: 30;
         }
 
         .netease-search-bar {
@@ -10789,7 +11383,7 @@
         .netease-css-art-vinyl {
             width: 100%;
             height: 100%;
-            background: repeating-radial-gradient(circle at 70% 50%, #1a1a1a 0, #1a1a1a 1px, #222 2px, #1a1a1a 3px);
+            background-image: repeating-radial-gradient(circle at 70% 50%, #1a1a1a 0, #1a1a1a 1px, #222 2px, #1a1a1a 3px);
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -10895,7 +11489,8 @@
         }
 
         .netease-cover-acoustics {
-            background: radial-gradient(circle at 10px 10px, #e8e8e8 2px, transparent 2px) 0 0 / 15px 15px;
+            background-image: radial-gradient(circle at 10px 10px, #e8e8e8 2px, transparent 2px);
+            background-size: 15px 15px;
         }
 
         .netease-cover-piano {
@@ -10903,7 +11498,7 @@
             align-items: flex-start;
             gap: 2px;
             padding: 10px;
-            background: #fff;
+            background-color: #fff;
         }
 
         .netease-c-key {
@@ -10914,7 +11509,7 @@
         }
 
         .netease-cover-electro {
-            background: #fafafa;
+            background-color: #fafafa;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 4px;
@@ -11486,7 +12081,7 @@
 
         .netease-close-btn {
             position: absolute;
-            top: 10px;
+            top: 35px;
             right: 15px;
             width: 36px;
             height: 36px;
@@ -11517,16 +12112,15 @@
         <div class="announcement-card">
             <div class="announcement-header">
                 <h2 class="announcement-title">本次更新内容</h2>
-                <div class="announcement-date" id="announcement-date">2026年2月28日</div>
+                <div class="announcement-date" id="announcement-date">2026年3月3日</div>
             </div>
             <div class="announcement-body">
                 <div class="announcement-content">
                     <p>欢迎使用小鼠机！本次更新内容如下：</p>
                     <ul>
-                        <li>🎨 更新了部分UI</li>
-                        <li>🐛 修复了一些bug</li>
-                        <li>☑️ 增加了多选功能</li>
-                        <li>🎲 增加了重roll功能</li>
+                        <li>🎵 网易云音乐实装</li>
+                        <li>🎧 增加了一起听歌功能</li>
+                        <li>📊 状态栏正在制作中</li>
                     </ul>
                 </div>
             </div>
@@ -12457,9 +13051,11 @@
 
             <audio id="neteaseAudioPlayer" crossorigin="anonymous" preload="metadata"></audio>
 
+            <div class="netease-vol-label">VOL. 5</div>
+
             <header class="netease-header">
                 <div class="netease-magazine-title">
-                    Melody <span>VOL. 5</span>
+                    Melody
                 </div>
                 <div class="netease-search-bar" id="neteaseSearchBar">
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
@@ -12548,7 +13144,7 @@
                         <div class="netease-import-header">Local Import</div>
                         <div class="netease-file-input-wrapper">
                             <div class="netease-file-label" id="neteaseAudioLabel">+ Select Audio (.mp3)</div>
-                            <input type="file" id="neteaseLocalAudioInput" accept="audio/*" style="display:none;">
+                            <input type="file" id="neteaseLocalAudioInput" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;">
 
                             <div class="netease-file-label" id="neteaseLrcLabel">+ Select Lyrics (.lrc) *Optional</div>
                             <input type="file" id="neteaseLocalLrcInput" accept=".lrc,.txt" style="display:none;">
@@ -12876,6 +13472,23 @@
                         </svg>
                     </div>
                 </div><div class="chat-input-area">
+                <div style="position: relative;">
+                    <button class="add-btn" id="add-btn" title="添加">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                    <div class="add-menu" id="add-menu">
+                        <div class="add-menu-item" onclick="handleAddMenuClick('music')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                            </svg>
+                            <span>一起听歌</span>
+                        </div>
+                    </div>
+                </div>
                 <input type="text" id="chat-input" placeholder="ˡ▹𝗜𝘁&#39;𝘀 𝗮𝗹𝗹 𝗮𝗯𝗼𝘂𝘁 𝘆𝗼𝘂" class="chat-input">
                 <div class="envelope-icon" id="envelope-icon" onclick="fetchRoleReply()" title="点击获取回复">
                     <svg class="envelope-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -12895,6 +13508,99 @@
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
                 </button>
+            </div>
+        </div>
+        
+        <div class="music-room-overlay" id="music-room-overlay">
+            <div class="music-mobile-frame">
+                <audio id="music-audio-engine" src=""></audio>
+                
+                <div class="music-frame-bg" id="music-dynamic-bg"></div>
+                <div class="music-frame-overlay"></div>
+                <div class="music-frame-noise"></div>
+                
+                <div class="music-header">
+                    <button class="music-icon-btn" onclick="closeMusicRoom()">
+                        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <p>Sync Room</p>
+                    <div class="music-dropdown">
+                        <button class="music-icon-btn" onclick="musicToggleMenu()">
+                            <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" fill="#5c636a" stroke="none"/><circle cx="12" cy="12" r="2" fill="#5c636a" stroke="none"/><circle cx="12" cy="19" r="2" fill="#5c636a" stroke="none"/></svg>
+                        </button>
+                        <div class="music-dropdown-menu" id="music-option-menu">
+                            <label class="music-menu-item">
+                                更改全屏背景
+                                <input type="file" accept="image/*" onchange="musicChangeBackground(event)">
+                            </label>
+                            <label class="music-menu-item">
+                                更换专辑封面
+                                <input type="file" accept="image/*" onchange="musicPreviewImage(event, 'music-main-album')">
+                            </label>
+                            <label class="music-menu-item">
+                                导入 MP3 音频
+                                <input type="file" accept="audio/*" onchange="musicLoadAudio(event)">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="music-realm-area">
+                    <label class="music-polaroid left music-upload-label">
+                        <input type="file" accept="image/*" onchange="musicPreviewImage(event, 'music-p-left')">
+                        <img id="music-p-left" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23d1d5d9'/%3E%3C/svg%3E">
+                    </label>
+                    <label class="music-polaroid right music-upload-label">
+                        <input type="file" accept="image/*" onchange="musicPreviewImage(event, 'music-p-right')">
+                        <img id="music-p-right" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23dddfe2'/%3E%3C/svg%3E">
+                    </label>
+                    
+                    <svg class="music-realistic-earphone" viewBox="0 0 375 180">
+                        <g style="animation: floatWire 6s ease-in-out infinite alternate; transform-origin: top;">
+                            <path d="M 45 40 C 45 110, 160 120, 187 160" fill="none" stroke="#d4d4d4" stroke-width="4.5" stroke-linecap="round"/>
+                            <path d="M 325 50 C 325 110, 214 120, 187 160" fill="none" stroke="#d4d4d4" stroke-width="4.5" stroke-linecap="round"/>
+                            <path d="M 45 40 C 45 110, 160 120, 187 160" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 325 50 C 325 110, 214 120, 187 160" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 187 160 V 200" fill="none" stroke="#d4d4d4" stroke-width="5.5"/>
+                            <path d="M 187 160 V 200" fill="none" stroke="#ffffff" stroke-width="3.5"/>
+                            <g transform="translate(182, 145)">
+                                <rect x="0" y="0" width="10" height="28" rx="5" fill="#fdfdfd" stroke="#e4e4e4" stroke-width="0.5"/>
+                                <circle cx="5" cy="8" r="1.5" fill="#a5abb0"/>
+                                <path d="M3 16h4M5 14v4M3 22h4" stroke="#c0c0c0" stroke-width="1" fill="none"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="music-player-card">
+                    <div class="music-player-top">
+                        <label class="music-album-wrapper" style="cursor: pointer;">
+                            <input type="file" accept="image/*" onchange="musicPreviewImage(event, 'music-main-album')" style="display: none;">
+                            <img id="music-main-album" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23c5c9ce'/%3E%3C/svg%3E">
+                        </label>
+                        <div class="music-song-info">
+                            <div class="music-song-title" id="music-song-name">Nightfall Whispers</div>
+                            <div class="music-artist-name" id="music-artist-name">Aesthetic Vibe</div>
+                        </div>
+                        <div class="music-mini-controls">
+                            <button class="music-play-toggle-btn" onclick="musicTogglePlay()">
+                                <svg id="music-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <svg id="music-pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="music-progress-bar"><div class="music-progress-fill" id="music-progress-fill"></div></div>
+                </div>
+                
+                <div class="music-chat-area" id="music-chat-area">
+                </div>
+                
+                <div class="music-input-area">
+                    <input type="text" class="music-chat-input" id="music-msg-input" placeholder="Send a message..." autocomplete="off" onkeypress="musicHandleEnter(event)">
+                    <button class="music-send-btn" onclick="musicSendMessage()">
+                        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </div>
             </div>
         </div>
         
@@ -14110,11 +14816,18 @@
                     const contextCount = parseInt(localStorage.getItem('contextMessageCount')) || 10;
                     const recentHistory = conversationHistory.slice(-contextCount);
                     
+                    const musicHistory = musicMessages[currentChatRole.id] || [];
+                    const recentMusicHistory = musicHistory.slice(-20);
+                    
+                    const allHistory = [...recentHistory, ...recentMusicHistory];
+                    allHistory.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                    const finalHistory = allHistory.slice(-contextCount);
+                    
                     const apiMessages = [
                         { role: 'system', content: systemPrompt }
                     ];
                     
-                    recentHistory.forEach(msg => {
+                    finalHistory.forEach(msg => {
                         if (msg.type === 'sent') {
                             apiMessages.push({ role: 'user', content: msg.content });
                         } else if (msg.type === 'received') {
@@ -15477,6 +16190,13 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
             input.onchange = function(e) {
                 const file = e.target.files[0];
                 if (file) {
+                    const maxSizeMB = 9;
+                    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                    if (file.size > maxSizeBytes) {
+                        alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                        return;
+                    }
+                    
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         const imageUrl = event.target.result;
@@ -15702,6 +16422,13 @@ ${role.tags && role.tags.length > 0 ? `- 性格特点：${role.tags.join('、')}
             input.onchange = function(e) {
                 const file = e.target.files[0];
                 if (file) {
+                    const maxSizeMB = 9;
+                    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                    if (file.size > maxSizeBytes) {
+                        alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                        return;
+                    }
+                    
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         const simsPanel = document.getElementById('sims-panel');
@@ -18597,6 +19324,14 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
         document.getElementById('wallpaper-upload').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
+                const maxSizeMB = 9;
+                const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                if (file.size > maxSizeBytes) {
+                    alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                    this.value = '';
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     const imageUrl = event.target.result;
@@ -18630,9 +19365,9 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
                 return;
             }
 
-            const maxSize = 5 * 1024 * 1024;
+            const maxSize = 9 * 1024 * 1024;
             if (file.size > maxSize) {
-                alert('图片文件过大，请选择小于5MB的图片');
+                alert('图片文件过大，请选择小于9MB的图片');
                 this.value = '';
                 return;
             }
@@ -18785,8 +19520,11 @@ ${conversationHistory.slice(-10).map(msg => `${msg.type === 'sent' ? '用户' : 
 
         // 微信应用功能
         let currentChatRole = null;
+        let currentAbortController = null;
+        let isSendingMessages = false;
         let roles = JSON.parse(localStorage.getItem('wechatRoles')) || [];
         let messages = JSON.parse(localStorage.getItem('wechatMessages')) || {};
+        let musicMessages = {};
         let moments = JSON.parse(localStorage.getItem('wechatMoments')) || [];
         let visibleMessageCount = 50;
         const MESSAGES_PER_PAGE = 50;
@@ -19713,6 +20451,13 @@ ${commenterInfo}
         function handleMomentsCoverUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
+
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                showToast(`图片大小不能超过 ${maxSizeMB}MB`);
+                return;
+            }
             
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -19734,6 +20479,13 @@ ${commenterInfo}
         function handleMomentsAvatarUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
+
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                showToast(`图片大小不能超过 ${maxSizeMB}MB`);
+                return;
+            }
             
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -19998,20 +20750,6 @@ ${commenterInfo}
             get coverEl() { return document.getElementById('neteasePlayerCover'); },
             get playerTag() { return document.getElementById('neteasePlayerTag'); }
         };
-
-        function openNetease() {
-            document.getElementById('netease-app').style.display = 'flex';
-            if (!neteaseSliderInterval) {
-                neteaseSliderInterval = setInterval(() => {
-                    const track = document.getElementById('neteaseSliderTrack');
-                    neteaseCurrentSlide = (neteaseCurrentSlide + 1) % 3;
-                    track.style.transform = `translateX(-${neteaseCurrentSlide * 33.333}%)`;
-                }, 4500);
-            }
-            initNeteaseEvents();
-            initNeteaseFileEvents();
-            neteaseLoadSavedImages();
-        }
 
         function closeNetease() {
             document.getElementById('netease-app').style.display = 'none';
@@ -20316,7 +21054,15 @@ ${commenterInfo}
                 vinylInput.setAttribute('data-init-v2', 'true');
                 vinylInput.addEventListener('change', (e) => {
                     if(e.target.files.length > 0) {
-                        neteaseVinylImageFile = e.target.files[0];
+                        const file = e.target.files[0];
+                        const maxSizeMB = 9;
+                        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                        if (file.size > maxSizeBytes) {
+                            alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                            e.target.value = '';
+                            return;
+                        }
+                        neteaseVinylImageFile = file;
                         vinylLabelEl.innerText = neteaseVinylImageFile.name;
                         vinylLabelEl.classList.add('selected');
                         console.log('Vinyl image selected:', neteaseVinylImageFile.name);
@@ -20372,7 +21118,15 @@ ${commenterInfo}
                 cover1Input.setAttribute('data-init-v2', 'true');
                 cover1Input.addEventListener('change', (e) => {
                     if(e.target.files.length > 0) {
-                        neteaseCover1File = e.target.files[0];
+                        const file = e.target.files[0];
+                        const maxSizeMB = 9;
+                        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                        if (file.size > maxSizeBytes) {
+                            alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                            e.target.value = '';
+                            return;
+                        }
+                        neteaseCover1File = file;
                         cover1LabelEl.innerText = neteaseCover1File.name;
                         cover1LabelEl.classList.add('selected');
                     }
@@ -20383,7 +21137,15 @@ ${commenterInfo}
                 cover2Input.setAttribute('data-init-v2', 'true');
                 cover2Input.addEventListener('change', (e) => {
                     if(e.target.files.length > 0) {
-                        neteaseCover2File = e.target.files[0];
+                        const file = e.target.files[0];
+                        const maxSizeMB = 9;
+                        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                        if (file.size > maxSizeBytes) {
+                            alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                            e.target.value = '';
+                            return;
+                        }
+                        neteaseCover2File = file;
                         cover2LabelEl.innerText = neteaseCover2File.name;
                         cover2LabelEl.classList.add('selected');
                     }
@@ -20394,7 +21156,15 @@ ${commenterInfo}
                 cover3Input.setAttribute('data-init-v2', 'true');
                 cover3Input.addEventListener('change', (e) => {
                     if(e.target.files.length > 0) {
-                        neteaseCover3File = e.target.files[0];
+                        const file = e.target.files[0];
+                        const maxSizeMB = 9;
+                        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                        if (file.size > maxSizeBytes) {
+                            alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                            e.target.value = '';
+                            return;
+                        }
+                        neteaseCover3File = file;
                         cover3LabelEl.innerText = neteaseCover3File.name;
                         cover3LabelEl.classList.add('selected');
                     }
@@ -20921,6 +21691,8 @@ ${commenterInfo}
         }
         
         function resetAllViews() {
+            isSendingMessages = false;
+            
             document.getElementById('wechat-main').style.display = 'none';
             document.getElementById('wechat-profile').style.display = 'none';
             document.getElementById('wechat-contacts').style.display = 'none';
@@ -21642,6 +22414,481 @@ ${commenterInfo}
             panel.classList.remove('active');
         }
 
+        const addBtn = document.getElementById('add-btn');
+        const addMenu = document.getElementById('add-menu');
+
+        if (addBtn && addMenu) {
+            addBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                addMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!addMenu.contains(e.target) && !addBtn.contains(e.target)) {
+                    addMenu.classList.remove('active');
+                }
+            });
+        }
+
+        function handleAddMenuClick(type) {
+            const addMenu = document.getElementById('add-menu');
+            if (addMenu) {
+                addMenu.classList.remove('active');
+            }
+            
+            switch(type) {
+                case 'music':
+                    openMusicRoom();
+                    break;
+            }
+        }
+
+        function openMusicRoom() {
+            const overlay = document.getElementById('music-room-overlay');
+            if (overlay) {
+                overlay.classList.add('active');
+            }
+            
+            loadMusicRoomImages();
+            loadMusicRoomBackground();
+            
+            const roleAvatarImg = document.getElementById('music-p-left');
+            const userAvatarImg = document.getElementById('music-p-right');
+            
+            const savedLeftImg = localStorage.getItem('music-p-left');
+            const savedRightImg = localStorage.getItem('music-p-right');
+            
+            if (!savedLeftImg) {
+                if (currentChatRole && currentChatRole.avatar && roleAvatarImg) {
+                    roleAvatarImg.src = currentChatRole.avatar;
+                }
+            }
+            
+            if (!savedRightImg) {
+                const savedUserAvatar = localStorage.getItem('userAvatar');
+                if (savedUserAvatar && userAvatarImg) {
+                    userAvatarImg.src = savedUserAvatar;
+                }
+            }
+        }
+
+        function closeMusicRoom() {
+            const overlay = document.getElementById('music-room-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            
+            const audio = document.getElementById('music-audio-engine');
+            if (currentChatRole && audio) {
+                audio.pause();
+                const playIcon = document.getElementById('music-play-icon');
+                const pauseIcon = document.getElementById('music-pause-icon');
+                if (playIcon) playIcon.style.display = 'block';
+                if (pauseIcon) pauseIcon.style.display = 'none';
+            }
+            
+            if (currentChatRole) {
+                const songNameEl = document.getElementById('music-song-name');
+                const currentSongName = songNameEl ? songNameEl.textContent : '未知歌曲';
+                const duration = audio ? Math.floor(audio.currentTime || 0) : 0;
+                const minutes = Math.floor(duration / 60);
+                const seconds = duration % 60;
+                const timeStr = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                const musicEndContent = `🎵 一起听歌结束\n歌曲：《${currentSongName}》\n时长：${timeStr}`;
+                addMessage(currentChatRole.id, 'received', musicEndContent);
+            }
+        }
+
+        function musicToggleMenu() {
+            document.getElementById('music-option-menu').classList.toggle('show');
+        }
+
+        document.addEventListener('click', function(e) {
+            const musicDropdown = document.querySelector('.music-dropdown');
+            if (musicDropdown && !musicDropdown.contains(e.target)) {
+                const menu = document.getElementById('music-option-menu');
+                if (menu) {
+                    menu.classList.remove('show');
+                }
+            }
+        });
+
+        function musicPreviewImage(event, targetId) {
+            if (event.target.files[0]) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const url = e.target.result;
+                    document.getElementById(targetId).src = url;
+                    localStorage.setItem(targetId, url);
+                };
+                reader.readAsDataURL(file);
+                document.getElementById('music-option-menu').classList.remove('show');
+            }
+        }
+
+        function loadMusicRoomImages() {
+            const imageIds = ['music-main-album', 'music-p-left', 'music-p-right'];
+            imageIds.forEach(function(id) {
+                const saved = localStorage.getItem(id);
+                if (saved) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.src = saved;
+                    }
+                }
+            });
+        }
+
+        function musicChangeBackground(event) {
+            if (event.target.files[0]) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const url = e.target.result;
+                    document.getElementById('music-dynamic-bg').style.backgroundImage = `url(${url})`;
+                    localStorage.setItem('musicRoomBackground', url);
+                };
+                reader.readAsDataURL(file);
+                document.getElementById('music-option-menu').classList.remove('show');
+            }
+        }
+
+        function loadMusicRoomBackground() {
+            const savedBg = localStorage.getItem('musicRoomBackground');
+            if (savedBg) {
+                const bgEl = document.getElementById('music-dynamic-bg');
+                if (bgEl) {
+                    bgEl.style.backgroundImage = `url(${savedBg})`;
+                }
+            }
+        }
+
+        const musicAudio = document.getElementById('music-audio-engine');
+        const musicPlayIcon = document.getElementById('music-play-icon');
+        const musicPauseIcon = document.getElementById('music-pause-icon');
+        const musicProgressFill = document.getElementById('music-progress-fill');
+        let musicIsPlaying = false;
+
+        function musicLoadAudio(event) {
+            if (event.target.files[0]) {
+                musicAudio.src = URL.createObjectURL(event.target.files[0]);
+                document.getElementById('music-song-name').textContent = event.target.files[0].name.replace(/\.[^/.]+$/, "");
+                document.getElementById('music-artist-name').textContent = "Aesthetic Vibe";
+                musicAudio.play();
+                musicIsPlaying = true;
+                musicUpdatePlayBtn();
+                document.getElementById('music-option-menu').classList.remove('show');
+            }
+        }
+
+        function musicTogglePlay() {
+            if (!musicAudio.src) {
+                alert("Menu -> 请先导入 MP3 文件");
+                return;
+            }
+            musicIsPlaying ? musicAudio.pause() : musicAudio.play();
+            musicIsPlaying = !musicIsPlaying;
+            musicUpdatePlayBtn();
+        }
+
+        function musicUpdatePlayBtn() {
+            musicPlayIcon.style.display = musicIsPlaying ? 'none' : 'block';
+            musicPauseIcon.style.display = musicIsPlaying ? 'block' : 'none';
+        }
+
+        if (musicAudio) {
+            musicAudio.addEventListener('timeupdate', () => {
+                if (musicAudio.duration) {
+                    musicProgressFill.style.width = (musicAudio.currentTime / musicAudio.duration * 100) + '%';
+                }
+            });
+            musicAudio.addEventListener('ended', () => {
+                musicIsPlaying = false;
+                musicUpdatePlayBtn();
+                musicProgressFill.style.width = '0%';
+            });
+        }
+
+        let musicMessageIndex = 0;
+
+        function musicSendMessage() {
+            const input = document.getElementById('music-msg-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            if (!currentChatRole) {
+                alert('请先选择一个角色进行对话');
+                return;
+            }
+
+            const msgIndex = musicMessageIndex++;
+            const chatArea = document.getElementById('music-chat-area');
+            const msgHTML = `
+                <div class="music-msg-row right" data-msg-index="${msgIndex}">
+                    <div class="music-msg-content">
+                        <div class="music-msg-bubble" onclick="musicShowContextMenu(event, ${msgIndex}, 'sent')">${text}</div>
+                        <span class="music-msg-time">${new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'})}</span>
+                    </div>
+                </div>`;
+            chatArea.insertAdjacentHTML('beforeend', msgHTML);
+            input.value = '';
+            chatArea.scrollTop = chatArea.scrollHeight;
+
+            if (!musicMessages[currentChatRole.id]) {
+                musicMessages[currentChatRole.id] = [];
+            }
+            musicMessages[currentChatRole.id].push({
+                index: msgIndex,
+                type: 'sent',
+                content: text,
+                timestamp: new Date().toISOString()
+            });
+
+            musicFetchRoleReply(text);
+        }
+
+        async function musicFetchRoleReply(userMessage) {
+            if (!currentChatRole) return;
+
+            const chatArea = document.getElementById('music-chat-area');
+            
+            const typingHTML = `
+                <div class="music-msg-row left" id="music-typing-indicator">
+                    <div class="music-msg-content">
+                        <div class="music-msg-bubble" style="display: flex; gap: 4px; align-items: center;">
+                            <span style="width: 6px; height: 6px; background: #999; border-radius: 50%; animation: musicTyping 1s infinite;"></span>
+                            <span style="width: 6px; height: 6px; background: #999; border-radius: 50%; animation: musicTyping 1s infinite 0.2s;"></span>
+                            <span style="width: 6px; height: 6px; background: #999; border-radius: 50%; animation: musicTyping 1s infinite 0.4s;"></span>
+                        </div>
+                    </div>
+                </div>`;
+            chatArea.insertAdjacentHTML('beforeend', typingHTML);
+            chatArea.scrollTop = chatArea.scrollHeight;
+
+            let savedApiUrl = localStorage.getItem('apiUrl') || '';
+            const apiKey = localStorage.getItem('apiKey') || '';
+            const selectedModel = localStorage.getItem('selectedModel') || '';
+            
+            const chatEndpoint = getChatEndpoint(savedApiUrl);
+
+            const validation = validateApiConfig(chatEndpoint, apiKey, selectedModel);
+            if (!validation.valid) {
+                const typingIndicator = document.getElementById('music-typing-indicator');
+                if (typingIndicator) typingIndicator.remove();
+                musicAddMessage('❌ API配置无效，请前往设置页面检查配置。');
+                return;
+            }
+
+            if (!chatEndpoint || !apiKey || !selectedModel) {
+                const typingIndicator = document.getElementById('music-typing-indicator');
+                if (typingIndicator) typingIndicator.remove();
+                musicAddMessage('⚠️ API未完整配置，请前往设置页面配置。');
+                return;
+            }
+
+            try {
+                const userSettings = getUserPersona();
+                const userName = userSettings.name || '用户';
+                
+                const roleInfo = {
+                    name: currentChatRole.name,
+                    description: currentChatRole.description || '',
+                    tags: currentChatRole.tags || [],
+                    greeting: currentChatRole.greeting || ''
+                };
+                
+                const userInfo = {
+                    name: userName,
+                    persona: userSettings.persona || ''
+                };
+                
+                let systemPrompt = PromptsConfig.buildFullPrompt(roleInfo, userInfo);
+                
+                const songNameEl = document.getElementById('music-song-name');
+                const currentSongName = songNameEl ? songNameEl.textContent : '未知歌曲';
+                systemPrompt += `\n\n当前场景：你们正在一起听歌，享受音乐的美好时光。当前正在播放的歌曲是《${currentSongName}》。请用轻松、温馨的语气回复，可以聊聊这首歌或者音乐相关的话题。`;
+
+                const conversationHistory = musicMessages[currentChatRole.id] || [];
+                const recentHistory = conversationHistory.slice(-20);
+                
+                const apiMessages = [
+                    { role: 'system', content: systemPrompt }
+                ];
+                
+                recentHistory.forEach(msg => {
+                    if (msg.type === 'sent') {
+                        apiMessages.push({ role: 'user', content: msg.content });
+                    } else if (msg.type === 'received') {
+                        apiMessages.push({ role: 'assistant', content: msg.content });
+                    }
+                });
+                
+                apiMessages.push({ role: 'user', content: userMessage });
+
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+
+                const response = await fetch(chatEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: selectedModel,
+                        messages: apiMessages
+                    }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                const typingIndicator = document.getElementById('music-typing-indicator');
+                if (typingIndicator) typingIndicator.remove();
+
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    let reply = data.choices[0].message.content;
+                    reply = reply.trim();
+                    
+                    const replyIndex = musicAddMessage(reply);
+                    
+                    musicMessages[currentChatRole.id].push({
+                        index: replyIndex,
+                        type: 'received',
+                        content: reply,
+                        timestamp: new Date().toISOString()
+                    });
+                } else {
+                    musicAddMessage('抱歉，收到了无法理解的回复');
+                }
+
+            } catch (error) {
+                const typingIndicator = document.getElementById('music-typing-indicator');
+                if (typingIndicator) typingIndicator.remove();
+                
+                let errorMessage = '请求失败，请检查网络连接';
+                if (error.name === 'AbortError') {
+                    errorMessage = '请求超时，请稍后重试';
+                } else if (error.message) {
+                    errorMessage = `请求失败: ${error.message}`;
+                }
+                musicAddMessage(errorMessage);
+            }
+        }
+
+        function musicAddMessage(content) {
+            const msgIndex = musicMessageIndex++;
+            const chatArea = document.getElementById('music-chat-area');
+            const msgHTML = `
+                <div class="music-msg-row left" data-msg-index="${msgIndex}">
+                    <div class="music-msg-content">
+                        <div class="music-msg-bubble" onclick="musicShowContextMenu(event, ${msgIndex}, 'received')">${content}</div>
+                        <span class="music-msg-time">${new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'})}</span>
+                    </div>
+                </div>`;
+            chatArea.insertAdjacentHTML('beforeend', msgHTML);
+            chatArea.scrollTop = chatArea.scrollHeight;
+            
+            return msgIndex;
+        }
+
+        function musicShowContextMenu(event, msgIndex, msgType) {
+            event.stopPropagation();
+            
+            const existingMenu = document.getElementById('music-context-menu');
+            if (existingMenu) {
+                existingMenu.remove();
+            }
+            
+            const bubble = event.currentTarget;
+            const rect = bubble.getBoundingClientRect();
+            
+            const contextMenu = document.createElement('div');
+            contextMenu.id = 'music-context-menu';
+            contextMenu.style.cssText = `
+                position: fixed;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-radius: 10px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                z-index: 100000;
+                overflow: hidden;
+                animation: musicMenuFadeIn 0.2s ease;
+            `;
+            
+            const deleteIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>`;
+            
+            contextMenu.innerHTML = `
+                <div onclick="musicDeleteMessage(${msgIndex})" style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 16px;
+                    cursor: pointer;
+                    font-size: 13px;
+                    color: #FF3B30;
+                    transition: background 0.15s ease;
+                " onmouseover="this.style.background='rgba(255,59,48,0.1)'" onmouseout="this.style.background='transparent'">
+                    ${deleteIcon}
+                    <span>删除</span>
+                </div>
+            `;
+            
+            document.body.appendChild(contextMenu);
+            
+            let menuLeft = rect.left;
+            let menuTop = rect.bottom + 8;
+            
+            if (menuLeft + 100 > window.innerWidth) {
+                menuLeft = window.innerWidth - 110;
+            }
+            if (menuTop + 50 > window.innerHeight) {
+                menuTop = rect.top - 50;
+            }
+            
+            contextMenu.style.left = menuLeft + 'px';
+            contextMenu.style.top = menuTop + 'px';
+            
+            setTimeout(() => {
+                document.addEventListener('click', musicHideContextMenu);
+            }, 0);
+        }
+
+        function musicHideContextMenu() {
+            const menu = document.getElementById('music-context-menu');
+            if (menu) {
+                menu.remove();
+            }
+            document.removeEventListener('click', musicHideContextMenu);
+        }
+
+        function musicDeleteMessage(msgIndex) {
+            musicHideContextMenu();
+            
+            const msgRow = document.querySelector(`.music-msg-row[data-msg-index="${msgIndex}"]`);
+            if (msgRow) {
+                msgRow.remove();
+            }
+            
+            if (currentChatRole && musicMessages[currentChatRole.id]) {
+                musicMessages[currentChatRole.id] = musicMessages[currentChatRole.id].filter(msg => msg.index !== msgIndex);
+            }
+        }
+
+        function musicHandleEnter(e) {
+            if (e.key === 'Enter') musicSendMessage();
+        }
+
         function toggleCategory(categoryName) {
             let categoryContent = document.getElementById(categoryName + '-category');
             if (!categoryContent) {
@@ -21692,6 +22939,13 @@ ${commenterInfo}
         function handleChatWallpaperUpload(event) {
             const file = event.target.files[0];
             if (!file || !currentChatRole) return;
+
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                showToast(`图片大小不能超过 ${maxSizeMB}MB`);
+                return;
+            }
             
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -22551,6 +23805,8 @@ ${recentHistory.map(msg => {
 
         // 返回微信主界面
         function backToWechatMain() {
+            isSendingMessages = false;
+            
             closeChatMenu();
             document.getElementById('wechat-chat').style.display = 'none';
             document.getElementById('wechat-contacts').style.display = 'none';
@@ -23137,11 +24393,18 @@ ${recentHistory.map(msg => {
             const envelopeIcon = document.getElementById('envelope-icon');
             if (envelopeIcon && envelopeIcon.classList.contains('loading')) return;
 
+            if (currentAbortController) {
+                currentAbortController.abort();
+                currentAbortController = null;
+            }
+            isSendingMessages = true;
+
             const conversationHistory = messages[currentChatRole.id] || [];
             const lastUserMessage = [...conversationHistory].reverse().find(msg => msg.type === 'sent');
             
             if (!lastUserMessage) {
                 alert('没有可回复的消息，请先发送一条消息');
+                isSendingMessages = false;
                 return;
             }
 
@@ -23252,11 +24515,18 @@ ${recentHistory.map(msg => {
                 const contextCount = parseInt(localStorage.getItem('contextMessageCount')) || 10;
                 const recentHistory = conversationHistory.slice(-contextCount);
                 
+                const musicHistory = musicMessages[currentChatRole.id] || [];
+                const recentMusicHistory = musicHistory.slice(-20);
+                
+                const allHistory = [...recentHistory, ...recentMusicHistory];
+                allHistory.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                const finalHistory = allHistory.slice(-contextCount);
+                
                 const apiMessages = [
                     { role: 'system', content: systemPrompt }
                 ];
                 
-                recentHistory.forEach(msg => {
+                finalHistory.forEach(msg => {
                     if (msg.type === 'sent') {
                         apiMessages.push({ role: 'user', content: msg.content });
                     } else if (msg.type === 'received') {
@@ -23266,8 +24536,12 @@ ${recentHistory.map(msg => {
                 
                 apiMessages.push({ role: 'user', content: content });
 
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 60000);
+                currentAbortController = new AbortController();
+                const timeoutId = setTimeout(() => {
+                    if (currentAbortController) {
+                        currentAbortController.abort();
+                    }
+                }, 60000);
 
                 const response = await fetch(chatEndpoint, {
                     method: 'POST',
@@ -23283,7 +24557,7 @@ ${recentHistory.map(msg => {
                         presence_penalty: 0.6,
                         frequency_penalty: 0.5
                     }),
-                    signal: controller.signal
+                    signal: currentAbortController.signal
                 });
 
                 clearTimeout(timeoutId);
@@ -23296,6 +24570,8 @@ ${recentHistory.map(msg => {
                 if (envelopeIcon) {
                     envelopeIcon.classList.remove('loading');
                 }
+
+                currentAbortController = null;
 
                 if (response.ok) {
                     const data = await response.json();
@@ -23325,6 +24601,7 @@ ${recentHistory.map(msg => {
                         
                         const messageList = splitIntoMessages(reply);
                         await sendMultipleMessages(currentChatRole.id, messageList);
+                        isSendingMessages = false;
                         
                         const conversationContext = messages[currentChatRole.id] || [];
                         RoleStatusManager.updateStatusAfterReply(
@@ -23344,12 +24621,15 @@ ${recentHistory.map(msg => {
                         console.error('API返回错误:', data.error);
                         const errorReply = `❌ API错误: ${data.error.message || JSON.stringify(data.error)}`;
                         addMessage(currentChatRole.id, 'received', errorReply);
+                        isSendingMessages = false;
                     } else {
                         const unknownReply = '抱歉，收到了无法理解的回复格式。';
                         addMessage(currentChatRole.id, 'received', unknownReply);
+                        isSendingMessages = false;
                     }
                 } else {
                     ApiMonitor.recordRequest(startTime, false, `HTTP ${response.status}`);
+                    isSendingMessages = false;
                     
                     const errorText = await response.text();
                     let errorMessage = '抱歉，API请求失败';
@@ -23402,12 +24682,18 @@ ${recentHistory.map(msg => {
                 if (envelopeIcon) {
                     envelopeIcon.classList.remove('loading');
                 }
+
+                currentAbortController = null;
+                isSendingMessages = false;
+                
+                if (error.name === 'AbortError') {
+                    console.log('请求已被用户中止');
+                    return;
+                }
                 
                 let errorMessage = '抱歉，发生了一个错误';
                 
-                if (error.name === 'AbortError') {
-                    errorMessage = '❌ 请求超时（60秒），请检查网络连接或稍后再试';
-                } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
                     errorMessage = '❌ 网络连接失败，请检查网络或API URL是否正确';
                 } else if (error.message.includes('CORS')) {
                     errorMessage = '❌ 跨域错误，请检查API是否支持跨域请求';
@@ -24451,6 +25737,14 @@ ${recentHistory.map(msg => {
         document.getElementById('role-avatar').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
+                const maxSizeMB = 9;
+                const maxSizeBytes = maxSizeMB * 1024 * 1024;
+                if (file.size > maxSizeBytes) {
+                    alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                    this.value = '';
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     const avatarPreview = document.getElementById('avatar-preview');
@@ -24617,6 +25911,14 @@ ${recentHistory.map(msg => {
         function handleTempAvatar(input) {
             const file = input.files[0];
             if (!file) return;
+            
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                input.value = '';
+                return;
+            }
             
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -25091,6 +26393,13 @@ ${recentHistory.map(msg => {
                 return;
             }
 
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                showToast(`图片大小不能超过 ${maxSizeMB}MB`);
+                return;
+            }
+
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
@@ -25268,6 +26577,8 @@ ${recentHistory.map(msg => {
             const modal = document.getElementById('character-edit-modal');
             const title = document.getElementById('character-edit-title');
             const avatarPreview = document.getElementById('character-avatar-preview');
+            const avatarInput = document.getElementById('character-avatar-input');
+            if (avatarInput) avatarInput.value = '';
             
             if (roleId) {
                 const role = roles.find(r => r.id === roleId);
@@ -25311,6 +26622,14 @@ ${recentHistory.map(msg => {
         document.getElementById('character-avatar-input').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
+
+            const maxSizeMB = 9;
+            const maxSizeBytes = maxSizeMB * 1024 * 1024;
+            if (file.size > maxSizeBytes) {
+                alert(`图片大小不能超过 ${maxSizeMB}MB`);
+                this.value = '';
+                return;
+            }
             
             const reader = new FileReader();
             reader.onload = function(event) {
@@ -25570,11 +26889,13 @@ ${recentHistory.map(msg => {
         window.addEventListener('load', function() {
             initWechatData();
             loadSavedAvatar();
+            loadMusicRoomBackground();
+            loadMusicRoomImages();
             initCssEditorListeners();
         });
 
         // ========== 头像上传功能 ==========
-        const AVATAR_MAX_SIZE = 5 * 1024 * 1024; // 5MB
+        const AVATAR_MAX_SIZE = 9 * 1024 * 1024; // 9MB
         const AVATAR_ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
         function triggerAvatarUpload() {
@@ -25633,7 +26954,7 @@ ${recentHistory.map(msg => {
             if (file.size > AVATAR_MAX_SIZE) {
                 return {
                     valid: false,
-                    message: '图片大小不能超过 5MB'
+                    message: '图片大小不能超过 9MB'
                 };
             }
 
@@ -25689,8 +27010,8 @@ ${recentHistory.map(msg => {
                 return;
             }
 
-            if (file.size > 10 * 1024 * 1024) {
-                alert('图片大小不能超过 10MB');
+            if (file.size > 9 * 1024 * 1024) {
+                alert('图片大小不能超过 9MB');
                 return;
             }
 
@@ -25762,8 +27083,8 @@ ${recentHistory.map(msg => {
                 return;
             }
 
-            if (file.size > 10 * 1024 * 1024) {
-                alert('图片大小不能超过 10MB');
+            if (file.size > 9 * 1024 * 1024) {
+                alert('图片大小不能超过 9MB');
                 return;
             }
 
@@ -28342,6 +29663,16 @@ ${conversationContext.slice(-3).map(m => `${m.type === 'sent' ? '对方' : '我'
 
         function openNetease() {
             document.getElementById('netease-app').style.display = 'flex';
+            if (!neteaseSliderInterval) {
+                neteaseSliderInterval = setInterval(() => {
+                    const track = document.getElementById('neteaseSliderTrack');
+                    neteaseCurrentSlide = (neteaseCurrentSlide + 1) % 3;
+                    track.style.transform = `translateX(-${neteaseCurrentSlide * 33.333}%)`;
+                }, 4500);
+            }
+            initNeteaseEvents();
+            initNeteaseFileEvents();
+            neteaseLoadSavedImages();
             NeteasePlayer.init();
         }
 
