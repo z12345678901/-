@@ -13143,10 +13143,10 @@
                     <div class="netease-local-import-box">
                         <div class="netease-import-header">Local Import</div>
                         <div class="netease-file-input-wrapper">
-                            <div class="netease-file-label" id="neteaseAudioLabel">+ Select Audio (.mp3)</div>
+                            <label class="netease-file-label" id="neteaseAudioLabel" for="neteaseLocalAudioInput">+ Select Audio (.mp3)</label>
                             <input type="file" id="neteaseLocalAudioInput" accept="audio/mpeg,audio/mp3,audio/*" style="display:none;">
 
-                            <div class="netease-file-label" id="neteaseLrcLabel">+ Select Lyrics (.lrc) *Optional</div>
+                            <label class="netease-file-label" id="neteaseLrcLabel" for="neteaseLocalLrcInput">+ Select Lyrics (.lrc) *Optional</label>
                             <input type="file" id="neteaseLocalLrcInput" accept=".lrc,.txt" style="display:none;">
                         </div>
                         <button class="netease-start-local-btn" id="neteaseStartPlayBtn">Play Local Track</button>
@@ -13155,7 +13155,7 @@
                     <div class="netease-local-import-box">
                         <div class="netease-import-header">Custom Slider Image</div>
                         <div class="netease-file-input-wrapper">
-                            <div class="netease-file-label" id="neteaseVinylLabel">+ Select Image (.jpg/.png)</div>
+                            <label class="netease-file-label" id="neteaseVinylLabel" for="neteaseVinylInput">+ Select Image (.jpg/.png)</label>
                             <input type="file" id="neteaseVinylInput" accept="image/*" style="display:none;">
                             <input type="text" id="neteaseVinylUrlInput" placeholder="Or paste image URL here..." style="width:100%; padding:10px; border:1px solid #eee; border-radius:8px; font-size:0.75rem; margin-top:5px;">
                         </div>
@@ -13165,15 +13165,15 @@
                     <div class="netease-local-import-box">
                         <div class="netease-import-header">Playlist Covers</div>
                         <div class="netease-file-input-wrapper">
-                            <div class="netease-file-label" id="neteaseCover1Label">+ Morning Coffee Cover</div>
+                            <label class="netease-file-label" id="neteaseCover1Label" for="neteaseCover1Input">+ Morning Coffee Cover</label>
                             <input type="file" id="neteaseCover1Input" accept="image/*" style="display:none;">
                             <input type="text" id="neteaseCover1UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
 
-                            <div class="netease-file-label" id="neteaseCover2Label">+ White Linen Cover</div>
+                            <label class="netease-file-label" id="neteaseCover2Label" for="neteaseCover2Input">+ White Linen Cover</label>
                             <input type="file" id="neteaseCover2Input" accept="image/*" style="display:none;">
                             <input type="text" id="neteaseCover2UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
 
-                            <div class="netease-file-label" id="neteaseCover3Label">+ Late Night Cover</div>
+                            <label class="netease-file-label" id="neteaseCover3Label" for="neteaseCover3Input">+ Late Night Cover</label>
                             <input type="file" id="neteaseCover3Input" accept="image/*" style="display:none;">
                             <input type="text" id="neteaseCover3UrlInput" placeholder="Or paste URL..." style="width:100%; padding:8px; border:1px solid #eee; border-radius:6px; font-size:0.7rem; margin-top:3px;">
                         </div>
@@ -20937,12 +20937,17 @@ ${commenterInfo}
             if (audioInput && !audioInput.hasAttribute('data-init-v2')) {
                 audioInput.setAttribute('data-init-v2', 'true');
                 audioInput.addEventListener('change', (e) => {
-                    if(e.target.files.length > 0) {
+                    console.log('Audio input change event fired, files:', e.target.files);
+                    if(e.target.files && e.target.files.length > 0) {
                         neteaseLocalAudioFile = e.target.files[0];
                         const audioLabel = document.getElementById('neteaseAudioLabel');
-                        audioLabel.innerText = neteaseLocalAudioFile.name;
-                        audioLabel.classList.add('selected');
-                        console.log('Audio file selected:', neteaseLocalAudioFile.name);
+                        if (audioLabel) {
+                            audioLabel.innerText = neteaseLocalAudioFile.name;
+                            audioLabel.classList.add('selected');
+                        }
+                        console.log('Audio file selected:', neteaseLocalAudioFile.name, 'size:', neteaseLocalAudioFile.size);
+                    } else {
+                        console.warn('No files selected in change event');
                     }
                 });
             }
@@ -20963,38 +20968,21 @@ ${commenterInfo}
             if (audioLabelEl && audioInput && !audioLabelEl.hasAttribute('data-init-v2')) {
                 audioLabelEl.setAttribute('data-init-v2', 'true');
                 
+                // iOS Safari 需要直接点击 input 元素，不能通过 JS 触发
+                // 所以我们让 label 通过 for 属性关联 input，而不是用 JS 触发
                 audioLabelEl.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Audio label clicked');
-                    audioInput.click();
-                    return false;
-                });
-                
-                audioLabelEl.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    audioInput.click();
-                    return false;
+                    // 不要阻止默认行为，让 label 的 for 属性自然工作
+                    console.log('Audio label clicked - using native label behavior');
                 });
             }
 
             if (lrcLabelEl && lrcInput && !lrcLabelEl.hasAttribute('data-init-v2')) {
                 lrcLabelEl.setAttribute('data-init-v2', 'true');
                 
+                // iOS Safari 需要直接点击 input 元素，不能通过 JS 触发
+                // 使用 label 的 for 属性自然关联 input
                 lrcLabelEl.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('LRC label clicked');
-                    lrcInput.click();
-                    return false;
-                });
-                
-                lrcLabelEl.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    lrcInput.click();
-                    return false;
+                    console.log('LRC label clicked - using native label behavior');
                 });
             }
 
@@ -21073,18 +21061,10 @@ ${commenterInfo}
             if (vinylLabelEl && vinylInput && !vinylLabelEl.hasAttribute('data-init-v2')) {
                 vinylLabelEl.setAttribute('data-init-v2', 'true');
                 
+                // iOS Safari 需要直接点击 input 元素，不能通过 JS 触发
+                // 使用 label 的 for 属性自然关联 input
                 vinylLabelEl.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    vinylInput.click();
-                    return false;
-                });
-                
-                vinylLabelEl.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    vinylInput.click();
-                    return false;
+                    console.log('Vinyl label clicked - using native label behavior');
                 });
             }
 
@@ -21171,21 +21151,14 @@ ${commenterInfo}
                 });
             }
 
+            // iOS Safari 需要直接点击 input 元素，不能通过 JS 触发
+            // 使用 label 的 for 属性自然关联 input，所以这里只需要标记已初始化
             [cover1LabelEl, cover2LabelEl, cover3LabelEl].forEach((labelEl, index) => {
                 const inputEl = [cover1Input, cover2Input, cover3Input][index];
                 if (labelEl && inputEl && !labelEl.hasAttribute('data-init-v2')) {
                     labelEl.setAttribute('data-init-v2', 'true');
                     labelEl.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        inputEl.click();
-                        return false;
-                    });
-                    labelEl.addEventListener('touchend', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        inputEl.click();
-                        return false;
+                        console.log(`Cover ${index + 1} label clicked - using native label behavior`);
                     });
                 }
             });
